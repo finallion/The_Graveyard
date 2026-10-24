@@ -4,7 +4,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "graveyard:block/skeleton",
-		"1": "minecraft:item/iron_axe",
+		"1": "graveyard:block/iron_axe",
 		"particle": "graveyard:block/skeleton_particle"
 	},
 	"elements": [
