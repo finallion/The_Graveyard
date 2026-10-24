@@ -20,7 +20,9 @@ class EntityChunkUpgradeTest {
     @Test
     void mixinTargetsTheEntityChunkUpgrade() {
         assertTrue(MIXIN.contains("@Mixin(SimpleRegionStorage.class)"));
-        assertTrue(MIXIN.contains("upgradeChunkTag(Lnet/minecraft/nbt/CompoundTag;I)Lnet/minecraft/nbt/CompoundTag;"));
+        assertTrue(MIXIN.contains("upgradeChunkTag(Lnet/minecraft/nbt/CompoundTag;ILnet/minecraft/nbt/CompoundTag;I)Lnet/minecraft/nbt/CompoundTag;"));
+        assertTrue(MIXIN.contains("int targetVersion"));
+        assertTrue(HELPER.contains(">= targetVersion"));
         assertTrue(MIXIN.contains("DataFixTypes.ENTITY_CHUNK"));
         assertTrue(HELPER.contains("SharedConstants.getCurrentVersion().dataVersion().version()"));
     }
@@ -40,6 +42,8 @@ class EntityChunkUpgradeTest {
         assertFalse(ModProject.read(ModProject.RESOURCES.resolve("graveyard-common.mixins.json")).contains("Moonrise"));
         assertTrue(MOONRISE.contains("@Pseudo"));
         assertTrue(MOONRISE.contains("ca.spottedleaf.moonrise.patches.chunk_system.ChunkSystemConverters"));
+        assertTrue(moonriseConfig.contains("\"plugin\": \"com.lion.graveyard.util.OptionalTargetMixinPlugin\""));
+        assertTrue(Sources.code(ModProject.JAVA.resolve("util/OptionalTargetMixinPlugin.java")).contains("getResource(targetClassName.replace('.', '/') + \".class\")"));
         assertTrue(MOONRISE.contains("method = \"convertEntityChunkCompoundTag\""));
         assertTrue(MOONRISE.contains("require = 0"));
         assertTrue(MOONRISE.contains("EntityChunkUpgrade.upgradeWithoutGraveyardEntities"));
