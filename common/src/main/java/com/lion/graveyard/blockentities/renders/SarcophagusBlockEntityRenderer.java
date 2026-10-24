@@ -107,7 +107,7 @@ public class SarcophagusBlockEntityRenderer<T extends BlockEntity & LidBlockEnti
 
         Direction direction = state.direction;
         float f = direction.toYRot();
-        poseStack.mulPose(Axis.YP.rotationDegrees(-f));
+        poseStack.rotateDegrees(Axis.YP, -f);
 
         switch (direction) {
             case EAST -> poseStack.translate(-1.0F, 0F, 1.0F);
@@ -117,7 +117,7 @@ public class SarcophagusBlockEntityRenderer<T extends BlockEntity & LidBlockEnti
 
         if (isLid) {
             float g = state.openProgress;
-            poseStack.mulPose(Axis.ZN.rotationDegrees(g * 45));
+            poseStack.rotateDegrees(Axis.ZN, g * 45);
             poseStack.translate(g * 0.3, g * 0.3, 0.0F);
         }
 

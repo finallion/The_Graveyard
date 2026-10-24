@@ -40,8 +40,7 @@ public class GravestoneSignRenderer extends PictureInPictureRenderer<GravestoneS
                 GravestoneBlockEntityRenderer.getRenderType(state.block()),
                 15728880,
                 OverlayTexture.NO_OVERLAY,
-                -1,
-                null
+                -1
         );
     }
 

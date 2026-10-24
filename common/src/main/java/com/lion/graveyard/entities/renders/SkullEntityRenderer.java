@@ -60,8 +60,7 @@ public class SkullEntityRenderer extends EntityRenderer<SkullEntity, WitherSkull
                 this.model.renderType(TEXTURE),
                 renderState.lightCoords,
                 OverlayTexture.NO_OVERLAY,
-                renderState.outlineColor,
-                null
+                renderState.outlineColor
         );
         matrixStack.popPose();
         super.submit(renderState, matrixStack, collector, cameraState);

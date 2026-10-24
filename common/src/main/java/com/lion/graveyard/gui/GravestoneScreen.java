@@ -18,7 +18,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ServerboundSignUpdatePacket;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.level.block.entity.SignText;
+import net.minecraft.world.level.block.entity.SignTextSlot;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 @Environment(EnvType.CLIENT)
@@ -42,11 +44,12 @@ public class GravestoneScreen extends Screen {
         super(title);
         this.sign = blockEntity;
         this.signText = blockEntity.getText();
-        this.text = IntStream.range(0, 4).mapToObj((line) -> this.signText.getMessage(line, filtered)).map(Component::getString).toArray(String[]::new);
+        this.text = IntStream.range(0, 4).mapToObj((line) -> this.signText.getMessages(filtered).get(line)).map(Component::getString).toArray(String[]::new);
     }
 
     @Override
     protected void init() {
+        this.minecraft.textInputManager().startTextInput(this);
         this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, (button) -> {
             this.finishEditing();
         }).bounds(this.width / 2 - 100, this.height / 4 + 144, 200, 20).build());
@@ -63,7 +66,10 @@ public class GravestoneScreen extends Screen {
 
     private void setCurrentRowMessage(String message) {
         this.text[this.currentRow] = message;
-        this.signText = this.signText.setMessage(this.currentRow, Component.literal(message));
+        this.signText = this.signText
+                .asMutable()
+                .setLine(this.currentRow, Component.literal(message))
+                .asImmutable();
         this.sign.setText(this.signText);
     }
 
@@ -72,9 +78,15 @@ public class GravestoneScreen extends Screen {
         ClientPacketListener clientPlayNetworkHandler = this.minecraft.getConnection();
 
         if (clientPlayNetworkHandler != null) {
-            clientPlayNetworkHandler.send(new ServerboundSignUpdatePacket(this.sign.getBlockPos(), true, this.text[0], this.text[1], this.text[2], this.text[3]));
+            clientPlayNetworkHandler.send(new ServerboundSignUpdatePacket(this.sign.getBlockPos(), List.of(this.text), SignTextSlot.FRONT));
         }
 
+        this.minecraft.textInputManager().stopTextInput(this);
+    }
+
+    @Override
+    public boolean isInputCaptured() {
+        return true;
     }
 
     @Override
@@ -105,13 +117,11 @@ public class GravestoneScreen extends Screen {
 
     @Override
     public boolean keyPressed(KeyEvent event) {
-        int keyCode = event.key();
-
-        if (keyCode == 265) {
+        if (event.isUp()) {
             this.currentRow = this.currentRow - 1 & 3;
             this.selectionManager.setCursorToEnd();
             return true;
-        } else if (keyCode != 264 && keyCode != 257 && keyCode != 335) {
+        } else if (!event.isDown() && !event.isConfirmation()) {
             return this.selectionManager.keyPressed(event) || super.keyPressed(event);
         } else {
             this.currentRow = this.currentRow + 1 & 3;

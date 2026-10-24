@@ -127,7 +127,7 @@ public class CorruptedIllagerModel extends EntityModel<CorruptedIllagerRenderSta
             if (renderState.mainHandEmpty) {
                 AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, true, renderState);
             } else {
-                AnimationUtils.swingWeaponDown(this.rightArm, this.leftArm, renderState.mainArm, renderState.attackAnim, h);
+                AnimationUtils.swingWeaponDown(this.rightArm, this.leftArm, renderState.mainArm, renderState.swingAnimation, h);
             }
         } else if (state == CorruptedIllager.State.SPELLCASTING) {
             this.rightArm.z = 0.0F;

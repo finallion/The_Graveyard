@@ -10,7 +10,6 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
 import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
 import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.SwingAnimationType;
 
 @Environment(EnvType.CLIENT)
 public abstract class CorruptedIllagerRenderer<T extends CorruptedIllager>
@@ -33,10 +32,8 @@ public abstract class CorruptedIllagerRenderer<T extends CorruptedIllager>
     public void extractRenderState(T illager, CorruptedIllagerRenderState renderState, float partialTick) {
         super.extractRenderState(illager, renderState, partialTick);
         ArmedEntityRenderState.extractArmedEntityRenderState(illager, renderState, this.itemModelResolver, partialTick);
-        renderState.swingAnimationType = SwingAnimationType.WHACK;
         renderState.mainArm = illager.getMainArm();
         renderState.isRiding = illager.isPassenger();
-        renderState.attackAnim = illager.getAttackAnim(partialTick);
         renderState.ticksUsingItem = illager.getTicksUsingItem();
         renderState.maxCrossbowChargeDuration = CrossbowItem.getChargeDuration(illager.getUseItem(), illager);
         renderState.state = illager.getState();

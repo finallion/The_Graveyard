@@ -36,8 +36,9 @@ import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.state.level.QuadParticleRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.UvMapping;
 import net.minecraft.client.resources.model.geometry.BakedQuad;
+import net.minecraft.client.resources.model.geometry.ItemQuads;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -129,7 +130,7 @@ public class GravestoneBlockEntityRenderer
         poseStack.translate(0.5D, 0.25D, 0.5D);
 
         float rotation = -state.facing.toYRot();
-        poseStack.mulPose(Axis.YP.rotationDegrees(rotation));
+        poseStack.rotateDegrees(Axis.YP, rotation);
         poseStack.translate(0.0D, 0.3333333432674408D, 0.23D);
 
         poseStack.scale(0.010416667F, -0.010416667F, 0.010416667F);
@@ -162,7 +163,7 @@ public class GravestoneBlockEntityRenderer
         poseStack.translate(0.5, 0.43, 0.5);
         poseStack.scale(2.28F, 2.15F, 2.28F);
         float rotation = state.facing.toYRot();
-        poseStack.mulPose(Axis.YP.rotationDegrees(rotation));
+        poseStack.rotateDegrees(Axis.YP, rotation);
 
         state.stone.submit(
                 poseStack,
@@ -271,29 +272,32 @@ public class GravestoneBlockEntityRenderer
                 int overlay,
                 int outlineColor,
                 int[] tintLayers,
-                List<BakedQuad> quads,
+                ItemQuads quads,
                 ItemStackRenderState.FoilType foilType
         ) {
             Map<RenderType, List<BakedQuad>> quadsByRenderType = new LinkedHashMap<>();
 
-            for (BakedQuad quad : quads) {
+            for (BakedQuad quad : quads.all()) {
                 quadsByRenderType
                         .computeIfAbsent(quad.materialInfo().itemRenderType(), renderType -> new ArrayList<>())
                         .add(quad);
             }
 
-            quadsByRenderType.forEach((renderType, group) -> this.delegate.submitModel(
-                    new QuadModel(group, renderType),
-                    group,
-                    poseStack,
-                    renderType,
-                    light,
-                    overlay,
-                    -1,
-                    null,
-                    outlineColor,
-                    this.crumblingOverlay
-            ));
+            quadsByRenderType.forEach((renderType, group) -> {
+                QuadModel model = new QuadModel(group, renderType);
+
+                this.delegate.submitModel(model, group, poseStack, renderType, light, overlay, -1, null, outlineColor);
+                this.delegate.submitCrumblingOverlay(
+                        model,
+                        group,
+                        poseStack,
+                        renderType,
+                        light,
+                        overlay,
+                        -1,
+                        this.crumblingOverlay
+                );
+            });
         }
 
         @Override
@@ -347,6 +351,20 @@ public class GravestoneBlockEntityRenderer
         }
 
         @Override
+        public void submitTextBackground(
+                PoseStack poseStack,
+                float x,
+                float y,
+                float width,
+                float height,
+                int color,
+                Font.DisplayMode displayMode,
+                int light
+        ) {
+            this.delegate.submitTextBackground(poseStack, x, y, width, height, color, displayMode, light);
+        }
+
+        @Override
         public void submitFlame(PoseStack poseStack, EntityRenderState state, Quaternionf rotation) {
             this.delegate.submitFlame(poseStack, state, rotation);
         }
@@ -365,22 +383,24 @@ public class GravestoneBlockEntityRenderer
                 int light,
                 int overlay,
                 int color,
-                TextureAtlasSprite sprite,
-                int outlineColor,
+                UvMapping uvMapping,
+                int outlineColor
+        ) {
+            this.delegate.submitModel(model, state, poseStack, renderType, light, overlay, color, uvMapping, outlineColor);
+        }
+
+        @Override
+        public <S> void submitCrumblingOverlay(
+                Model<? super S> model,
+                S state,
+                PoseStack poseStack,
+                RenderType renderType,
+                int light,
+                int overlay,
+                int tintColor,
                 ModelFeatureRenderer.CrumblingOverlay crumbling
         ) {
-            this.delegate.submitModel(
-                    model,
-                    state,
-                    poseStack,
-                    renderType,
-                    light,
-                    overlay,
-                    color,
-                    sprite,
-                    outlineColor,
-                    crumbling
-            );
+            this.delegate.submitCrumblingOverlay(model, state, poseStack, renderType, light, overlay, tintColor, crumbling);
         }
 
         @Override
@@ -402,8 +422,13 @@ public class GravestoneBlockEntityRenderer
         }
 
         @Override
-        public void submitBreakingBlockModel(PoseStack poseStack, List<BlockStateModelPart> parts, int progress) {
-            this.delegate.submitBreakingBlockModel(poseStack, parts, progress);
+        public void submitBreakingBlockModel(
+                PoseStack poseStack,
+                List<BlockStateModelPart> parts,
+                int progress,
+                boolean seeThrough
+        ) {
+            this.delegate.submitBreakingBlockModel(poseStack, parts, progress, seeThrough);
         }
 
         @Override

@@ -75,9 +75,9 @@ public class GhoulingCoffinLayer<R extends GeoRenderState> extends CustomBoneTex
         minecraft.getItemModelResolver()
                 .updateForTopItem(itemState, stack, ItemDisplayContext.THIRD_PERSON_LEFT_HAND, minecraft.level, null, 0);
         torso.translateAwayFromPivotPoint(poseStack);
-        poseStack.mulPose(Axis.XP.rotationDegrees(90));
-        poseStack.mulPose(Axis.YP.rotationDegrees(90));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(-25));
+        poseStack.rotateDegrees(Axis.XP, 90);
+        poseStack.rotateDegrees(Axis.YP, 90);
+        poseStack.rotateDegrees(Axis.ZP, -25);
         poseStack.translate(1.3D, 0.86D, 0.0D);
         poseStack.scale(2.0F, 2.0F, 2.0F);
         itemState.submit(poseStack, renderTasks, renderPassInfo.packedLight(), renderPassInfo.packedOverlay(), outlineColor);

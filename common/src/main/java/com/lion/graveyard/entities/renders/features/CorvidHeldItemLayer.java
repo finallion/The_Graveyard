@@ -56,8 +56,8 @@ public class CorvidHeldItemLayer<R extends GeoRenderState> extends BlockAndItemG
     ) {
         // Beak tip: head pivot at z=-6, beak end at z=-9, two units above the pivot.
         poseStack.translate(0.0F, 0.09F, -0.24F);
-        poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
-        poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
+        poseStack.rotateDegrees(Axis.XP, 90.0F);
+        poseStack.rotateDegrees(Axis.YP, 180.0F);
         poseStack.scale(0.6F, 0.6F, 0.6F);
         super.submitItemStackRender(poseStack, bone, stackState, displayContext, renderState, renderTasks, packedLight);
     }
