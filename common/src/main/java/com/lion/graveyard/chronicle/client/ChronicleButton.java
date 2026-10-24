@@ -24,7 +24,7 @@ public class ChronicleButton extends Button {
                 20,
                 20,
                 Component.empty(),
-                button -> Minecraft.getInstance().setScreen(new ChronicleScreen(inventory)),
+                button -> Minecraft.getInstance().gui.setScreen(new ChronicleScreen(inventory)),
                 DEFAULT_NARRATION
         );
         this.inventory = (HandledScreenAccessor) inventory;

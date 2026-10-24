@@ -6,34 +6,35 @@ import com.lion.graveyard.blocks.GravestoneBlock;
 import com.lion.graveyard.init.TGBlocks;
 import com.lion.graveyard.util.GravestoneIdentifier;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.UVPair;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.OrderedSubmitNodeCollector;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.block.MovingBlockRenderState;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.renderer.blockentity.StandingSignRenderer;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
+import net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives;
 import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
+import net.minecraft.client.renderer.state.level.QuadParticleRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.geometry.BakedQuad;
@@ -48,10 +49,9 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.PlainSignBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.joml.Quaternionf;
 import org.joml.Vector3fc;
 import java.util.ArrayList;
@@ -210,8 +210,16 @@ public class GravestoneBlockEntityRenderer
         }
     }
 
-    public static Model.Simple createSignModel(EntityModelSet entityModelLoader, WoodType type) {
-        return StandingSignRenderer.createSignModel(entityModelLoader, type, PlainSignBlock.Attachment.WALL);
+    public static Model.Simple createSignModel() {
+        MeshDefinition mesh = new MeshDefinition();
+
+        mesh.getRoot().addOrReplaceChild(
+                "sign",
+                CubeListBuilder.create().texOffs(0, 0).addBox(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F),
+                PartPose.ZERO
+        );
+
+        return new Model.Simple(LayerDefinition.create(mesh, 64, 32).bakeRoot(), RenderTypes::entityCutout);
     }
 
     static {
@@ -231,8 +239,8 @@ public class GravestoneBlockEntityRenderer
         LAYERS.put(TGBlocks.QUARTZ_BRICKS_GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.QUARTZ_BRICKS_GRAVESTONE_TEXTURE));
     }
 
-    public static VertexConsumer getConsumer(MultiBufferSource provider, Block block) {
-        return provider.getBuffer(LAYERS.getOrDefault(block, defaultLayer));
+    public static RenderType getRenderType(Block block) {
+        return LAYERS.getOrDefault(block, defaultLayer);
     }
 
     /// Sends item quads through submitModel, which draws the crumbling overlay.
@@ -306,10 +314,9 @@ public class GravestoneBlockEntityRenderer
                 Component name,
                 boolean seeThrough,
                 int light,
-                double distanceSq,
                 CameraRenderState cameraState
         ) {
-            this.delegate.submitNameTag(poseStack, position, offset, name, seeThrough, light, distanceSq, cameraState);
+            this.delegate.submitNameTag(poseStack, position, offset, name, seeThrough, light, cameraState);
         }
 
         @Override
@@ -377,37 +384,8 @@ public class GravestoneBlockEntityRenderer
         }
 
         @Override
-        public void submitModelPart(
-                ModelPart part,
-                PoseStack poseStack,
-                RenderType renderType,
-                int light,
-                int overlay,
-                TextureAtlasSprite sprite,
-                boolean sheeted,
-                boolean hasFoil,
-                int color,
-                ModelFeatureRenderer.CrumblingOverlay crumbling,
-                int outlineColor
-        ) {
-            this.delegate.submitModelPart(
-                    part,
-                    poseStack,
-                    renderType,
-                    light,
-                    overlay,
-                    sprite,
-                    sheeted,
-                    hasFoil,
-                    color,
-                    crumbling,
-                    outlineColor
-            );
-        }
-
-        @Override
-        public void submitMovingBlock(PoseStack poseStack, MovingBlockRenderState movingBlock) {
-            this.delegate.submitMovingBlock(poseStack, movingBlock);
+        public void submitMovingBlock(PoseStack poseStack, MovingBlockRenderState movingBlock, int light) {
+            this.delegate.submitMovingBlock(poseStack, movingBlock, light);
         }
 
         @Override
@@ -424,8 +402,20 @@ public class GravestoneBlockEntityRenderer
         }
 
         @Override
-        public void submitBreakingBlockModel(PoseStack poseStack, BlockStateModel model, long seed, int progress) {
-            this.delegate.submitBreakingBlockModel(poseStack, model, seed, progress);
+        public void submitBreakingBlockModel(PoseStack poseStack, List<BlockStateModelPart> parts, int progress) {
+            this.delegate.submitBreakingBlockModel(poseStack, parts, progress);
+        }
+
+        @Override
+        public void submitShapeOutline(
+                PoseStack poseStack,
+                VoxelShape shape,
+                RenderType renderType,
+                int color,
+                float lineWidth,
+                boolean seeThrough
+        ) {
+            this.delegate.submitShapeOutline(poseStack, shape, renderType, color, lineWidth, seeThrough);
         }
 
         @Override
@@ -438,8 +428,17 @@ public class GravestoneBlockEntityRenderer
         }
 
         @Override
-        public void submitParticleGroup(SubmitNodeCollector.ParticleGroupRenderer renderer) {
-            this.delegate.submitParticleGroup(renderer);
+        public void submitQuadParticleGroup(QuadParticleRenderState particles) {
+            this.delegate.submitQuadParticleGroup(particles);
+        }
+
+        @Override
+        public void submitGizmoPrimitives(
+                DrawableGizmoPrimitives.Group group,
+                CameraRenderState cameraState,
+                boolean seeThrough
+        ) {
+            this.delegate.submitGizmoPrimitives(group, cameraState, seeThrough);
         }
     }
 

@@ -35,7 +35,7 @@ public class GraveyardClientFabric implements ClientModInitializer {
         GraveyardClient.postInit();
 
         MenuScreens.register(TGScreens.OSSUARY_SCREEN_HANDLER, OssuaryScreen::new);
-        PictureInPictureRendererRegistry.register(context -> new GravestoneSignRenderer(context.bufferSource()));
+        PictureInPictureRendererRegistry.register(context -> new GravestoneSignRenderer());
         ClientTickEvents.END_CLIENT_TICK.register(AnimationPreviewClient::clientTick);
         ClientTickEvents.END_CLIENT_TICK.register(FragmentSpotHints::clientTick);
         ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> ChronicleButton.addTo(screen, Screens.getWidgets(screen)::add));

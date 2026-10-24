@@ -34,7 +34,7 @@ public class ClientPlayNetworkHandlerMixin {
             BlockState blockState = this.level.getBlockState(blockPos);
             GravestoneBlockEntity signBlockEntity2 = new GravestoneBlockEntity(blockPos, blockState);
             signBlockEntity2.setLevel(this.level);
-            Minecraft.getInstance().setScreen(new GravestoneScreen((GravestoneBlockEntity) foundEntity,  false));
+            Minecraft.getInstance().gui.setScreen(new GravestoneScreen((GravestoneBlockEntity) foundEntity,  false));
             info.cancel();
         }
     }

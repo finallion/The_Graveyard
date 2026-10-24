@@ -17,9 +17,7 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ServerboundSignUpdatePacket;
 import net.minecraft.util.ARGB;
-import net.minecraft.world.level.block.SignBlock;
 import net.minecraft.world.level.block.entity.SignText;
-import net.minecraft.world.level.block.state.properties.WoodType;
 
 import java.util.stream.IntStream;
 
@@ -32,7 +30,6 @@ public class GravestoneScreen extends Screen {
     private int ticksSinceOpened;
     private int currentRow;
     private TextFieldHelper selectionManager;
-    private WoodType signType;
     private Model.Simple model;
     private String[] text;
     private SignText signText;
@@ -45,7 +42,6 @@ public class GravestoneScreen extends Screen {
         super(title);
         this.sign = blockEntity;
         this.signText = blockEntity.getText();
-        this.signType = SignBlock.getWoodType(blockEntity.getBlockState().getBlock());
         this.text = IntStream.range(0, 4).mapToObj((line) -> this.signText.getMessage(line, filtered)).map(Component::getString).toArray(String[]::new);
     }
 
@@ -62,8 +58,7 @@ public class GravestoneScreen extends Screen {
                 (string) -> this.minecraft.font.width(string) <= this.sign.getMaxTextWidth()
         );
 
-        this.signType = WoodType.OAK;
-        this.model = GravestoneBlockEntityRenderer.createSignModel(this.minecraft.getEntityModels(), this.signType);
+        this.model = GravestoneBlockEntityRenderer.createSignModel();
     }
 
     private void setCurrentRowMessage(String message) {
@@ -94,7 +89,7 @@ public class GravestoneScreen extends Screen {
 
     private void finishEditing() {
         this.sign.setChanged();
-        this.minecraft.setScreen(null);
+        this.minecraft.gui.setScreen(null);
     }
 
     @Override

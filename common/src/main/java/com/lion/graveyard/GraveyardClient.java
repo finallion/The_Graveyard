@@ -17,7 +17,7 @@ public class GraveyardClient {
         RangeSelectItemModelProperties.ID_MAPPER.put(Graveyard.id("charged"), VialChargedProperty.MAP_CODEC);
         ChronicleOpener.install(page -> {
             Minecraft client = Minecraft.getInstance();
-            client.setScreen(new ChronicleScreen(client.screen, page));
+            client.gui.setScreen(new ChronicleScreen(client.gui.screen(), page));
         });
     }
 
