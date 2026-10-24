@@ -1,6 +1,5 @@
 package com.lion.graveyard.blocks;
 
-import com.mojang.serialization.MapCodec;
 import com.lion.graveyard.blockentities.LoreBookBlockEntity;
 import com.lion.graveyard.chronicle.Chronicle;
 import com.lion.graveyard.init.TGItems;
@@ -65,13 +64,6 @@ public class LoreBookBlock extends BaseEntityBlock implements SimpleWaterloggedB
     }
 
     private static final VoxelShape SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 3.0D, 13.0D);
-
-    public static final MapCodec<LoreBookBlock> CODEC = simpleCodec(LoreBookBlock::new);
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
-    }
 
     public LoreBookBlock(BlockBehaviour.Properties properties) {
         super(properties);

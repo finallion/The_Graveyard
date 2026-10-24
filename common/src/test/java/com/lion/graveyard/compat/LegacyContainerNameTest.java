@@ -27,7 +27,7 @@ class LegacyContainerNameTest {
     static void bootstrap() {
         SharedConstants.tryDetectVersion();
         Bootstrap.bootStrap();
-        registries = VanillaRegistries.createLookup();
+        registries = VanillaRegistries.createWorldLookup();
     }
 
     private static CompoundTag container(String customName) {

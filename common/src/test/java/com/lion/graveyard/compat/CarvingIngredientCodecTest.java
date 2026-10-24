@@ -37,7 +37,7 @@ class CarvingIngredientCodecTest {
     static void bootstrap() {
         SharedConstants.tryDetectVersion();
         Bootstrap.bootStrap();
-        HolderLookup.Provider lookup = VanillaRegistries.createLookup();
+        HolderLookup.Provider lookup = VanillaRegistries.createWorldLookup();
         ops = RegistryOps.create(JsonOps.INSTANCE, lookup);
     }
 

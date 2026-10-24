@@ -17,6 +17,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.GoalSelector;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -24,7 +25,6 @@ import net.minecraft.world.entity.npc.villager.AbstractVillager;
 import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.npc.wanderingtrader.WanderingTrader;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -51,7 +51,7 @@ public final class CommonEvents {
         } else if (entity instanceof ItemEntity item && item.getItem().getItem() instanceof BoneStaffItem
                 && LegacyItemData.isStored(item.getItem())) {
             item.setUnlimitedLifetime();
-            item.setInvulnerable(true);
+            item.setPermanentlyInvulnerable(true);
         }
     }
 
@@ -102,7 +102,6 @@ public final class CommonEvents {
         return state.getBlock() instanceof SmolderingPillarBlock pillar ? pillar.strippedState(state) : null;
     }
 
-    /// Strips axes on loaders without a tool-modification event.
     public static InteractionResult stripSmolderingPillar(
             Player player,
             Level world,
@@ -113,11 +112,11 @@ public final class CommonEvents {
         ItemStack stack = player.getItemInHand(hand);
         BlockState stripped = smolderingStrippedState(world.getBlockState(pos));
 
-        if (stripped == null || !(stack.getItem() instanceof AxeItem) || player.isSpectator() || shieldTakesPriority(player, hand) || !mayModify(player, world, pos, stack)) {
+        if (stripped == null || !(stack.is(ItemTags.AXES)) || player.isSpectator() || shieldTakesPriority(player, hand) || !mayModify(player, world, pos, stack)) {
             return InteractionResult.PASS;
         }
 
-        world.playSound(player, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+        world.playSound(player, pos, SoundEvents.AXE_STRIP.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
 
         if (!world.isClientSide()) {
             world.setBlock(pos, stripped, 11);

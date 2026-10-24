@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.lion.graveyard.support.Json;
 import com.lion.graveyard.support.ModProject;
 import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 
 import java.nio.file.Path;
@@ -12,6 +13,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class EntityPredicateKeysTest {
     @TestFactory
@@ -22,6 +24,21 @@ class EntityPredicateKeysTest {
     @TestFactory
     Stream<DynamicTest> lootTablesUsePrefixedEntityPredicateKeys() {
         return keyTests("loot_table");
+    }
+
+    @Test
+    void bareKeyInTheCurrentConditionShapeIsDetected() {
+        String bare = "{\"type\":\"minecraft:entity_properties\",\"entity\":\"this\",\"predicate\":{\"type\":\"minecraft:zombie\"}}";
+        String prefixed = "{\"type\":\"minecraft:entity_properties\",\"entity\":\"this\",\"predicate\":{\"minecraft:entity_type\":\"minecraft:zombie\"}}";
+
+        assertTrue(hasBareKey(Json.parseStrict(bare)));
+        assertFalse(hasBareKey(Json.parseStrict(prefixed)));
+    }
+
+    @Test
+    void bareKeyInAnEntityFieldIsDetected() {
+        assertTrue(hasBareKey(Json.parseStrict("{\"entity\":{\"location\":{}}}")));
+        assertFalse(hasBareKey(Json.parseStrict("{\"entity\":{\"type\":\"minecraft:entity_properties\",\"entity\":\"this\"}}")));
     }
 
     private static Stream<DynamicTest> keyTests(String folder) {
@@ -50,15 +67,17 @@ class EntityPredicateKeysTest {
 
         JsonObject object = element.getAsJsonObject();
 
-        if (object.has("condition")
-                && object.get("condition").getAsString().equals("minecraft:entity_properties")
+        if (isEntityProperties(object)
                 && object.has("predicate")
                 && object.get("predicate").isJsonObject()
                 && isBare(object.getAsJsonObject("predicate"))) {
             return true;
         }
 
-        if (object.has("entity") && object.get("entity").isJsonObject() && isBare(object.getAsJsonObject("entity"))) {
+        if (object.has("entity")
+                && object.get("entity").isJsonObject()
+                && !isEntityProperties(object.getAsJsonObject("entity"))
+                && isBare(object.getAsJsonObject("entity"))) {
             return true;
         }
 
@@ -69,6 +88,15 @@ class EntityPredicateKeysTest {
         }
 
         return false;
+    }
+
+    private static boolean isEntityProperties(JsonObject object) {
+        return "minecraft:entity_properties".equals(typeOf(object));
+    }
+
+    private static String typeOf(JsonObject object) {
+        JsonElement type = object.has("type") ? object.get("type") : object.get("condition");
+        return type != null && type.isJsonPrimitive() ? type.getAsString() : null;
     }
 
     private static boolean isBare(JsonObject predicate) {

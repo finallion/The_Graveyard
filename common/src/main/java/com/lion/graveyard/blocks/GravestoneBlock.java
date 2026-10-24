@@ -39,6 +39,7 @@ import net.minecraft.world.level.block.SignBlock;
 import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.SignText;
+import net.minecraft.world.level.block.entity.SignTextSlot;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -57,7 +58,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -178,7 +178,7 @@ public class GravestoneBlock extends StandingSignBlock implements EntityBlock {
     }
 
     public boolean useDyeOnSign(Level world, GravestoneBlockEntity signBlockEntity, DyeColor color) {
-        if (signBlockEntity.changeText((text) -> text.setColor(color))) {
+        if (signBlockEntity.changeText((text) -> text.withColor(color))) {
             world.playSound(null, signBlockEntity.getBlockPos(), SoundEvents.DYE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
             return true;
         } else {
@@ -188,7 +188,7 @@ public class GravestoneBlock extends StandingSignBlock implements EntityBlock {
 
     public boolean useInkOnSign(Level world, GravestoneBlockEntity signBlockEntity) {
         if (signBlockEntity.changeText((text) -> {
-            return text.setHasGlowingText(false);
+            return text.withGlowingText(false);
         })) {
             world.playSound(null, signBlockEntity.getBlockPos(), SoundEvents.INK_SAC_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
             return true;
@@ -198,7 +198,7 @@ public class GravestoneBlock extends StandingSignBlock implements EntityBlock {
     }
 
     public boolean useGlowInkOnSign(Level world, GravestoneBlockEntity signBlockEntity) {
-        if (signBlockEntity.changeText((text) -> text.setHasGlowingText(true))) {
+        if (signBlockEntity.changeText((text) -> text.withGlowingText(true))) {
             world.playSound(null, signBlockEntity.getBlockPos(), SoundEvents.GLOW_INK_SAC_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
             return true;
         } else {
@@ -217,7 +217,9 @@ public class GravestoneBlock extends StandingSignBlock implements EntityBlock {
 
     private boolean isTextLiteralOrEmpty(Player player, GravestoneBlockEntity blockEntity) {
         SignText signText = blockEntity.getText();
-        return Arrays.stream(signText.getMessages(player.isTextFilteringEnabled())).allMatch((message) -> message.equals(CommonComponents.EMPTY) || message.getContents() instanceof PlainTextContents);
+        return signText.getMessages(player.isTextFilteringEnabled())
+                .stream()
+                .allMatch((message) -> message.equals(CommonComponents.EMPTY) || message.getContents() instanceof PlainTextContents);
     }
 
     public void openEditScreen(
@@ -249,7 +251,7 @@ public class GravestoneBlock extends StandingSignBlock implements EntityBlock {
 
         if (!world.isClientSide()) {
             sign.setEditor(placer.getUUID());
-            ((ServerPlayer) placer).connection.send(new ClientboundOpenSignEditorPacket(pos, true));
+            ((ServerPlayer) placer).connection.send(new ClientboundOpenSignEditorPacket(pos, SignTextSlot.FRONT));
         }
     }
 

@@ -102,7 +102,7 @@ public abstract class HostileGraveyardEntity extends Monster {
                         itemStack.setDamageValue(itemStack.getDamageValue() + this.random.nextInt(2));
 
                         if (itemStack.getDamageValue() >= itemStack.getMaxDamage()) {
-                            this.onEquippedItemBroken(itemStack.getItem(), EquipmentSlot.HEAD);
+                            this.onEquippedItemBroken(itemStack, EquipmentSlot.HEAD);
                             this.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
                         }
                     }

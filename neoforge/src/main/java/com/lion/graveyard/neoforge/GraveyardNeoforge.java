@@ -13,19 +13,18 @@ import com.lion.graveyard.util.SpawnHordeCommand;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.TriState;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
-import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.event.AddServerReloadListenersEvent;
@@ -38,7 +37,6 @@ import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.MobSpawnEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
@@ -96,7 +94,6 @@ public class GraveyardNeoforge {
         NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST, GraveyardNeoforge::onRightClickBlock);
         NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST, GraveyardNeoforge::gatePositionCheck);
         NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST, GraveyardNeoforge::gateSpawnPlacement);
-        NeoForge.EVENT_BUS.addListener(GraveyardNeoforge::onToolModification);
     }
 
     private static void init(final FMLCommonSetupEvent event) {
@@ -106,6 +103,13 @@ public class GraveyardNeoforge {
     private static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         if (event.getUseBlock() != TriState.FALSE) {
             CommonEvents.onUseBlock(event.getEntity(), event.getLevel(), event.getPos());
+        }
+
+        InteractionResult stripResult = CommonEvents.stripSmolderingPillar(event.getEntity(), event.getLevel(), event.getHand(), event.getHitVec());
+
+        if (stripResult != InteractionResult.PASS) {
+            event.setCancellationResult(stripResult);
+            event.setCanceled(true);
         }
     }
 
@@ -122,16 +126,6 @@ public class GraveyardNeoforge {
         if (MobSpawnGate.blocks(event.getEntityType(), event.getSpawnType())
                 || MobSpawnGate.inForbiddenBiome(event.getLevel(), event.getPos(), event.getEntityType(), event.getSpawnType())) {
             event.setResult(MobSpawnEvent.SpawnPlacementCheck.Result.FAIL);
-        }
-    }
-
-    private static void onToolModification(BlockEvent.BlockToolModificationEvent event) {
-        if (event.getItemAbility() == ItemAbilities.AXE_STRIP) {
-            BlockState stripped = CommonEvents.smolderingStrippedState(event.getState());
-
-            if (stripped != null) {
-                event.setFinalState(stripped);
-            }
         }
     }
 

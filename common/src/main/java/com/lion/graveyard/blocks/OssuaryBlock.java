@@ -1,6 +1,5 @@
 package com.lion.graveyard.blocks;
 
-import com.mojang.serialization.MapCodec;
 import com.lion.graveyard.blockentities.OssuaryBlockEntity;
 import com.lion.graveyard.gui.OssuaryScreenHandler;
 import com.lion.graveyard.init.TGBlockEntities;
@@ -46,13 +45,6 @@ public class OssuaryBlock extends BaseEntityBlock implements EntityBlock, BlockI
     private static final Component TITLE = Component.translatable("container.ossuary");
     public static final EnumProperty<Direction> FACING;
     public static final BooleanProperty OPEN;
-
-    public static final MapCodec<OssuaryBlock> CODEC = simpleCodec(OssuaryBlock::new);
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
-    }
 
     public OssuaryBlock(Properties settings) {
         super(settings);

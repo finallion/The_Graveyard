@@ -26,7 +26,7 @@ public class ServerPlayNetworkHandlerMixin {
     private void signUpdate(ServerboundSignUpdatePacket packet, List<FilteredText> signText, CallbackInfo info) {
         this.player.resetLastActionTime();
         ServerLevel serverWorld = this.player.level();
-        BlockPos blockPos = packet.getPos();
+        BlockPos blockPos = packet.pos();
 
         if (serverWorld.hasChunkAt(blockPos)) {
             BlockEntity blockEntity = serverWorld.getBlockEntity(blockPos);

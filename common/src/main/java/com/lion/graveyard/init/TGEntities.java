@@ -21,6 +21,9 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.Heightmap;
 
@@ -77,9 +80,18 @@ public class TGEntities {
             return Graveyard.getConfig().mobEntry(mob).weight;
         }
 
+        public int minGroup() {
+            return Graveyard.getConfig().mobEntry(mob).minGroup;
+        }
+
+        public int maxGroup() {
+            return Graveyard.getConfig().mobEntry(mob).maxGroup;
+        }
+
         public MobSpawnSettings.SpawnerData entry() {
             MobConfigEntry entry = Graveyard.getConfig().mobEntry(mob);
-            return entry.weight <= 0 ? null : new MobSpawnSettings.SpawnerData(type.get(), entry.minGroup, entry.maxGroup);
+            IntProvider count = entry.minGroup == entry.maxGroup ? ConstantInt.of(entry.minGroup) : UniformInt.of(entry.minGroup, entry.maxGroup);
+            return entry.weight <= 0 ? null : new MobSpawnSettings.SpawnerData(type.get(), count);
         }
     }
 
@@ -111,7 +123,7 @@ public class TGEntities {
             MobSpawnSettings.SpawnerData entry = spawn.entry();
 
             if (entry != null) {
-                BiomeModifications.addMobSpawn(spawn.tag(), spawn.group(), entry.type(), spawn.weight(), entry.minCount(), entry.maxCount());
+                BiomeModifications.addMobSpawn(spawn.tag(), spawn.group(), entry.type(), spawn.weight(), spawn.minGroup(), spawn.maxGroup());
             }
         }
     }

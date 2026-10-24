@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.MobSpawnSettings;
@@ -17,7 +18,12 @@ public record ConfigSpawnsBiomeModifier(String mob) implements BiomeModifier {
     ).apply(instance, ConfigSpawnsBiomeModifier::new));
 
     @Override
-    public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {
+    public void modify(
+            RegistryAccess registries,
+            Holder<Biome> biome,
+            Phase phase,
+            ModifiableBiomeInfo.BiomeInfo.Builder builder
+    ) {
         if (phase != Phase.ADD || !biome.is(BiomeTags.IS_OVERWORLD)) {
             return;
         }
@@ -30,7 +36,7 @@ public record ConfigSpawnsBiomeModifier(String mob) implements BiomeModifier {
             MobSpawnSettings.SpawnerData entry = spawn.entry();
 
             if (entry != null) {
-                builder.getMobSpawnSettings().addSpawn(spawn.group(), spawn.weight(), entry);
+                builder.getMobSpawnSettings().addSpawn(entry.type(), spawn.group(), spawn.weight(), entry.count());
             }
         }
     }

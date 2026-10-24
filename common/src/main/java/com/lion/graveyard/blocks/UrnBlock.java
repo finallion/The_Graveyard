@@ -1,6 +1,5 @@
 package com.lion.graveyard.blocks;
 
-import com.mojang.serialization.MapCodec;
 import com.lion.graveyard.blockentities.UrnBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -40,13 +39,6 @@ public class UrnBlock extends BaseEntityBlock implements SimpleWaterloggedBlock,
     public static final BooleanProperty OPEN;
     private static final VoxelShape LARGE_URN = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
     private static final VoxelShape SMALL_URN = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 10.0D, 13.0D);
-
-    public static final MapCodec<UrnBlock> CODEC = simpleCodec(UrnBlock::new);
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
-    }
 
     public UrnBlock(BlockBehaviour.Properties properties) {
         super(properties);

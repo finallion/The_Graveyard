@@ -1,6 +1,5 @@
 package com.lion.graveyard.blocks;
 
-import com.mojang.serialization.MapCodec;
 import com.lion.graveyard.blockentities.SarcophagusBlockEntity;
 import com.lion.graveyard.blockentities.enums.SarcophagusPart;
 import com.lion.graveyard.entities.MobSpawnGate;
@@ -73,13 +72,6 @@ public class SarcophagusBlock extends BaseEntityBlock implements SimpleWaterlogg
     public static final EnumProperty<SarcophagusPart> PART = EnumProperty.create("part", SarcophagusPart.class);
     private final Supplier<Item> lid;
     private final Supplier<Item> base;
-
-    public static final MapCodec<SarcophagusBlock> CODEC = simpleCodec(properties -> new SarcophagusBlock(properties, false, () -> Items.AIR, () -> Items.AIR));
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
-    }
 
     public SarcophagusBlock(Properties settings, boolean isCoffin, Supplier<Item> lid, Supplier<Item> base) {
         super(settings);

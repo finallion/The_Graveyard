@@ -5,15 +5,14 @@ import com.mojang.serialization.MapCodec;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate.StructureBlockInfo;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate.JigsawBlockInfo;
 
 /// This processor changes no block. The pool element reads it when it lists its jigsaw blocks.
 public class PoolAliasProcessor implements StructureProcessor {
-
-    private static final String POOL_KEY = "pool";
 
     public static final MapCodec<PoolAliasProcessor> CODEC = Codec.unboundedMap(Identifier.CODEC, Identifier.CODEC)
             .fieldOf("aliases").xmap(PoolAliasProcessor::new, processor -> processor.aliases);
@@ -24,20 +23,29 @@ public class PoolAliasProcessor implements StructureProcessor {
         this.aliases = aliases;
     }
 
-    public List<StructureBlockInfo> apply(List<StructureBlockInfo> jigsaws) {
-        List<StructureBlockInfo> result = new ArrayList<>(jigsaws.size());
-        for (StructureBlockInfo jigsaw : jigsaws) {
-            Identifier alias = jigsaw.nbt() == null ? null : this.aliases.get(Identifier.tryParse(jigsaw.nbt().getStringOr(POOL_KEY, "")));
+    public List<JigsawBlockInfo> apply(List<JigsawBlockInfo> jigsaws) {
+        List<JigsawBlockInfo> result = new ArrayList<>(jigsaws.size());
+
+        for (JigsawBlockInfo jigsaw : jigsaws) {
+            Identifier alias = this.aliases.get(jigsaw.pool().identifier());
 
             if (alias == null) {
                 result.add(jigsaw);
                 continue;
             }
 
-            CompoundTag nbt = jigsaw.nbt().copy();
-            nbt.putString(POOL_KEY, alias.toString());
-            result.add(new StructureBlockInfo(jigsaw.pos(), jigsaw.state(), nbt));
+            result.add(new JigsawBlockInfo(
+                    jigsaw.pos(),
+                    jigsaw.state(),
+                    jigsaw.jointType(),
+                    jigsaw.name(),
+                    ResourceKey.create(Registries.TEMPLATE_POOL, alias),
+                    jigsaw.target(),
+                    jigsaw.placementPriority(),
+                    jigsaw.selectionPriority()
+            ));
         }
+
         return result;
     }
 

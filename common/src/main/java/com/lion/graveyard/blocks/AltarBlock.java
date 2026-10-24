@@ -191,7 +191,7 @@ public class AltarBlock extends Block {
                     for (int i = 0; i < 16; ++i) {
                         for (int j = 0; j < 16; ++j) {
                             for (int k = 0; k < 2; ++k) {
-                                BlockPos iteratorPos = new BlockPos(corner.offset(i, k, j));
+                                BlockPos iteratorPos = corner.offset(i, k, j);
                                 BlockState blockState = world.getBlockState(iteratorPos);
 
                                 if (blockState.getBlock() instanceof OminousBoneStaffFragment) {

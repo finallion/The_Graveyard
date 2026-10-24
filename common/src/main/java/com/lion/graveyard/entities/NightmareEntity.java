@@ -3,8 +3,6 @@ package com.lion.graveyard.entities;
 import com.lion.graveyard.entities.ai.goals.NightmareMeleeAttackGoal;
 import com.lion.graveyard.init.TGAdvancements;
 import com.lion.graveyard.init.TGSounds;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -12,7 +10,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.tags.FluidTags;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.damagesource.DamageSource;
@@ -40,7 +38,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
@@ -312,27 +309,13 @@ public class NightmareEntity extends HostileGraveyardEntity implements GeoEntity
     }
 
     private boolean teleportToPosition(double x, double y, double z) {
-        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos(x, y, z);
+        boolean teleported = this.randomTeleport(x, y, z, false, BlockTags.ENDERMAN_DOES_NOT_TELEPORT_TO);
 
-        while(mutable.getY() > this.level().getMinY() && !this.level().getBlockState(mutable).blocksMotion()) {
-            mutable.move(Direction.DOWN);
+        if (teleported && !this.isSilent()) {
+            this.playSound(SoundEvents.ENDERMAN_TELEPORT, 1.0F, -10.0F);
         }
 
-        BlockState blockState = this.level().getBlockState(mutable);
-        boolean solid = blockState.blocksMotion();
-        boolean inWater = blockState.getFluidState().is(FluidTags.WATER);
-
-        if (solid && !inWater) {
-            boolean teleported = this.randomTeleport(x, y, z, false);
-
-            if (teleported && !this.isSilent()) {
-                this.playSound(SoundEvents.ENDERMAN_TELEPORT, 1.0F, -10.0F);
-            }
-
-            return teleported;
-        } else {
-            return false;
-        }
+        return teleported;
     }
 
     protected boolean teleportRandomly() {

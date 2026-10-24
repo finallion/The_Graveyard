@@ -66,7 +66,7 @@ public class GravestoneBlockEntity extends BlockEntity {
     }
 
     protected SignText createText() {
-        return new SignText();
+        return SignText.EMPTY;
     }
 
     public SignText getText() {
@@ -84,7 +84,7 @@ public class GravestoneBlockEntity extends BlockEntity {
     @Override
     protected void saveAdditional(ValueOutput output) {
         super.saveAdditional(output);
-        output.store("front_text", SignText.DIRECT_CODEC, this.text);
+        output.store("front_text", SignText.CODEC, this.text);
         LegacyItemStacks.writeDataVersion(output);
         output.putBoolean("is_waxed", this.waxed);
     }
@@ -103,7 +103,7 @@ public class GravestoneBlockEntity extends BlockEntity {
             CompoundTag stored = legacyText ? convertLegacyText(input.lookup(), frontText, fromVersion) : frontText;
             Logger errorLogger = LOGGER;
             Objects.requireNonNull(errorLogger);
-            SignText.DIRECT_CODEC
+            SignText.CODEC
                     .parse(ops, stored)
                     .resultOrPartial(errorLogger::error)
                     .ifPresent(signText -> this.text = this.parseLines(signText));
@@ -168,13 +168,15 @@ public class GravestoneBlockEntity extends BlockEntity {
     }
 
     private SignText parseLines(SignText signText) {
-        for(int i = 0; i < 4; ++i) {
-            Component text = this.parseLine(signText.getMessage(i, false));
-            Component text2 = this.parseLine(signText.getMessage(i, true));
-            signText = signText.setMessage(i, text, text2);
+        SignText.Mutable parsed = signText.asMutable();
+
+        for (int i = 0; i < SignText.LINES; ++i) {
+            Component text = this.parseLine(signText.getMessages(false).get(i));
+            Component text2 = this.parseLine(signText.getMessages(true).get(i));
+            parsed.setLine(i, text, text2);
         }
 
-        return signText;
+        return parsed.asImmutable();
     }
 
     private Component parseLine(Component text) {
@@ -211,14 +213,16 @@ public class GravestoneBlockEntity extends BlockEntity {
     }
 
     private SignText getTextWithMessages(Player player, List<FilteredText> messages, SignText text) {
+        SignText.Mutable changed = text.asMutable();
+
         for(int i = 0; i < messages.size(); ++i) {
             FilteredText filteredMessage = (FilteredText)messages.get(i);
-            Style style = text.getMessage(i, player.isTextFilteringEnabled()).getStyle();
+            Style style = text.getMessages(player.isTextFilteringEnabled()).get(i).getStyle();
 
             if (player.isTextFilteringEnabled()) {
-                text = text.setMessage(i, Component.literal(filteredMessage.filteredOrEmpty()).setStyle(style));
+                changed.setLine(i, Component.literal(filteredMessage.filteredOrEmpty()).setStyle(style));
             } else {
-                text = text.setMessage(
+                changed.setLine(
                         i,
                         Component.literal(filteredMessage.raw()).setStyle(style),
                         Component.literal(filteredMessage.filteredOrEmpty()).setStyle(style)
@@ -226,7 +230,7 @@ public class GravestoneBlockEntity extends BlockEntity {
             }
         }
 
-        return text;
+        return changed.asImmutable();
     }
 
     public boolean setText(SignText text) {
@@ -245,7 +249,7 @@ public class GravestoneBlockEntity extends BlockEntity {
 
     public boolean runCommandClickEvent(Player player, Level world, BlockPos pos) {
         boolean ranCommand = false;
-        Component[] lines = this.getText().getMessages(player.isTextFilteringEnabled());
+        List<Component> lines = this.getText().getMessages(player.isTextFilteringEnabled());
 
         for (Component text : lines) {
             Style style = text.getStyle();
@@ -260,9 +264,11 @@ public class GravestoneBlockEntity extends BlockEntity {
     }
 
     private static CommandSourceStack createCommandSource(@Nullable Player player, Level world, BlockPos pos) {
-        String string = player == null ? "Sign" : player.getName().getString();
-        Component text = player == null ? Component.literal("Sign") : player.getDisplayName();
-        return new CommandSourceStack(CommandSource.NULL, Vec3.atCenterOf(pos), Vec2.ZERO, (ServerLevel)world, LevelBasedPermissionSet.GAMEMASTER, string, (Component)text, world.getServer(), player);
+        if (player == null) {
+            return new CommandSourceStack(CommandSource.NULL, Vec3.atCenterOf(pos), Vec2.ZERO, (ServerLevel)world, LevelBasedPermissionSet.GAMEMASTER, Component.literal("Sign"), world.getServer());
+        }
+
+        return new CommandSourceStack(CommandSource.NULL, Vec3.atCenterOf(pos), Vec2.ZERO, (ServerLevel)world, LevelBasedPermissionSet.GAMEMASTER, world.getServer(), player);
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.lion.graveyard.Graveyard;
 import com.lion.graveyard.init.TGItems;
 
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -80,7 +81,7 @@ public class DaggerItem extends Item {
         if (preferredSlot >= 0) {
             player.getInventory().setItem(preferredSlot, vial);
         } else if (!player.getInventory().add(vial)) {
-            player.drop(vial, false);
+            player.drop(vial, false, Prediction.SERVER_ONLY);
         }
     }
 }

@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AbstractThrownPotion.class)
 public abstract class PotionEntityMixin {
 
-    @Inject(method = "dowseFire", at = @At("HEAD"))
+    @Inject(method = "douseFire", at = @At("HEAD"))
     private void graveyard$extinguishSmoldering(BlockPos pos, CallbackInfo info) {
         Projectile self = (Projectile) (Entity) (Object) this;
         SmolderingWood.extinguish(self.level(), pos, self.getOwner());

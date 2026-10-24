@@ -12,12 +12,11 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 
 @Mixin(TreeFeature.class)
 public class TreeFeatureMixin {
-    @Inject(method = "doPlace(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Ljava/util/function/BiConsumer;Ljava/util/function/BiConsumer;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;)Z", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "doPlace(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Ljava/util/function/BiConsumer;Ljava/util/function/BiConsumer;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;)Z", at = @At(value = "HEAD"), cancellable = true)
     private void noTreesInStructuresGenerate(
             WorldGenLevel world,
             RandomSource random,
@@ -25,7 +24,6 @@ public class TreeFeatureMixin {
             BiConsumer<BlockPos, BlockState> rootPlacerReplacer,
             BiConsumer<BlockPos, BlockState> trunkPlacerReplacer,
             FoliagePlacer.FoliageSetter blockPlacer,
-            TreeConfiguration config,
             CallbackInfoReturnable<Boolean> cir
     ) {
         BlockState state = world.getBlockState(pos.below());

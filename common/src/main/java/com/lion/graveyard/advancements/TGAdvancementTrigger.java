@@ -3,10 +3,10 @@ package com.lion.graveyard.advancements;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
 import net.minecraft.advancements.triggers.SimpleCriterionTrigger;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public class TGAdvancementTrigger extends SimpleCriterionTrigger<TGAdvancementTrigger.Condition> {
 
@@ -21,9 +21,9 @@ public class TGAdvancementTrigger extends SimpleCriterionTrigger<TGAdvancementTr
         return Condition.CODEC;
     }
 
-    public record Condition(Optional<ContextAwarePredicate> player) implements SimpleCriterionTrigger.SimpleInstance {
+    public record Condition(Optional<Holder<LootItemCondition>> player) implements SimpleCriterionTrigger.SimpleInstance {
         public static final Codec<Condition> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(Condition::player)
+                LootItemCondition.CODEC.optionalFieldOf("player").forGetter(Condition::player)
         ).apply(instance, Condition::new));
     }
 }
