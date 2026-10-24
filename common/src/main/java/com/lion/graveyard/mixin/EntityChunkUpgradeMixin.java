@@ -19,13 +19,15 @@ public abstract class EntityChunkUpgradeMixin {
     private DataFixTypes dataFixType;
 
     @Inject(
-            method = "upgradeChunkTag(Lnet/minecraft/nbt/CompoundTag;I)Lnet/minecraft/nbt/CompoundTag;",
+            method = "upgradeChunkTag(Lnet/minecraft/nbt/CompoundTag;ILnet/minecraft/nbt/CompoundTag;I)Lnet/minecraft/nbt/CompoundTag;",
             at = @At("HEAD"),
             cancellable = true
     )
     private void graveyard$upgradeAroundModEntities(
             CompoundTag tag,
             int defaultVersion,
+            CompoundTag context,
+            int targetVersion,
             CallbackInfoReturnable<CompoundTag> cir
     ) {
         if (this.dataFixType != DataFixTypes.ENTITY_CHUNK) {
@@ -36,7 +38,8 @@ public abstract class EntityChunkUpgradeMixin {
         CompoundTag result = EntityChunkUpgrade.upgradeWithoutGraveyardEntities(
                 tag,
                 defaultVersion,
-                copy -> self.upgradeChunkTag(copy, defaultVersion)
+                targetVersion,
+                copy -> self.upgradeChunkTag(copy, defaultVersion, context, targetVersion)
         );
 
         if (result != null) {

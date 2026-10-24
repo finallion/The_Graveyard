@@ -9,13 +9,27 @@ import net.minecraft.nbt.NbtUtils;
 public final class EntityChunkUpgrade {
     private EntityChunkUpgrade() {}
 
-    /// Returns null if the vanilla fixer must run.
     public static CompoundTag upgradeWithoutGraveyardEntities(
             CompoundTag tag,
             int defaultVersion,
             UnaryOperator<CompoundTag> vanillaUpgrade
     ) {
-        if (NbtUtils.getDataVersion(tag, defaultVersion) >= SharedConstants.getCurrentVersion().dataVersion().version()) {
+        return upgradeWithoutGraveyardEntities(
+                tag,
+                defaultVersion,
+                SharedConstants.getCurrentVersion().dataVersion().version(),
+                vanillaUpgrade
+        );
+    }
+
+    /// Returns null if the vanilla fixer must run.
+    public static CompoundTag upgradeWithoutGraveyardEntities(
+            CompoundTag tag,
+            int defaultVersion,
+            int targetVersion,
+            UnaryOperator<CompoundTag> vanillaUpgrade
+    ) {
+        if (NbtUtils.getDataVersion(tag, defaultVersion) >= targetVersion) {
             return null;
         }
 
