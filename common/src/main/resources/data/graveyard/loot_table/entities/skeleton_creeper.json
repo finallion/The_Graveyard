@@ -69,7 +69,7 @@
         {
           "condition": "minecraft:entity_properties",
           "predicate": {
-            "type": "#minecraft:skeletons"
+            "minecraft:entity_type": "#minecraft:skeletons"
           },
           "entity": "attacker"
         }

@@ -23,7 +23,7 @@
             "condition": "minecraft:entity_properties",
             "entity": "this",
             "predicate": {
-              "location": {
+              "minecraft:location": {
                 "structures": "graveyard:small_grave"
               }
             }
@@ -39,7 +39,7 @@
             "condition": "minecraft:entity_properties",
             "entity": "this",
             "predicate": {
-              "location": {
+              "minecraft:location": {
                 "structures": "graveyard:small_desert_grave"
               }
             }
@@ -55,7 +55,7 @@
             "condition": "minecraft:entity_properties",
             "entity": "this",
             "predicate": {
-              "location": {
+              "minecraft:location": {
                 "structures": "graveyard:small_savanna_grave"
               }
             }
@@ -71,7 +71,7 @@
             "condition": "minecraft:entity_properties",
             "entity": "this",
             "predicate": {
-              "location": {
+              "minecraft:location": {
                 "structures": "graveyard:small_mountain_grave"
               }
             }

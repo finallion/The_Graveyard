@@ -23,7 +23,7 @@
             "condition": "minecraft:entity_properties",
             "entity": "this",
             "predicate": {
-              "location": {
+              "minecraft:location": {
                 "structures": "graveyard:medium_graveyard"
               }
             }

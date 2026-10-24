@@ -23,7 +23,7 @@
           {
             "condition": "minecraft:entity_properties",
             "predicate": {
-              "type": "graveyard:ghoul"
+              "minecraft:entity_type": "graveyard:ghoul"
             },
             "entity": "this"
           }
@@ -37,7 +37,7 @@
           {
             "condition": "minecraft:entity_properties",
             "predicate": {
-              "type": "graveyard:skeleton_creeper"
+              "minecraft:entity_type": "graveyard:skeleton_creeper"
             },
             "entity": "this"
           }
@@ -51,7 +51,7 @@
           {
             "condition": "minecraft:entity_properties",
             "predicate": {
-              "type": "graveyard:revenant"
+              "minecraft:entity_type": "graveyard:revenant"
             },
             "entity": "this"
           }
@@ -65,7 +65,7 @@
           {
             "condition": "minecraft:entity_properties",
             "predicate": {
-              "type": "graveyard:reaper"
+              "minecraft:entity_type": "graveyard:reaper"
             },
             "entity": "this"
           }
