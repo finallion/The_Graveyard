@@ -39,6 +39,10 @@ public final class AnimationClock {
         void playDetached(Entity entity, @Nullable SoundEvent sound);
     }
 
+    interface KeyframeZeroSink {
+        void keyframeZero(String animation, double startOffsetTicks);
+    }
+
     public static void setListener(@Nullable Listener value) {
         listener = value;
     }
@@ -164,11 +168,13 @@ public final class AnimationClock {
                 GeoModel<T> geoModel
         ) {
             boolean wasStopped = this.playState == PlayState.STOP;
+            AnimationPoint pointBeforeStop = this.animationPoint;
 
             super.checkControllerState(animatable, renderState, manager, geoModel);
 
             if (!wasStopped && this.playState == PlayState.STOP) {
                 this.transitionFromPoint = null;
+                this.animationPoint = pointBeforeStop;
                 appendResetStage();
             }
 
@@ -185,6 +191,10 @@ public final class AnimationClock {
 
             this.runningStage = stage;
             this.lastAnimationTime = stage == null ? 0.0D : this.animationPoint.animTime();
+
+            if (keyframeZero && animatable instanceof KeyframeZeroSink sink) {
+                sink.keyframeZero(stage.animation().name(), offset);
+            }
 
             if (animatable instanceof Entity entity && entity.level().isClientSide()) {
                 LAST_FRAME.put(entity, entity.tickCount);
