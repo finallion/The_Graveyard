@@ -191,6 +191,7 @@
   "entity.graveyard.horde.appeared": "Ha aparecido una gran horda de no muertos cerca de ti.",
   "entity.graveyard.ghouling.kill": "¡Yo hacer que deje de moverse!",
   "entity.graveyard.ghouling.call": "Estoy lejos de ti... Voy.",
+  "entity.graveyard.ghouling.stop_attack": "Paro.",
   "entity.graveyard.ghouling.no_landing": "No hay suelo cerca de ti... no puedo ir.",
   "entity.graveyard.ghouling.lost": "No encuentro el camino hasta ti.",
   "entity.graveyard.ghouling.gave_up": "No puedo alcanzarte. Llámame con el bastón.",

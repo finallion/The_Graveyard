@@ -191,6 +191,7 @@
   "entity.graveyard.horde.appeared": "一大群亡靈出現在你附近。",
   "entity.graveyard.ghouling.kill": "我讓它不動！",
   "entity.graveyard.ghouling.call": "我離你很遠……我來了。",
+  "entity.graveyard.ghouling.stop_attack": "我停下了。",
   "entity.graveyard.ghouling.no_landing": "你身邊沒有地面……我無法過去。",
   "entity.graveyard.ghouling.lost": "我找不到去你那裡的路。",
   "entity.graveyard.ghouling.gave_up": "我無法到達你身邊。請用法杖召喚我。",
