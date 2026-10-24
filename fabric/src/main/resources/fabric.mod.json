@@ -34,10 +34,10 @@
 
   "depends": {
     "fabricloader": ">=0.19.5",
-    "fabric-api": ">=0.155.3",
+    "fabric-api": ">=0.161.0",
     "villagertradingplus": ">=1.1.0 <2",
-    "minecraft": "26.1.2",
-    "geckolib": ">=5.5.2 <6",
+    "minecraft": "26.2",
+    "geckolib": ">=5.5.5 <6",
     "java": ">=25"
   },
   "custom": {
