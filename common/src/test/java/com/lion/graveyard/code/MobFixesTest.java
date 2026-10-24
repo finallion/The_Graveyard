@@ -121,6 +121,12 @@ class MobFixesTest {
     }
 
     @Test
+    void serverComputesTheWalkAnimationForRunningMobs() {
+        assertTrue(body("entities/GhoulEntity.java", "aiStep").contains("calculateEntityAnimation(false)"));
+        assertTrue(body("entities/AnimatedCorruptedIllager.java", "aiStep").contains("calculateEntityAnimation(false)"));
+    }
+
+    @Test
     void wraithLetsKillAndVoidDamageThrough() {
         String body = body("entities/WraithEntity.java", "isInvulnerableTo");
 
