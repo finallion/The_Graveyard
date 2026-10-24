@@ -8,7 +8,7 @@ import com.lion.graveyard.item.LegacyItemData;
 import com.lion.graveyard.mixin.MobEntityAccessor;
 import com.lion.graveyard.entities.CorvidEntity;
 import com.lion.graveyard.util.CrowAnchors;
-import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;

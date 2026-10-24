@@ -28,7 +28,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
@@ -94,12 +93,9 @@ public class TGOverrunVillage {
             () -> new BlockEntityType<>(SmolderingDebrisBlockEntity::new, Set.of(SMOLDERING_DEBRIS.get()))
     );
 
-    public static StructureProcessorType<RuinProcessor> RUIN = () -> RuinProcessor.CODEC;
-    public static StructureProcessorType<PoolAliasProcessor> POOL_ALIASES = () -> PoolAliasProcessor.CODEC;
-
     static {
-        RegistryHelper.registerStructureProcessor("ruin", RUIN);
-        RegistryHelper.registerStructureProcessor("pool_aliases", POOL_ALIASES);
+        RegistryHelper.registerStructureProcessor("ruin", RuinProcessor.CODEC);
+        RegistryHelper.registerStructureProcessor("pool_aliases", PoolAliasProcessor.CODEC);
     }
 
     private static BlockBehaviour.Properties wood(MapColor color) {

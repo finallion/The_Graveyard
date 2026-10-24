@@ -2,7 +2,7 @@ package com.lion.graveyard.platform.neoforge;
 
 import com.lion.graveyard.Graveyard;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.advancements.CriterionTrigger;
+import net.minecraft.advancements.triggers.CriterionTrigger;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -39,7 +39,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -66,7 +66,7 @@ public class RegistryHelperImpl {
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(BuiltInRegistries.RECIPE_TYPE, Graveyard.MOD_ID);
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(BuiltInRegistries.RECIPE_SERIALIZER, Graveyard.MOD_ID);
     public static final DeferredRegister<MapCodec<? extends LootItemCondition>> LOOT_CONDITIONS = DeferredRegister.create(Registries.LOOT_CONDITION_TYPE, Graveyard.MOD_ID);
-    public static final DeferredRegister<StructureProcessorType<?>> STRUCTURE_PROCESSORS = DeferredRegister.create(Registries.STRUCTURE_PROCESSOR, Graveyard.MOD_ID);
+    public static final DeferredRegister<MapCodec<? extends StructureProcessor>> STRUCTURE_PROCESSORS = DeferredRegister.create(Registries.STRUCTURE_PROCESSOR, Graveyard.MOD_ID);
     public static final DeferredRegister<CriterionTrigger<?>> TRIGGERS = DeferredRegister.create(Registries.TRIGGER_TYPE, Graveyard.MOD_ID);
     public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENTS = DeferredRegister.create(Registries.DATA_COMPONENT_TYPE, Graveyard.MOD_ID);
 
@@ -158,8 +158,8 @@ public class RegistryHelperImpl {
         PARTICLES.register(name, () -> particleType);
     }
 
-    public static void registerStructureProcessor(String name, StructureProcessorType<?> processorType) {
-        STRUCTURE_PROCESSORS.register(name, () -> processorType);
+    public static void registerStructureProcessor(String name, MapCodec<? extends StructureProcessor> codec) {
+        STRUCTURE_PROCESSORS.register(name, () -> codec);
     }
 
     public static void registerCriterion(String name, CriterionTrigger<?> trigger) {

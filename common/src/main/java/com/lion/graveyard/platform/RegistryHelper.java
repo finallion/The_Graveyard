@@ -2,7 +2,7 @@ package com.lion.graveyard.platform;
 
 import com.mojang.serialization.MapCodec;
 import dev.architectury.injectables.annotations.ExpectPlatform;
-import net.minecraft.advancements.CriterionTrigger;
+import net.minecraft.advancements.triggers.CriterionTrigger;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -36,7 +36,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public class RegistryHelper {
@@ -119,7 +119,7 @@ public class RegistryHelper {
     }
 
     @ExpectPlatform
-    public static void registerStructureProcessor(String name, StructureProcessorType<?> processorType) {
+    public static void registerStructureProcessor(String name, MapCodec<? extends StructureProcessor> codec) {
         throw new AssertionError();
     }
 

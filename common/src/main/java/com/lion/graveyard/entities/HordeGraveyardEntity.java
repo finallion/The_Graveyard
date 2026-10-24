@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.SpawnGroupData;
@@ -256,7 +257,7 @@ public abstract class HordeGraveyardEntity extends HostileGraveyardEntity {
         @Override
         public boolean canUse() {
             LivingEntity livingEntity = this.hordeEntity.getLastHurtByMob();
-            return this.hordeEntity.isRaidCenterSet() && this.hordeEntity.getTarget() != null && !this.hordeEntity.isAggressive() && (livingEntity == null || livingEntity.getType() != EntityType.PLAYER);
+            return this.hordeEntity.isRaidCenterSet() && this.hordeEntity.getTarget() != null && !this.hordeEntity.isAggressive() && (livingEntity == null || livingEntity.getType() != EntityTypes.PLAYER);
         }
 
         @Override

@@ -31,6 +31,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntitySpawnReason;
+import net.minecraft.world.entity.EntitySpawnRequest;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -230,7 +231,7 @@ public class BoneStaffItem extends Item {
         CompoundTag saved = LegacyItemData.view(stack).getCompoundOrEmpty(LegacyItemData.STORED_GHOULING);
         ValueInput savedInput = TagValueInput.create(ProblemReporter.DISCARDING, world.registryAccess(), saved);
 
-        if (EntityType.create(savedInput, world, EntitySpawnReason.SPAWN_ITEM_USE).orElse(null) instanceof GhoulingEntity ghouling) {
+        if (EntityType.create(savedInput, world, new EntitySpawnRequest(EntitySpawnReason.SPAWN_ITEM_USE, false)).orElse(null) instanceof GhoulingEntity ghouling) {
             ghouling.snapTo(spawnPos, 0.0F, 0.0F);
             ghouling.setSitting(false);
             ItemStack staff = stack.copy();

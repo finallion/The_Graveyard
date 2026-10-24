@@ -8,7 +8,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.minecraft.advancements.CriterionTrigger;
+import net.minecraft.advancements.triggers.CriterionTrigger;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -44,7 +44,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import java.util.List;
 import java.util.function.Function;
@@ -135,8 +135,8 @@ public class RegistryHelperImpl {
         Registry.register(BuiltInRegistries.PARTICLE_TYPE, Graveyard.id(name), particleType);
     }
 
-    public static void registerStructureProcessor(String name, StructureProcessorType<?> processorType) {
-        Registry.register(BuiltInRegistries.STRUCTURE_PROCESSOR, Graveyard.id(name), processorType);
+    public static void registerStructureProcessor(String name, MapCodec<? extends StructureProcessor> codec) {
+        Registry.register(BuiltInRegistries.STRUCTURE_PROCESSOR, Graveyard.id(name), codec);
     }
 
     public static void registerCriterion(String name, CriterionTrigger<?> trigger) {

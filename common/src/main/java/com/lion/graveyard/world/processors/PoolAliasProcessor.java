@@ -1,6 +1,5 @@
 package com.lion.graveyard.world.processors;
 
-import com.lion.graveyard.init.TGOverrunVillage;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import java.util.ArrayList;
@@ -9,11 +8,10 @@ import java.util.Map;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate.StructureBlockInfo;
 
 /// This processor changes no block. The pool element reads it when it lists its jigsaw blocks.
-public class PoolAliasProcessor extends StructureProcessor {
+public class PoolAliasProcessor implements StructureProcessor {
 
     private static final String POOL_KEY = "pool";
 
@@ -44,7 +42,7 @@ public class PoolAliasProcessor extends StructureProcessor {
     }
 
     @Override
-    protected StructureProcessorType<?> getType() {
-        return TGOverrunVillage.POOL_ALIASES;
+    public MapCodec<? extends StructureProcessor> codec() {
+        return CODEC;
     }
 }

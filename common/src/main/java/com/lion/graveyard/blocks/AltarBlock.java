@@ -7,7 +7,7 @@ import com.lion.graveyard.init.TGEntities;
 import com.lion.graveyard.init.TGItems;
 import com.lion.graveyard.init.TGSounds;
 import com.lion.graveyard.item.VialOfBlood;
-import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.triggers.CriteriaTriggers;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

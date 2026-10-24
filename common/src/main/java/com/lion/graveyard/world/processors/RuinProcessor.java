@@ -23,6 +23,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ExtraCodecs;
@@ -59,7 +60,6 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate.StructureBlockInfo;
 
@@ -68,7 +68,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 /// the world decides for one column only, and only for a column in the chunk of the current run.
 /// A piece that follows the terrain gets different input in each run. There, each cell uses a hash
 /// of its own position.
-public class RuinProcessor extends StructureProcessor {
+public class RuinProcessor implements StructureProcessor {
 
     private static final TagKey<Block> DEFAULT_FLOOR_REMAINS = villageTag("floor_remains");
     private static final TagKey<Block> DEFAULT_WALL_REMAINS = villageTag("wall_remains");
@@ -81,7 +81,7 @@ public class RuinProcessor extends StructureProcessor {
     private static final int WOOD_PART = 7;
     private static final int STRIPPED_LOG_PART = 8;
     private static final int STRIPPED_WOOD_PART = 9;
-    private static final List<TagKey<Block>> WOOD_PARTS = List.of(BlockTags.PLANKS, BlockTags.LOGS_THAT_BURN, BlockTags.WOODEN_STAIRS, BlockTags.WOODEN_SLABS, BlockTags.WOODEN_FENCES, BlockTags.FENCE_GATES, BlockTags.WOODEN_TRAPDOORS);
+    private static final List<TagKey<Block>> WOOD_PARTS = List.of(BlockTags.PLANKS, BlockItemTags.LOGS_THAT_BURN.block(), BlockTags.WOODEN_STAIRS, BlockTags.WOODEN_SLABS, BlockTags.WOODEN_FENCES, BlockTags.FENCE_GATES, BlockTags.WOODEN_TRAPDOORS);
 
     public static final MapCodec<RuinProcessor> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.BOOL.optionalFieldOf("collapse", true).forGetter(processor -> processor.collapse),
@@ -490,8 +490,13 @@ public class RuinProcessor extends StructureProcessor {
     }
 
     @Override
-    protected StructureProcessorType<?> getType() {
-        return TGOverrunVillage.RUIN;
+    public MapCodec<? extends StructureProcessor> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public boolean evaluatesEntirePieceState() {
+        return true;
     }
 
     private record Bite(float x, float z, float radiusX, float radiusZ, float depth) {
@@ -622,7 +627,7 @@ public class RuinProcessor extends StructureProcessor {
             Block planks = dominantBlock(infos, BlockTags.PLANKS, null);
 
             if (planks == null) {
-                planks = planksOf(dominantBlock(infos, BlockTags.LOGS_THAT_BURN, null));
+                planks = planksOf(dominantBlock(infos, BlockItemTags.LOGS_THAT_BURN.block(), null));
             }
 
             Block stone = dominantBlock(infos, RUBBLE_STONE, variant.stoneFallback());
@@ -925,12 +930,12 @@ public class RuinProcessor extends StructureProcessor {
         }
 
         private boolean isCharred(BlockState state) {
-            return this.variant.charStone().contains(state.getBlock()) || (this.variant.scorchTerracotta() && state.is(Blocks.BLACK_TERRACOTTA)) || indexIn(TGOverrunVillage.CHARRED_WOOD, state) >= 0;
+            return this.variant.charStone().contains(state.getBlock()) || (this.variant.scorchTerracotta() && state.is(Blocks.DYED_TERRACOTTA.black())) || indexIn(TGOverrunVillage.CHARRED_WOOD, state) >= 0;
         }
 
         private BlockState singed(BlockState state) {
             if (this.variant.scorchTerracotta() && state.is(SCORCHABLE_TERRACOTTA)) {
-                return Blocks.GRAY_TERRACOTTA.defaultBlockState();
+                return Blocks.DYED_TERRACOTTA.gray().defaultBlockState();
             }
 
             int part = woodPart(state);
@@ -989,7 +994,7 @@ public class RuinProcessor extends StructureProcessor {
             }
 
             if (this.variant.scorchTerracotta() && state.is(SCORCHABLE_TERRACOTTA)) {
-                return Blocks.BLACK_TERRACOTTA.defaultBlockState();
+                return Blocks.DYED_TERRACOTTA.black().defaultBlockState();
             }
 
             int part = woodPart(state);
