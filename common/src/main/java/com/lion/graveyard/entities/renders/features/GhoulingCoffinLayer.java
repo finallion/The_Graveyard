@@ -3,6 +3,7 @@ package com.lion.graveyard.entities.renders.features;
 import com.lion.graveyard.client.GraveyardDataTickets;
 import com.lion.graveyard.entities.GhoulingEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import java.util.function.BiConsumer;
 import net.minecraft.client.Minecraft;
@@ -17,6 +18,7 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.model.GeoBone;
+import software.bernie.geckolib.cache.model.cuboid.GeoCube;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
 import software.bernie.geckolib.renderer.base.GeoRenderer;
 import software.bernie.geckolib.renderer.base.PerBoneRender;
@@ -39,6 +41,22 @@ public class GhoulingCoffinLayer<R extends GeoRenderState> extends CustomBoneTex
     @Override
     protected @Nullable RenderType getRenderType(R renderState, Identifier texture) {
         return RenderTypes.entityTranslucent(texture);
+    }
+
+    @Override
+    public void renderCube(
+            GeoCube cube,
+            PoseStack poseStack,
+            VertexConsumer vertexConsumer,
+            int packedLight,
+            int packedOverlay,
+            int renderColor,
+            float widthRatio,
+            float heightRatio
+    ) {
+        poseStack.pushPose();
+        super.renderCube(cube, poseStack, vertexConsumer, packedLight, packedOverlay, renderColor, widthRatio, heightRatio);
+        poseStack.popPose();
     }
 
     @Override
