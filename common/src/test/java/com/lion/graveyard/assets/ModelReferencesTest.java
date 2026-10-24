@@ -78,10 +78,12 @@ class ModelReferencesTest {
         }
 
         if (model.has("textures")) {
+            Set<String> sprites = blocksAtlasSprites(atlasOf(assets));
+
             for (var entry : model.getAsJsonObject("textures").entrySet()) {
                 String value = entry.getValue().getAsString();
 
-                if (!value.startsWith("#") && !AssetLookup.isForeign(value) && !assets.exists(assets.texture(value))) {
+                if (!value.startsWith("#") && !AssetLookup.isForeign(value) && !assets.exists(assets.texture(value)) && !sprites.contains(value)) {
                     problems.add("missing texture " + value + " (variable " + entry.getKey() + ")");
                 }
             }
@@ -273,5 +275,76 @@ class ModelReferencesTest {
 
         String undefined = "{\"textures\": {}, \"elements\": [{\"from\": [0,0,0], \"to\": [1,1,1], \"faces\": {\"north\": {\"texture\": \"#0\"}}}]}";
         assertFalse(modelProblems(undefined, new AssetLookup(temp)).isEmpty());
+    }
+
+    static Path atlasOf(AssetLookup assets) {
+        Path namespaces = assets.root().getParent();
+        return namespaces.resolve("minecraft/atlases/blocks.json");
+    }
+
+    static Set<String> blocksAtlasSprites(Path atlasFile) {
+        Set<String> sprites = new HashSet<>();
+
+        if (!Files.isRegularFile(atlasFile)) {
+            return sprites;
+        }
+
+        for (JsonElement source : Json.parseObject(ModProject.read(atlasFile)).getAsJsonArray("sources")) {
+            JsonObject entry = source.getAsJsonObject();
+
+            String type = entry.get("type").getAsString();
+
+            if (type.endsWith(":single")) {
+                String id = entry.has("sprite") ? entry.get("sprite").getAsString() : entry.get("resource").getAsString();
+                sprites.add(id.indexOf(':') < 0 ? "minecraft:" + id : id);
+            }
+        }
+
+        return sprites;
+    }
+
+    static List<String> blockAtlasProblems(String json, AssetLookup assets, Set<String> atlasSprites) {
+        List<String> problems = new ArrayList<>();
+        JsonObject model = Json.parseObject(json);
+
+        if (!model.has("textures")) {
+            return problems;
+        }
+
+        for (var entry : model.getAsJsonObject("textures").entrySet()) {
+            String value = entry.getValue().getAsString();
+
+            if (value.startsWith("#")) {
+                continue;
+            }
+
+            if (ModProject.stripNamespace(value).startsWith("item/")) {
+                problems.add("item texture in a block model: " + value);
+            } else if (!AssetLookup.isForeign(value) && !assets.exists(assets.texture(value)) && !atlasSprites.contains(value)) {
+                problems.add("texture is neither a file nor an atlas sprite: " + value);
+            }
+        }
+
+        return problems;
+    }
+
+    @TestFactory
+    Stream<DynamicTest> blockModelTexturesLiveInTheBlocksAtlas() {
+        Path models = ASSETS.root().resolve(ModProject.MODELS);
+        Path dir = models.resolve("block");
+        Set<String> sprites = blocksAtlasSprites(atlasOf(ASSETS));
+        return ModProject.files(dir, ".json").stream()
+                .map(file -> DynamicTest.dynamicTest(
+                        ModProject.idOf(dir, file, ".json"), () -> {
+                            List<String> problems = blockAtlasProblems(ModProject.read(file), ASSETS, sprites);
+                            assertTrue(problems.isEmpty(), () -> String.join("\n", problems));
+                        }));
+    }
+
+    @Test
+    void blockAtlasCheckFindsItemTexturesAndUnknownSprites(@TempDir Path temp) {
+        AssetLookup lookup = new AssetLookup(temp);
+        String json = "{\"textures\": {\"0\": \"minecraft:item/iron_axe\", \"1\": \"graveyard:block/ghost\", \"2\": \"graveyard:block/known\"}}";
+        assertEquals(2, blockAtlasProblems(json, lookup, Set.of("graveyard:block/known")).size());
     }
 }
