@@ -6,7 +6,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "graveyard:block/wither_skeleton",
-		"1": "item/iron_sword",
+		"1": "graveyard:block/iron_sword",
 		"particle": "graveyard:block/wither_skeleton_particle"
 	},
 	"elements": [

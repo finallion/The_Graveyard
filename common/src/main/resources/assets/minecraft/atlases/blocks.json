@@ -1,0 +1,14 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/iron_axe",
+      "sprite": "graveyard:block/iron_axe"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/iron_sword",
+      "sprite": "graveyard:block/iron_sword"
+    }
+  ]
+}
