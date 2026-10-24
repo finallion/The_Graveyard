@@ -5,8 +5,8 @@ import com.lion.graveyard.client.GraveyardDataTickets;
 import com.lion.graveyard.entities.GhoulEntity;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.model.GeoModel;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.model.GeoModel;
+import com.geckolib.renderer.base.GeoRenderState;
 
 public class BaseGhoulModel extends GeoModel<GhoulEntity> {
     @Override

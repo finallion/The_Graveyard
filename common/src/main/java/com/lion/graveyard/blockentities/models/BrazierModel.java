@@ -3,8 +3,8 @@ package com.lion.graveyard.blockentities.models;
 import com.lion.graveyard.Graveyard;
 import com.lion.graveyard.blockentities.BrazierBlockEntity;
 import net.minecraft.resources.Identifier;
-import software.bernie.geckolib.model.GeoModel;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.model.GeoModel;
+import com.geckolib.renderer.base.GeoRenderState;
 
 public class BrazierModel extends GeoModel<BrazierBlockEntity> {
     @Override

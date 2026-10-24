@@ -2,11 +2,11 @@ package com.lion.graveyard.entities.animation;
 
 import com.lion.graveyard.platform.DevEnvironment;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.RawAnimation;
-import software.bernie.geckolib.animation.object.LoopType;
-import software.bernie.geckolib.animation.state.AnimationPoint;
-import software.bernie.geckolib.animation.state.AnimationTest;
+import com.geckolib.animation.AnimationController;
+import com.geckolib.animation.RawAnimation;
+import com.geckolib.animation.object.LoopType;
+import com.geckolib.animation.state.AnimationPoint;
+import com.geckolib.animation.state.AnimationTest;
 
 import java.util.HashMap;
 import java.util.List;

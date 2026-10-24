@@ -7,20 +7,20 @@ import com.lion.graveyard.entities.renders.features.CorvidHeldItemLayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
-import software.bernie.geckolib.constant.DataTickets;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.renderer.base.BoneSnapshots;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
-import software.bernie.geckolib.renderer.base.RenderPassInfo;
+import com.geckolib.constant.DataTickets;
+import com.geckolib.renderer.GeoEntityRenderer;
+import com.geckolib.renderer.base.BoneSnapshots;
+import com.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.base.RenderPassInfo;
 
-public class CorvidRenderer<R extends LivingEntityRenderState & GeoRenderState> extends GeoEntityRenderer<CorvidEntity, R> {
+public class CorvidRenderer<R extends LivingEntityRenderState> extends GeoEntityRenderer<CorvidEntity, R> {
     private static final float MAX_HEAD_PITCH = 40.0F;
     private static final float MAX_HEAD_YAW = 75.0F;
 
     public CorvidRenderer(EntityRendererProvider.Context context) {
         super(context, new CorvidModel());
         this.shadowRadius = 0.2F;
-        this.withRenderLayer(new CorvidHeldItemLayer<>(this));
+        this.withRenderLayer(new CorvidHeldItemLayer<>(context, this));
     }
 
     @Override

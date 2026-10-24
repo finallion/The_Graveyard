@@ -7,10 +7,9 @@ import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.Identifier;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.GeoEntityRenderer;
 
-public class NamelessHangedRenderer<R extends LivingEntityRenderState & GeoRenderState> extends GeoEntityRenderer<NamelessHangedEntity, R> {
+public class NamelessHangedRenderer<R extends LivingEntityRenderState> extends GeoEntityRenderer<NamelessHangedEntity, R> {
 
     public NamelessHangedRenderer(EntityRendererProvider.Context context) {
         super(context, new NamelessHangedModel());

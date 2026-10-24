@@ -16,12 +16,12 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.cache.model.GeoBone;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
-import software.bernie.geckolib.renderer.base.GeoRenderer;
-import software.bernie.geckolib.renderer.base.PerBoneRender;
-import software.bernie.geckolib.renderer.base.RenderPassInfo;
-import software.bernie.geckolib.renderer.layer.builtin.CustomBoneTextureGeoLayer;
+import com.geckolib.cache.model.GeoBone;
+import com.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.base.GeoRenderer;
+import com.geckolib.renderer.base.PerBoneRender;
+import com.geckolib.renderer.base.RenderPassInfo;
+import com.geckolib.renderer.layer.builtin.CustomBoneTextureGeoLayer;
 
 /// Draws the torso translucent and the offhand item while the ghouling has its coffin.
 public class GhoulingCoffinLayer<R extends GeoRenderState> extends CustomBoneTextureGeoLayer<GhoulingEntity, Void, R> {

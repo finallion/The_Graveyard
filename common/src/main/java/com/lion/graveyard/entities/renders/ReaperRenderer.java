@@ -8,12 +8,12 @@ import com.lion.graveyard.entities.renders.features.GraveyardEyesLayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.Identifier;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.renderer.base.BoneSnapshots;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
-import software.bernie.geckolib.renderer.base.RenderPassInfo;
+import com.geckolib.renderer.GeoEntityRenderer;
+import com.geckolib.renderer.base.BoneSnapshots;
+import com.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.base.RenderPassInfo;
 
-public class ReaperRenderer<R extends LivingEntityRenderState & GeoRenderState> extends GeoEntityRenderer<ReaperEntity, R> {
+public class ReaperRenderer<R extends LivingEntityRenderState> extends GeoEntityRenderer<ReaperEntity, R> {
     private static final Identifier EYES = Graveyard.id("textures/entity/reaper_eyes.png");
 
     public ReaperRenderer(EntityRendererProvider.Context context) {

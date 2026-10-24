@@ -6,13 +6,13 @@ import com.lion.graveyard.entities.animation.BoneReturn;
 import com.lion.graveyard.entities.models.CorruptedIllagerGeoModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.renderer.base.BoneSnapshots;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
-import software.bernie.geckolib.renderer.base.RenderPassInfo;
-import software.bernie.geckolib.renderer.layer.builtin.AutoGlowingGeoLayer;
+import com.geckolib.renderer.GeoEntityRenderer;
+import com.geckolib.renderer.base.BoneSnapshots;
+import com.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.base.RenderPassInfo;
+import com.geckolib.renderer.layer.builtin.AutoGlowingGeoLayer;
 
-public class CorruptedIllagerGeoRenderer<T extends AnimatedCorruptedIllager, R extends LivingEntityRenderState & GeoRenderState> extends GeoEntityRenderer<T, R> {
+public class CorruptedIllagerGeoRenderer<T extends AnimatedCorruptedIllager, R extends LivingEntityRenderState> extends GeoEntityRenderer<T, R> {
 
     public CorruptedIllagerGeoRenderer(EntityRendererProvider.Context context) {
         super(context, new CorruptedIllagerGeoModel<>());

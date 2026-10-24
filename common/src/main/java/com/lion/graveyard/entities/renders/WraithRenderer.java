@@ -10,12 +10,12 @@ import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.Identifier;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.renderer.base.BoneSnapshots;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
-import software.bernie.geckolib.renderer.base.RenderPassInfo;
+import com.geckolib.renderer.GeoEntityRenderer;
+import com.geckolib.renderer.base.BoneSnapshots;
+import com.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.base.RenderPassInfo;
 
-public class WraithRenderer<R extends LivingEntityRenderState & GeoRenderState> extends GeoEntityRenderer<WraithEntity, R> {
+public class WraithRenderer<R extends LivingEntityRenderState> extends GeoEntityRenderer<WraithEntity, R> {
     private static final Identifier EYES = Graveyard.id("textures/entity/wraith_eyes.png");
 
     public WraithRenderer(EntityRendererProvider.Context context) {

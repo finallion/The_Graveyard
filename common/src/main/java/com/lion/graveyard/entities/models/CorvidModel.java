@@ -5,12 +5,12 @@ import com.lion.graveyard.client.GraveyardDataTickets;
 import com.lion.graveyard.entities.CorvidEntity;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.state.AnimationPoint;
-import software.bernie.geckolib.constant.DataTickets;
-import software.bernie.geckolib.model.GeoModel;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.animation.AnimationController;
+import com.geckolib.animation.state.AnimationPoint;
+import com.geckolib.constant.DataTickets;
+import com.geckolib.model.GeoModel;
+import com.geckolib.renderer.base.GeoRenderState;
 
 public class CorvidModel extends GeoModel<CorvidEntity> {
     private static final Identifier ANIMATION = Graveyard.id("corvid/corvid");
@@ -43,8 +43,8 @@ public class CorvidModel extends GeoModel<CorvidEntity> {
         renderState.addGeckolibData(GraveyardDataTickets.CORVID_LOOK_WEIGHT, animatable.stepLookWeight(peck, partialTick));
     }
 
-    private boolean isPlayingPeck(AnimatableManager<CorvidEntity> manager) {
-        AnimationController<CorvidEntity> controller = manager.getAnimationControllers().get("controller");
+    private boolean isPlayingPeck(AnimatableManager<?> manager) {
+        AnimationController<?> controller = manager.getAnimationControllers().get("controller");
 
         if (controller == null) {
             return false;

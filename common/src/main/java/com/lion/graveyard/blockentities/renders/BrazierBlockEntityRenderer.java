@@ -7,14 +7,13 @@ import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.resources.Identifier;
-import software.bernie.geckolib.renderer.GeoBlockRenderer;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.GeoBlockRenderer;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 
-public class BrazierBlockEntityRenderer<R extends BlockEntityRenderState & GeoRenderState> extends GeoBlockRenderer<BrazierBlockEntity, R> {
+public class BrazierBlockEntityRenderer<R extends BlockEntityRenderState> extends GeoBlockRenderer<BrazierBlockEntity, R> {
 
     public BrazierBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
-        super(new BrazierModel());
+        super(context, new BrazierModel());
     }
 
     @Override

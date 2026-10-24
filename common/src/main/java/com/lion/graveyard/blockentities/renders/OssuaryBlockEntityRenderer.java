@@ -6,14 +6,13 @@ import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.resources.Identifier;
-import software.bernie.geckolib.renderer.GeoBlockRenderer;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.GeoBlockRenderer;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 
-public class OssuaryBlockEntityRenderer<R extends BlockEntityRenderState & GeoRenderState> extends GeoBlockRenderer<OssuaryBlockEntity, R> {
+public class OssuaryBlockEntityRenderer<R extends BlockEntityRenderState> extends GeoBlockRenderer<OssuaryBlockEntity, R> {
 
     public OssuaryBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
-        super(new OssuaryModel());
+        super(context, new OssuaryModel());
     }
 
     @Override

@@ -9,10 +9,10 @@ import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.Identifier;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.GeoEntityRenderer;
+import com.geckolib.renderer.base.GeoRenderState;
 
-public class TormentedVillagerRenderer<R extends LivingEntityRenderState & GeoRenderState> extends GeoEntityRenderer<TormentedVillagerEntity, R> {
+public class TormentedVillagerRenderer<R extends LivingEntityRenderState> extends GeoEntityRenderer<TormentedVillagerEntity, R> {
     private static final Identifier EYES = Graveyard.id("textures/entity/tormented_villager_eyes.png");
 
     public TormentedVillagerRenderer(EntityRendererProvider.Context context) {

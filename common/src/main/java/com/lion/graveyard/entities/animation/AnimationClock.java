@@ -1,17 +1,17 @@
 package com.lion.graveyard.entities.animation;
 
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.GeoAnimatable;
-import software.bernie.geckolib.animatable.manager.AnimatableManager;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.RawAnimation;
-import software.bernie.geckolib.animation.object.PlayState;
-import software.bernie.geckolib.animation.state.AnimationPoint;
-import software.bernie.geckolib.animation.state.AnimationTimeline;
-import software.bernie.geckolib.animation.state.ControllerState;
-import software.bernie.geckolib.loading.math.MolangQueries;
-import software.bernie.geckolib.model.GeoModel;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.animatable.GeoAnimatable;
+import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.animation.AnimationController;
+import com.geckolib.animation.RawAnimation;
+import com.geckolib.animation.object.PlayState;
+import com.geckolib.animation.state.AnimationPoint;
+import com.geckolib.animation.state.AnimationTimeline;
+import com.geckolib.animation.state.ControllerState;
+import com.geckolib.loading.math.MolangQueries;
+import com.geckolib.model.GeoModel;
+import com.geckolib.renderer.base.GeoRenderState;
 
 import java.util.Arrays;
 import java.util.Map;

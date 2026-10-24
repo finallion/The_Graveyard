@@ -12,13 +12,13 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
-import software.bernie.geckolib.constant.DataTickets;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.renderer.base.BoneSnapshots;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
-import software.bernie.geckolib.renderer.base.RenderPassInfo;
+import com.geckolib.constant.DataTickets;
+import com.geckolib.renderer.GeoEntityRenderer;
+import com.geckolib.renderer.base.BoneSnapshots;
+import com.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.base.RenderPassInfo;
 
-public class LichRenderer<R extends LivingEntityRenderState & GeoRenderState> extends GeoEntityRenderer<LichEntity, R> {
+public class LichRenderer<R extends LivingEntityRenderState> extends GeoEntityRenderer<LichEntity, R> {
     private static final Identifier EYES = Graveyard.id("textures/entity/lich_eye_texture.png");
     private static final float MAX_HEAD_YAW = 50.0F;
 
@@ -54,7 +54,7 @@ public class LichRenderer<R extends LivingEntityRenderState & GeoRenderState> ex
 
     @Override
     public RenderType getRenderType(R renderState, Identifier texture) {
-        return RenderTypes.entityCutoutNoCull(texture);
+        return RenderTypes.entityCutout(texture);
     }
 
 }

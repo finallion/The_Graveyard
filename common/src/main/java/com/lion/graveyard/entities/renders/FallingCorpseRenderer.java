@@ -7,11 +7,10 @@ import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.Identifier;
-import software.bernie.geckolib.constant.DataTickets;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.constant.DataTickets;
+import com.geckolib.renderer.GeoEntityRenderer;
 
-public class FallingCorpseRenderer<R extends LivingEntityRenderState & GeoRenderState> extends GeoEntityRenderer<FallingCorpse, R> {
+public class FallingCorpseRenderer<R extends LivingEntityRenderState> extends GeoEntityRenderer<FallingCorpse, R> {
 
     public FallingCorpseRenderer(EntityRendererProvider.Context context) {
         super(context, new FallingCorpseModel());
@@ -25,7 +24,7 @@ public class FallingCorpseRenderer<R extends LivingEntityRenderState & GeoRender
 
     @Override
     public RenderType getRenderType(R renderState, Identifier texture) {
-        return RenderTypes.entityCutoutNoCull(texture);
+        return RenderTypes.entityCutout(texture);
     }
 
 }

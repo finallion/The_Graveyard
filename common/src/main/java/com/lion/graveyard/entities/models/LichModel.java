@@ -5,8 +5,8 @@ import com.lion.graveyard.client.GraveyardDataTickets;
 import com.lion.graveyard.entities.LichEntity;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.model.GeoModel;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.model.GeoModel;
+import com.geckolib.renderer.base.GeoRenderState;
 
 public class LichModel extends GeoModel<LichEntity> {
     private Identifier texture = Graveyard.id("textures/entity/lich_texture.png");

@@ -9,12 +9,12 @@ import com.lion.graveyard.entities.renders.features.GraveyardEyesLayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.Identifier;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.renderer.base.BoneSnapshots;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
-import software.bernie.geckolib.renderer.base.RenderPassInfo;
+import com.geckolib.renderer.GeoEntityRenderer;
+import com.geckolib.renderer.base.BoneSnapshots;
+import com.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.base.RenderPassInfo;
 
-public class GhoulRenderer<R extends LivingEntityRenderState & GeoRenderState> extends GeoEntityRenderer<GhoulEntity, R> {
+public class GhoulRenderer<R extends LivingEntityRenderState> extends GeoEntityRenderer<GhoulEntity, R> {
 
     public GhoulRenderer(EntityRendererProvider.Context context) {
         super(context, new BaseGhoulModel());

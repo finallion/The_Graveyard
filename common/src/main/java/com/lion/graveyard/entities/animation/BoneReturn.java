@@ -3,16 +3,16 @@ package com.lion.graveyard.entities.animation;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import software.bernie.geckolib.animation.AnimationProcessor;
-import software.bernie.geckolib.animation.state.AnimationPoint;
-import software.bernie.geckolib.animation.state.BoneSnapshot;
-import software.bernie.geckolib.animation.state.ControllerState;
-import software.bernie.geckolib.cache.animation.BoneAnimation;
-import software.bernie.geckolib.constant.DataTickets;
-import software.bernie.geckolib.constant.dataticket.DataTicket;
-import software.bernie.geckolib.renderer.base.BoneSnapshots;
-import software.bernie.geckolib.renderer.base.GeoRenderState;
-import software.bernie.geckolib.renderer.base.RenderPassInfo;
+import com.geckolib.animation.AnimationProcessor;
+import com.geckolib.animation.state.AnimationPoint;
+import com.geckolib.animation.state.BoneSnapshot;
+import com.geckolib.animation.state.ControllerState;
+import com.geckolib.cache.animation.BoneAnimation;
+import com.geckolib.constant.DataTickets;
+import com.geckolib.constant.dataticket.DataTicket;
+import com.geckolib.renderer.base.BoneSnapshots;
+import com.geckolib.renderer.base.GeoRenderState;
+import com.geckolib.renderer.base.RenderPassInfo;
 
 /// Eases bones that only the previous clip animated back to the bind pose.
 public final class BoneReturn {
