@@ -28,13 +28,14 @@
   },
   "mixins": [
     "graveyard-fabric.mixins.json",
-    "graveyard-common.mixins.json"
+    "graveyard-common.mixins.json",
+    "graveyard-moonrise.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.19.5",
     "fabric-api": ">=0.155.3",
-    "villagertradingplus": ">=1.0.0 <2",
+    "villagertradingplus": ">=1.1.0 <2",
     "minecraft": "26.1.2",
     "geckolib": ">=5.5.2 <6",
     "java": ">=25"
