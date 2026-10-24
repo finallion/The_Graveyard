@@ -9,11 +9,9 @@
           "type": "minecraft:loot_table",
           "value": "graveyard:chronicle/pages_world",
           "weight": 1,
-          "conditions": [
-            {
-              "condition": "graveyard:pages_in_loot"
-            }
-          ]
+          "condition": {
+            "type": "graveyard:pages_in_loot"
+          }
         },
         {
           "type": "minecraft:empty",
@@ -28,33 +26,29 @@
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 25,
-                "max": 35
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 25,
+              "max": 35
+            },
+            "add": false
+          },
           "name": "minecraft:sandstone"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 25,
-                "max": 35
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 25,
+              "max": 35
+            },
+            "add": false
+          },
           "name": "minecraft:red_sandstone"
         }
       ]
@@ -66,33 +60,29 @@
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 35,
-                "max": 40
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 35,
+              "max": 40
+            },
+            "add": false
+          },
           "name": "minecraft:sand"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 25,
-                "max": 35
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 25,
+              "max": 35
+            },
+            "add": false
+          },
           "name": "minecraft:red_sand"
         }
       ]
@@ -104,33 +94,29 @@
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 25
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 25
+            },
+            "add": false
+          },
           "name": "minecraft:acacia_log"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 25
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 25
+            },
+            "add": false
+          },
           "name": "minecraft:terracotta"
         }
       ]
@@ -142,49 +128,43 @@
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 10,
-                "max": 15
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 10,
+              "max": 15
+            },
+            "add": false
+          },
           "name": "minecraft:dead_bush"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 10,
-                "max": 15
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 10,
+              "max": 15
+            },
+            "add": false
+          },
           "name": "minecraft:cactus"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 10,
-                "max": 15
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 10,
+              "max": 15
+            },
+            "add": false
+          },
           "name": "minecraft:flowering_azalea_leaves"
         }
       ]

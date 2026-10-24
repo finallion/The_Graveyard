@@ -21,32 +21,35 @@
         {
           "type": "graveyard:corrupted_pillager",
           "weight": 5,
-          "minCount": 1,
-          "maxCount": 2
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 2
+          }
         },
         {
           "type": "graveyard:corrupted_vindicator",
           "weight": 3,
-          "minCount": 1,
-          "maxCount": 1
+          "count": 1
         },
         {
           "type": "graveyard:corrupted_evoker",
           "weight": 2,
-          "minCount": 1,
-          "maxCount": 1
+          "count": 1
         },
         {
           "type": "graveyard:acolyte",
           "weight": 2,
-          "minCount": 1,
-          "maxCount": 1
+          "count": 1
         },
         {
           "type": "graveyard:tormented_villager",
           "weight": 6,
-          "minCount": 1,
-          "maxCount": 2
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 2
+          }
         }
       ]
     },
@@ -56,14 +59,20 @@
         {
           "type": "graveyard:crow",
           "weight": 4,
-          "minCount": 4,
-          "maxCount": 8
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 4,
+            "max_inclusive": 8
+          }
         },
         {
           "type": "graveyard:raven",
           "weight": 3,
-          "minCount": 2,
-          "maxCount": 4
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 2,
+            "max_inclusive": 4
+          }
         }
       ]
     }

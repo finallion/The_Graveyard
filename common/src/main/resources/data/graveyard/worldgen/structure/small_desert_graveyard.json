@@ -21,14 +21,12 @@
         {
           "type": "minecraft:vindicator",
           "weight": 1,
-          "minCount": 1,
-          "maxCount": 1
+          "count": 1
         },
         {
           "type": "minecraft:pillager",
           "weight": 10,
-          "minCount": 1,
-          "maxCount": 1
+          "count": 1
         }
       ]
     }

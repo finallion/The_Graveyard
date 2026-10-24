@@ -7,8 +7,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone_slab",
-              "Properties": {
+              "id": "minecraft:cobblestone_slab",
+              "properties": {
                 "type": "bottom"
               }
             }
@@ -17,8 +17,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:sandstone_slab",
-            "Properties": {
+            "id": "minecraft:sandstone_slab",
+            "properties": {
               "type": "bottom"
             }
           }
@@ -27,8 +27,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_slab",
-              "Properties": {
+              "id": "minecraft:oak_slab",
+              "properties": {
                 "type": "bottom"
               }
             }
@@ -37,8 +37,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:sandstone_slab",
-            "Properties": {
+            "id": "minecraft:sandstone_slab",
+            "properties": {
               "type": "bottom"
             }
           }
@@ -47,28 +47,28 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:gravel"
+              "id": "minecraft:gravel"
             }
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:coarse_dirt"
+            "id": "minecraft:coarse_dirt"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone"
+              "id": "minecraft:cobblestone"
             }
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:sandstone"
+            "id": "minecraft:sandstone"
           }
         },
         {
@@ -81,7 +81,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:soul_soil"
+            "id": "minecraft:soul_soil"
           }
         },
         {
@@ -93,29 +93,29 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:soul_sand"
+            "id": "minecraft:soul_sand"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:mossy_cobblestone"
+              "id": "minecraft:mossy_cobblestone"
             }
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:sandstone"
+            "id": "minecraft:sandstone"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_stairs",
-              "Properties": {
+              "id": "minecraft:oak_stairs",
+              "properties": {
                 "facing": "north",
                 "half": "bottom"
               }
@@ -125,8 +125,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:birch_stairs",
-            "Properties": {
+            "id": "minecraft:birch_stairs",
+            "properties": {
               "facing": "north",
               "half": "bottom"
             }
@@ -136,8 +136,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone_stairs",
-              "Properties": {
+              "id": "minecraft:cobblestone_stairs",
+              "properties": {
                 "facing": "north",
                 "half": "bottom"
               }
@@ -147,8 +147,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:sandstone_stairs",
-            "Properties": {
+            "id": "minecraft:sandstone_stairs",
+            "properties": {
               "facing": "north",
               "half": "bottom"
             }
@@ -158,22 +158,22 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_fence"
+              "id": "minecraft:oak_fence"
             }
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:birch_fence"
+            "id": "minecraft:birch_fence"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_fence",
-              "Properties": {
+              "id": "minecraft:oak_fence",
+              "properties": {
                 "east": "true"
               }
             }
@@ -182,8 +182,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:birch_fence",
-            "Properties": {
+            "id": "minecraft:birch_fence",
+            "properties": {
               "east": "true"
             }
           }
@@ -192,8 +192,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_fence",
-              "Properties": {
+              "id": "minecraft:oak_fence",
+              "properties": {
                 "west": "true"
               }
             }
@@ -202,8 +202,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:birch_fence",
-            "Properties": {
+            "id": "minecraft:birch_fence",
+            "properties": {
               "west": "true"
             }
           }
@@ -212,8 +212,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_log",
-              "Properties": {
+              "id": "minecraft:oak_log",
+              "properties": {
                 "axis": "y"
               }
             }
@@ -222,8 +222,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:birch_log",
-            "Properties": {
+            "id": "minecraft:birch_log",
+            "properties": {
               "axis": "y"
             }
           }
@@ -232,8 +232,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_log",
-              "Properties": {
+              "id": "minecraft:oak_log",
+              "properties": {
                 "axis": "x"
               }
             }
@@ -242,8 +242,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:birch_log",
-            "Properties": {
+            "id": "minecraft:birch_log",
+            "properties": {
               "axis": "x"
             }
           }

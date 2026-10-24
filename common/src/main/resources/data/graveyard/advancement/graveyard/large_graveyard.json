@@ -18,17 +18,15 @@
   "criteria": {
     "large_graveyard": {
       "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "minecraft:location": {
-                "structures": "graveyard:large_graveyard"
-              }
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:location": {
+              "structures": "graveyard:large_graveyard"
             }
           }
-        ]
+        }
       },
       "trigger": "minecraft:location"
     }

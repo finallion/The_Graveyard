@@ -18,17 +18,15 @@
   "criteria": {
     "haunted_house": {
       "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "minecraft:location": {
-                "structures": "graveyard:haunted_house"
-              }
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:location": {
+              "structures": "graveyard:haunted_house"
             }
           }
-        ]
+        }
       },
       "trigger": "minecraft:location"
     }

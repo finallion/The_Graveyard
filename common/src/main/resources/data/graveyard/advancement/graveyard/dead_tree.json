@@ -18,17 +18,15 @@
   "criteria": {
     "dead_tree": {
       "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "minecraft:location": {
-                "structures": "graveyard:dead_tree"
-              }
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:location": {
+              "structures": "graveyard:dead_tree"
             }
           }
-        ]
+        }
       },
       "trigger": "minecraft:location"
     }

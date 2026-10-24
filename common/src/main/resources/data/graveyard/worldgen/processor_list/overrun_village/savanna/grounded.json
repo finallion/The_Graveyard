@@ -7,8 +7,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_slab",
-              "Properties": {
+              "id": "minecraft:oak_slab",
+              "properties": {
                 "type": "bottom"
               }
             }
@@ -17,8 +17,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:acacia_slab",
-            "Properties": {
+            "id": "minecraft:acacia_slab",
+            "properties": {
               "type": "bottom"
             }
           }
@@ -27,36 +27,36 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone"
+              "id": "minecraft:cobblestone"
             }
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "graveyard:scorched_planks"
+            "id": "graveyard:scorched_planks"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_fence"
+              "id": "minecraft:oak_fence"
             }
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:acacia_fence"
+            "id": "minecraft:acacia_fence"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_fence",
-              "Properties": {
+              "id": "minecraft:oak_fence",
+              "properties": {
                 "east": "true"
               }
             }
@@ -65,8 +65,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:acacia_fence",
-            "Properties": {
+            "id": "minecraft:acacia_fence",
+            "properties": {
               "east": "true"
             }
           }
@@ -75,8 +75,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_fence",
-              "Properties": {
+              "id": "minecraft:oak_fence",
+              "properties": {
                 "west": "true"
               }
             }
@@ -85,8 +85,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:acacia_fence",
-            "Properties": {
+            "id": "minecraft:acacia_fence",
+            "properties": {
               "west": "true"
             }
           }
@@ -95,36 +95,36 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:blackstone"
+              "id": "minecraft:blackstone"
             }
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "graveyard:charred_planks"
+            "id": "graveyard:charred_planks"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:mossy_cobblestone"
+              "id": "minecraft:mossy_cobblestone"
             }
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "graveyard:scorched_planks"
+            "id": "graveyard:scorched_planks"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone_slab",
-              "Properties": {
+              "id": "minecraft:cobblestone_slab",
+              "properties": {
                 "type": "bottom"
               }
             }
@@ -133,8 +133,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "graveyard:scorched_slab",
-            "Properties": {
+            "id": "graveyard:scorched_slab",
+            "properties": {
               "type": "bottom"
             }
           }
@@ -143,8 +143,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone_stairs",
-              "Properties": {
+              "id": "minecraft:cobblestone_stairs",
+              "properties": {
                 "facing": "east",
                 "half": "bottom"
               }
@@ -154,8 +154,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "graveyard:scorched_stairs",
-            "Properties": {
+            "id": "graveyard:scorched_stairs",
+            "properties": {
               "facing": "east",
               "half": "bottom"
             }
@@ -165,22 +165,22 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:gravel"
+              "id": "minecraft:gravel"
             }
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:coarse_dirt"
+            "id": "minecraft:coarse_dirt"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_stairs",
-              "Properties": {
+              "id": "minecraft:oak_stairs",
+              "properties": {
                 "facing": "east",
                 "half": "bottom"
               }
@@ -190,8 +190,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:acacia_stairs",
-            "Properties": {
+            "id": "minecraft:acacia_stairs",
+            "properties": {
               "facing": "east",
               "half": "bottom"
             }
@@ -201,8 +201,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_stairs",
-              "Properties": {
+              "id": "minecraft:oak_stairs",
+              "properties": {
                 "facing": "north",
                 "half": "bottom"
               }
@@ -212,8 +212,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:acacia_stairs",
-            "Properties": {
+            "id": "minecraft:acacia_stairs",
+            "properties": {
               "facing": "north",
               "half": "bottom"
             }
@@ -223,8 +223,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_stairs",
-              "Properties": {
+              "id": "minecraft:oak_stairs",
+              "properties": {
                 "facing": "south",
                 "half": "bottom"
               }
@@ -234,8 +234,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:acacia_stairs",
-            "Properties": {
+            "id": "minecraft:acacia_stairs",
+            "properties": {
               "facing": "south",
               "half": "bottom"
             }
@@ -245,8 +245,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone_stairs",
-              "Properties": {
+              "id": "minecraft:cobblestone_stairs",
+              "properties": {
                 "facing": "north",
                 "half": "bottom"
               }
@@ -256,8 +256,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "graveyard:scorched_stairs",
-            "Properties": {
+            "id": "graveyard:scorched_stairs",
+            "properties": {
               "facing": "north",
               "half": "bottom"
             }
@@ -267,8 +267,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone_stairs",
-              "Properties": {
+              "id": "minecraft:cobblestone_stairs",
+              "properties": {
                 "facing": "south",
                 "half": "bottom"
               }
@@ -278,8 +278,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "graveyard:scorched_stairs",
-            "Properties": {
+            "id": "graveyard:scorched_stairs",
+            "properties": {
               "facing": "south",
               "half": "bottom"
             }
@@ -289,8 +289,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_log",
-              "Properties": {
+              "id": "minecraft:oak_log",
+              "properties": {
                 "axis": "y"
               }
             }
@@ -299,8 +299,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:acacia_log",
-            "Properties": {
+            "id": "minecraft:acacia_log",
+            "properties": {
               "axis": "y"
             }
           }
@@ -309,8 +309,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_log",
-              "Properties": {
+              "id": "minecraft:oak_log",
+              "properties": {
                 "axis": "x"
               }
             }
@@ -319,8 +319,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:acacia_log",
-            "Properties": {
+            "id": "minecraft:acacia_log",
+            "properties": {
               "axis": "x"
             }
           }

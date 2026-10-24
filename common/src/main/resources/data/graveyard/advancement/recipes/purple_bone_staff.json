@@ -20,7 +20,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "graveyard:purple_bone_staff"
+        "recipes": "graveyard:purple_bone_staff"
       }
     }
   },

@@ -7,8 +7,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone_slab",
-              "Properties": {
+              "id": "minecraft:cobblestone_slab",
+              "properties": {
                 "type": "bottom"
               }
             }
@@ -17,8 +17,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:diorite_slab",
-            "Properties": {
+            "id": "minecraft:diorite_slab",
+            "properties": {
               "type": "bottom"
             }
           }
@@ -27,8 +27,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_slab",
-              "Properties": {
+              "id": "minecraft:oak_slab",
+              "properties": {
                 "type": "bottom"
               }
             }
@@ -37,8 +37,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:spruce_slab",
-            "Properties": {
+            "id": "minecraft:spruce_slab",
+            "properties": {
               "type": "bottom"
             }
           }
@@ -47,36 +47,36 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone"
+              "id": "minecraft:cobblestone"
             }
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:diorite"
+            "id": "minecraft:diorite"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:mossy_cobblestone"
+              "id": "minecraft:mossy_cobblestone"
             }
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:diorite"
+            "id": "minecraft:diorite"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_stairs",
-              "Properties": {
+              "id": "minecraft:oak_stairs",
+              "properties": {
                 "facing": "north",
                 "half": "bottom"
               }
@@ -86,8 +86,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:spruce_stairs",
-            "Properties": {
+            "id": "minecraft:spruce_stairs",
+            "properties": {
               "facing": "north",
               "half": "bottom"
             }
@@ -97,8 +97,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone_stairs",
-              "Properties": {
+              "id": "minecraft:cobblestone_stairs",
+              "properties": {
                 "facing": "north",
                 "half": "bottom"
               }
@@ -108,8 +108,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:diorite_stairs",
-            "Properties": {
+            "id": "minecraft:diorite_stairs",
+            "properties": {
               "facing": "north",
               "half": "bottom"
             }
@@ -119,8 +119,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_stairs",
-              "Properties": {
+              "id": "minecraft:oak_stairs",
+              "properties": {
                 "facing": "west",
                 "half": "bottom"
               }
@@ -130,8 +130,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:spruce_stairs",
-            "Properties": {
+            "id": "minecraft:spruce_stairs",
+            "properties": {
               "facing": "west",
               "half": "bottom"
             }
@@ -141,22 +141,22 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_fence"
+              "id": "minecraft:oak_fence"
             }
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:spruce_fence"
+            "id": "minecraft:spruce_fence"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_fence",
-              "Properties": {
+              "id": "minecraft:oak_fence",
+              "properties": {
                 "east": "true"
               }
             }
@@ -165,8 +165,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:spruce_fence",
-            "Properties": {
+            "id": "minecraft:spruce_fence",
+            "properties": {
               "east": "true"
             }
           }
@@ -175,8 +175,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_fence",
-              "Properties": {
+              "id": "minecraft:oak_fence",
+              "properties": {
                 "west": "true"
               }
             }
@@ -185,8 +185,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:spruce_fence",
-            "Properties": {
+            "id": "minecraft:spruce_fence",
+            "properties": {
               "west": "true"
             }
           }
@@ -195,8 +195,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone_stairs",
-              "Properties": {
+              "id": "minecraft:cobblestone_stairs",
+              "properties": {
                 "facing": "east",
                 "half": "bottom"
               }
@@ -206,8 +206,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:diorite_stairs",
-            "Properties": {
+            "id": "minecraft:diorite_stairs",
+            "properties": {
               "facing": "east",
               "half": "bottom"
             }
@@ -217,8 +217,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_stairs",
-              "Properties": {
+              "id": "minecraft:oak_stairs",
+              "properties": {
                 "facing": "east",
                 "half": "bottom"
               }
@@ -228,8 +228,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:spruce_stairs",
-            "Properties": {
+            "id": "minecraft:spruce_stairs",
+            "properties": {
               "facing": "east",
               "half": "bottom"
             }
@@ -239,8 +239,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_stairs",
-              "Properties": {
+              "id": "minecraft:oak_stairs",
+              "properties": {
                 "facing": "south",
                 "half": "bottom"
               }
@@ -250,8 +250,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:spruce_stairs",
-            "Properties": {
+            "id": "minecraft:spruce_stairs",
+            "properties": {
               "facing": "south",
               "half": "bottom"
             }
@@ -261,8 +261,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone_stairs",
-              "Properties": {
+              "id": "minecraft:cobblestone_stairs",
+              "properties": {
                 "facing": "south",
                 "half": "bottom"
               }
@@ -272,8 +272,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:diorite_stairs",
-            "Properties": {
+            "id": "minecraft:diorite_stairs",
+            "properties": {
               "facing": "south",
               "half": "bottom"
             }
@@ -283,8 +283,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_log",
-              "Properties": {
+              "id": "minecraft:oak_log",
+              "properties": {
                 "axis": "y"
               }
             }
@@ -293,8 +293,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:spruce_log",
-            "Properties": {
+            "id": "minecraft:spruce_log",
+            "properties": {
               "axis": "y"
             }
           }
@@ -303,8 +303,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:oak_log",
-              "Properties": {
+              "id": "minecraft:oak_log",
+              "properties": {
                 "axis": "x"
               }
             }
@@ -313,8 +313,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:spruce_log",
-            "Properties": {
+            "id": "minecraft:spruce_log",
+            "properties": {
               "axis": "x"
             }
           }

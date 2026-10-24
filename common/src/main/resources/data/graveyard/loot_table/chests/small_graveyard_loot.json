@@ -9,11 +9,9 @@
           "type": "minecraft:loot_table",
           "value": "graveyard:chronicle/pages_world",
           "weight": 1,
-          "conditions": [
-            {
-              "condition": "graveyard:pages_in_loot"
-            }
-          ]
+          "condition": {
+            "type": "graveyard:pages_in_loot"
+          }
         },
         {
           "type": "minecraft:empty",
@@ -28,65 +26,57 @@
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 10,
-                "max": 20
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 10,
+              "max": 20
+            },
+            "add": false
+          },
           "name": "minecraft:oak_log"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 20
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 20
+            },
+            "add": false
+          },
           "name": "minecraft:hay_block"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 25,
-                "max": 30
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 25,
+              "max": 30
+            },
+            "add": false
+          },
           "name": "minecraft:pumpkin"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 22
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 22
+            },
+            "add": false
+          },
           "name": "minecraft:white_wool"
         }
       ]
@@ -98,65 +88,57 @@
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 30
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 30
+            },
+            "add": false
+          },
           "name": "minecraft:stone"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 30
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 30
+            },
+            "add": false
+          },
           "name": "minecraft:diorite"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 30
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 30
+            },
+            "add": false
+          },
           "name": "minecraft:andesite"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 30
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 30
+            },
+            "add": false
+          },
           "name": "minecraft:granite"
         }
       ]
@@ -168,97 +150,85 @@
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 25
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 25
+            },
+            "add": false
+          },
           "name": "minecraft:beetroot"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 25
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 25
+            },
+            "add": false
+          },
           "name": "minecraft:wheat"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 25
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 25
+            },
+            "add": false
+          },
           "name": "minecraft:potato"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 25
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 25
+            },
+            "add": false
+          },
           "name": "minecraft:carrot"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 25
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 25
+            },
+            "add": false
+          },
           "name": "minecraft:apple"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 15,
-                "max": 25
-              },
-              "add": false
-            }
-          ],
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 15,
+              "max": 25
+            },
+            "add": false
+          },
           "name": "minecraft:wheat_seeds"
         }
       ]

@@ -20,7 +20,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "graveyard:black_bone_staff"
+        "recipes": "graveyard:black_bone_staff"
       }
     }
   },

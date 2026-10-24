@@ -19,20 +19,25 @@
         {
           "type": "graveyard:acolyte",
           "weight": 25,
-          "minCount": 1,
-          "maxCount": 1
+          "count": 1
         },
         {
           "type": "graveyard:corrupted_vindicator",
           "weight": 35,
-          "minCount": 1,
-          "maxCount": 3
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 3
+          }
         },
         {
           "type": "graveyard:corrupted_pillager",
           "weight": 35,
-          "minCount": 1,
-          "maxCount": 3
+          "count": {
+            "type": "minecraft:uniform",
+            "min_inclusive": 1,
+            "max_inclusive": 3
+          }
         }
       ]
     }

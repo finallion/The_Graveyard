@@ -18,17 +18,15 @@
   "criteria": {
     "giant_mushroom": {
       "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "minecraft:location": {
-                "structures": "graveyard:giant_mushroom"
-              }
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:location": {
+              "structures": "graveyard:giant_mushroom"
             }
           }
-        ]
+        }
       },
       "trigger": "minecraft:location"
     }

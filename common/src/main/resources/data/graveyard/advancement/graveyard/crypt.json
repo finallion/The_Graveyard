@@ -18,17 +18,15 @@
   "criteria": {
     "crypt": {
       "conditions": {
-        "player": [
-          {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "minecraft:location": {
-                "structures": "graveyard:crypt"
-              }
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:location": {
+              "structures": "graveyard:crypt"
             }
           }
-        ]
+        }
       },
       "trigger": "minecraft:location"
     }

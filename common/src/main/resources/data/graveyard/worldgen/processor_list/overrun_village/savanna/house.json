@@ -27,15 +27,15 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:soul_torch"
+            "id": "minecraft:soul_torch"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:wall_torch",
-              "Properties": {
+              "id": "minecraft:wall_torch",
+              "properties": {
                 "facing": "north"
               }
             }
@@ -44,8 +44,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:soul_wall_torch",
-            "Properties": {
+            "id": "minecraft:soul_wall_torch",
+            "properties": {
               "facing": "north"
             }
           }
@@ -54,8 +54,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:wall_torch",
-              "Properties": {
+              "id": "minecraft:wall_torch",
+              "properties": {
                 "facing": "east"
               }
             }
@@ -64,8 +64,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:soul_wall_torch",
-            "Properties": {
+            "id": "minecraft:soul_wall_torch",
+            "properties": {
               "facing": "east"
             }
           }
@@ -74,8 +74,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:wall_torch",
-              "Properties": {
+              "id": "minecraft:wall_torch",
+              "properties": {
                 "facing": "south"
               }
             }
@@ -84,8 +84,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:soul_wall_torch",
-            "Properties": {
+            "id": "minecraft:soul_wall_torch",
+            "properties": {
               "facing": "south"
             }
           }
@@ -94,8 +94,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:wall_torch",
-              "Properties": {
+              "id": "minecraft:wall_torch",
+              "properties": {
                 "facing": "west"
               }
             }
@@ -104,8 +104,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:soul_wall_torch",
-            "Properties": {
+            "id": "minecraft:soul_wall_torch",
+            "properties": {
               "facing": "west"
             }
           }
@@ -119,7 +119,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -132,7 +132,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -145,7 +145,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:cobweb"
+            "id": "minecraft:cobweb"
           }
         },
         {
@@ -158,7 +158,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -171,7 +171,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:cobweb"
+            "id": "minecraft:cobweb"
           }
         },
         {
@@ -184,7 +184,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -197,7 +197,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:cobweb"
+            "id": "minecraft:cobweb"
           }
         },
         {
@@ -210,7 +210,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -223,7 +223,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -235,7 +235,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -247,7 +247,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:coarse_dirt"
+            "id": "minecraft:coarse_dirt"
           }
         },
         {
@@ -259,7 +259,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:magma_block"
+            "id": "minecraft:magma_block"
           }
         },
         {
@@ -271,7 +271,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -284,7 +284,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -297,7 +297,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -310,7 +310,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -322,7 +322,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:cauldron"
+            "id": "minecraft:cauldron"
           }
         },
         {
@@ -334,7 +334,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -346,7 +346,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -358,7 +358,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:air"
+            "id": "minecraft:air"
           }
         },
         {
@@ -371,7 +371,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:coarse_dirt"
+            "id": "minecraft:coarse_dirt"
           }
         },
         {
@@ -384,7 +384,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:coarse_dirt"
+            "id": "minecraft:coarse_dirt"
           }
         }
       ]
@@ -396,22 +396,22 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone"
+              "id": "minecraft:cobblestone"
             }
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:terracotta"
+            "id": "minecraft:terracotta"
           }
         },
         {
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone_wall",
-              "Properties": {
+              "id": "minecraft:cobblestone_wall",
+              "properties": {
                 "east": "none",
                 "waterlogged": "false",
                 "south": "none",
@@ -425,8 +425,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:acacia_fence",
-            "Properties": {
+            "id": "minecraft:acacia_fence",
+            "properties": {
               "north": "true",
               "east": "false",
               "south": "false",
@@ -439,8 +439,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone_wall",
-              "Properties": {
+              "id": "minecraft:cobblestone_wall",
+              "properties": {
                 "east": "low",
                 "waterlogged": "false",
                 "south": "low",
@@ -454,8 +454,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:acacia_fence",
-            "Properties": {
+            "id": "minecraft:acacia_fence",
+            "properties": {
               "north": "true",
               "east": "true",
               "south": "true",
@@ -468,8 +468,8 @@
           "input_predicate": {
             "predicate_type": "minecraft:blockstate_match",
             "block_state": {
-              "Name": "minecraft:cobblestone_wall",
-              "Properties": {
+              "id": "minecraft:cobblestone_wall",
+              "properties": {
                 "east": "none",
                 "waterlogged": "false",
                 "south": "none",
@@ -483,8 +483,8 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:acacia_fence",
-            "Properties": {
+            "id": "minecraft:acacia_fence",
+            "properties": {
               "north": "false",
               "east": "false",
               "south": "false",

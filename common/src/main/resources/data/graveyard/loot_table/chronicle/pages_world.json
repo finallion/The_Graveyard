@@ -8,172 +8,138 @@
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"on_bells\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"on_bells\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"the_shroud\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"the_shroud\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"the_gravedigger\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"the_gravedigger\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"the_red_moon\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"the_red_moon\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"fog\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"fog\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"the_quiet\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"the_quiet\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"plague_rain\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"plague_rain\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"on_the_scarecrow\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"on_the_scarecrow\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"letter_unsent_1\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"letter_unsent_1\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"letter_unsent_2\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"letter_unsent_2\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"letter_unsent_3\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"letter_unsent_3\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"roberts_diary_last\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"roberts_diary_last\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"notes_64\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"notes_64\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"the_mycelium_1\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"the_mycelium_1\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"the_mycelium_2\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"the_mycelium_2\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"the_tree\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"the_tree\"}"
+          }
         },
         {
           "type": "minecraft:item",
           "name": "graveyard:diary_page",
-          "functions": [
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{page:\"the_column\"}"
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:set_custom_data",
+            "tag": "{page:\"the_column\"}"
+          }
         }
       ]
     }

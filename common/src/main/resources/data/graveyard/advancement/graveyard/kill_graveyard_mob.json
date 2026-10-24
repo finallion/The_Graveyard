@@ -19,57 +19,49 @@
     "ghoul": {
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
-        "entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "predicate": {
-              "minecraft:entity_type": "graveyard:ghoul"
-            },
-            "entity": "this"
-          }
-        ]
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "predicate": {
+            "minecraft:entity_type": "graveyard:ghoul"
+          },
+          "entity": "this"
+        }
       }
     },
     "skeleton_creeper": {
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
-        "entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "predicate": {
-              "minecraft:entity_type": "graveyard:skeleton_creeper"
-            },
-            "entity": "this"
-          }
-        ]
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "predicate": {
+            "minecraft:entity_type": "graveyard:skeleton_creeper"
+          },
+          "entity": "this"
+        }
       }
     },
     "revenant": {
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
-        "entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "predicate": {
-              "minecraft:entity_type": "graveyard:revenant"
-            },
-            "entity": "this"
-          }
-        ]
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "predicate": {
+            "minecraft:entity_type": "graveyard:revenant"
+          },
+          "entity": "this"
+        }
       }
     },
     "reaper": {
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
-        "entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "predicate": {
-              "minecraft:entity_type": "graveyard:reaper"
-            },
-            "entity": "this"
-          }
-        ]
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "predicate": {
+            "minecraft:entity_type": "graveyard:reaper"
+          },
+          "entity": "this"
+        }
       }
     }
   },
