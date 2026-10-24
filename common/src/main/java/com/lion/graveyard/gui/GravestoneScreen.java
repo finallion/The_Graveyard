@@ -1,18 +1,17 @@
 package com.lion.graveyard.gui;
 
 import com.lion.graveyard.blockentities.GravestoneBlockEntity;
-import com.lion.graveyard.blockentities.renders.GravestoneBlockEntityRenderer;
+import com.lion.graveyard.blocks.GravestoneBlock;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.font.TextFieldHelper;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.CharacterEvent;
 import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.model.Model;
 import net.minecraft.client.multiplayer.ClientPacketListener;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ServerboundSignUpdatePacket;
@@ -23,14 +22,13 @@ import java.util.stream.IntStream;
 
 @Environment(EnvType.CLIENT)
 public class GravestoneScreen extends Screen {
-    private static final float SIGN_SCALE = 62.500004F;
+    private static final float FACE_SCALE = 3.9F;
     private static final float TEXT_SCALE = 0.9765628F;
     private static final float SIGN_Y_OFFSET = 90.0F;
     private final GravestoneBlockEntity sign;
     private int ticksSinceOpened;
     private int currentRow;
     private TextFieldHelper selectionManager;
-    private Model.Simple model;
     private String[] text;
     private SignText signText;
 
@@ -57,8 +55,6 @@ public class GravestoneScreen extends Screen {
                 TextFieldHelper.createClipboardSetter(this.minecraft),
                 (string) -> this.minecraft.font.width(string) <= this.sign.getMaxTextWidth()
         );
-
-        this.model = GravestoneBlockEntityRenderer.createSignModel();
     }
 
     private void setCurrentRowMessage(String message) {
@@ -139,15 +135,12 @@ public class GravestoneScreen extends Screen {
     }
 
     private void extractSignBackground(GuiGraphicsExtractor context) {
-        if (this.model == null) {
+        if (!(this.sign.getBlockState().getBlock() instanceof GravestoneBlock gravestone)) {
             return;
         }
 
-        int center = this.width / 2;
-        ScreenRectangle scissor = context.scissorStack.peek();
-        context.guiRenderState.addPicturesInPictureState(
-                new GravestoneSignRenderState(this.model, this.sign.getBlockState().getBlock(), center - 48, 66, center + 48, 168, SIGN_SCALE, scissor)
-        );
+        context.pose().scale(FACE_SCALE, FACE_SCALE);
+        context.blit(RenderPipelines.GUI_TEXTURED, gravestone.getTexture(), -12, -6, 2.0F, 2.0F, 24, 12, 24, 12, 64, 32);
     }
 
     private void extractSignText(GuiGraphicsExtractor context) {

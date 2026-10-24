@@ -2,7 +2,6 @@ package com.lion.graveyard.fabric;
 
 import com.lion.graveyard.GraveyardClient;
 import com.lion.graveyard.client.FragmentSpotHints;
-import com.lion.graveyard.gui.GravestoneSignRenderer;
 import com.lion.graveyard.gui.OssuaryScreen;
 import com.lion.graveyard.init.*;
 import com.lion.graveyard.particles.GraveyardFogParticle;
@@ -21,7 +20,6 @@ import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.fabric.api.client.screen.v1.Screens;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.PictureInPictureRendererRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.SonicBoomParticle;
 import net.minecraft.client.color.block.BlockTintSources;
@@ -35,7 +33,6 @@ public class GraveyardClientFabric implements ClientModInitializer {
         GraveyardClient.postInit();
 
         MenuScreens.register(TGScreens.OSSUARY_SCREEN_HANDLER, OssuaryScreen::new);
-        PictureInPictureRendererRegistry.register(context -> new GravestoneSignRenderer());
         ClientTickEvents.END_CLIENT_TICK.register(AnimationPreviewClient::clientTick);
         ClientTickEvents.END_CLIENT_TICK.register(FragmentSpotHints::clientTick);
         ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> ChronicleButton.addTo(screen, Screens.getWidgets(screen)::add));

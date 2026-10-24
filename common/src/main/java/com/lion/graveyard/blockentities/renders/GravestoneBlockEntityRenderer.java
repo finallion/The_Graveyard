@@ -1,10 +1,7 @@
 package com.lion.graveyard.blockentities.renders;
 
-import com.google.common.collect.Maps;
 import com.lion.graveyard.blockentities.GravestoneBlockEntity;
 import com.lion.graveyard.blocks.GravestoneBlock;
-import com.lion.graveyard.init.TGBlocks;
-import com.lion.graveyard.util.GravestoneIdentifier;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.fabricmc.api.EnvType;
@@ -13,10 +10,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.UVPair;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.OrderedSubmitNodeCollector;
@@ -32,7 +25,6 @@ import net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives;
 import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.state.level.QuadParticleRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -40,7 +32,6 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.geometry.BakedQuad;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
@@ -48,7 +39,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -56,7 +46,6 @@ import org.joml.Quaternionf;
 import org.joml.Vector3fc;
 import java.util.ArrayList;
 import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,8 +56,6 @@ public class GravestoneBlockEntityRenderer
     private static final int RENDER_DISTANCE = Mth.square(16);
     private final Font textRenderer;
     private final ItemModelResolver itemModelResolver;
-    private static final HashMap<Block, RenderType> LAYERS = Maps.newHashMap();
-    private static RenderType defaultLayer;
 
     public GravestoneBlockEntityRenderer(BlockEntityRendererProvider.Context ctx) {
         this.textRenderer = ctx.font();
@@ -208,39 +195,6 @@ public class GravestoneBlockEntityRenderer
             int l = (int)((double) ARGB.blue(i) * d);
             return ARGB.color(255, j, k, l);
         }
-    }
-
-    public static Model.Simple createSignModel() {
-        MeshDefinition mesh = new MeshDefinition();
-
-        mesh.getRoot().addOrReplaceChild(
-                "sign",
-                CubeListBuilder.create().texOffs(0, 0).addBox(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F),
-                PartPose.ZERO
-        );
-
-        return new Model.Simple(LayerDefinition.create(mesh, 64, 32).bakeRoot(), RenderTypes::entityCutout);
-    }
-
-    static {
-        defaultLayer = RenderTypes.entitySolid(Identifier.withDefaultNamespace("textures/entity/signs/oak.png"));
-        LAYERS.put(TGBlocks.GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.POLISHED_BASALT_GRAVESTONE_TEXTURE));
-        LAYERS.put(TGBlocks.COBBLESTONE_GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.COBBLESTONE_GRAVESTONE_TEXTURE));
-        LAYERS.put(TGBlocks.MOSSY_COBBLESTONE_GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.MOSSY_COBBLESTONE_GRAVESTONE_TEXTURE));
-        LAYERS.put(TGBlocks.DEEPSLATE_GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.DEEPSLATE_GRAVESTONE_TEXTURE));
-        LAYERS.put(TGBlocks.BLACKSTONE_GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.BLACKSTONE_GRAVESTONE_TEXTURE));
-        LAYERS.put(TGBlocks.CRACKED_BLACKSTONE_GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.CRACKED_BLACKSTONE_GRAVESTONE_TEXTURE));
-        LAYERS.put(TGBlocks.STONE_BRICKS_GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.STONE_BRICKS_GRAVESTONE_TEXTURE));
-        LAYERS.put(TGBlocks.MOSSY_STONE_BRICKS_GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.MOSSY_STONE_BRICKS_GRAVESTONE_TEXTURE));
-        LAYERS.put(TGBlocks.BRICKS_GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.BRICKS_GRAVESTONE_TEXTURE));
-        LAYERS.put(TGBlocks.RED_SANDSTONE_GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.RED_SANDSTONE_GRAVESTONE_TEXTURE));
-        LAYERS.put(TGBlocks.SANDSTONE_GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.SANDSTONE_GRAVESTONE_TEXTURE));
-        LAYERS.put(TGBlocks.GILDED_BLACKSTONE_GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.GILDED_BLACKSTONE_GRAVESTONE_TEXTURE));
-        LAYERS.put(TGBlocks.QUARTZ_BRICKS_GRAVESTONE.get(), RenderTypes.entitySolid(GravestoneIdentifier.QUARTZ_BRICKS_GRAVESTONE_TEXTURE));
-    }
-
-    public static RenderType getRenderType(Block block) {
-        return LAYERS.getOrDefault(block, defaultLayer);
     }
 
     /// Sends item quads through submitModel, which draws the crumbling overlay.
