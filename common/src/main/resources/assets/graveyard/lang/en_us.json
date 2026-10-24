@@ -203,6 +203,7 @@
   "entity.graveyard.horde.appeared": "A large graveyard horde of undead has appeared near you.",
   "entity.graveyard.ghouling.kill": "Me make it stop moving!",
   "entity.graveyard.ghouling.call": "I am far from you... I come.",
+  "entity.graveyard.ghouling.stop_attack": "I stop.",
   "entity.graveyard.ghouling.no_landing": "There is no ground near you... I cannot come.",
   "entity.graveyard.ghouling.lost": "I cannot find the way to you.",
   "entity.graveyard.ghouling.gave_up": "I cannot reach you. Call me with the staff.",

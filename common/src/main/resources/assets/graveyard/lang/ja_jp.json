@@ -375,6 +375,7 @@
   "block.graveyard.sideways_full_skeleton": "横たわるスケルトン",
   "block.graveyard.sideways_full_wither_skeleton": "横たわるウィザースケルトン",
   "entity.graveyard.ghouling.call": "遠く離れてしまった……私は行く。",
+  "entity.graveyard.ghouling.stop_attack": "私はやめる。",
   "entity.graveyard.ghouling.no_landing": "あなたのそばに地面がない……行けない。",
   "entity.graveyard.ghouling.lost": "あなたへの道が見つからない。",
   "entity.graveyard.ghouling.gave_up": "あなたのもとへ行けない。杖で私を呼んで。",
