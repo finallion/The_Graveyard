@@ -5,6 +5,8 @@ import com.lion.graveyard.recipe.CarvingRecipe;
 import com.mojang.serialization.JsonOps;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.registries.VanillaRegistries;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.server.Bootstrap;
@@ -26,6 +28,7 @@ class CarvingIngredientCodecTest {
     static void bootstrap() {
         SharedConstants.tryDetectVersion();
         Bootstrap.bootStrap();
+        BuiltInRegistries.ITEM.listElements().forEach(item -> item.bindComponents(DataComponentMap.EMPTY));
         HolderLookup.Provider lookup = VanillaRegistries.createLookup();
         ops = RegistryOps.create(JsonOps.INSTANCE, lookup);
     }

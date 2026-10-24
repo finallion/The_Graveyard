@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "graveyard:tg_grass_block",
+    "graveyard:tg_podzol",
+    "minecraft:grass_block",
+    "minecraft:podzol",
+    "minecraft:mycelium"
+  ]
+}

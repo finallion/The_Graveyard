@@ -33,6 +33,7 @@ dependencies {
 	testImplementation "org.junit.jupiter:junit-jupiter"
 	testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 	testImplementation "com.google.code.gson:gson:2.10.1"
+	testImplementation "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
 }
 
 test {
@@ -42,4 +43,8 @@ test {
 		events "failed", "skipped"
 		exceptionFormat "short"
 	}
+}
+
+processResources {
+	from(rootProject.file("LICENSE"))
 }
