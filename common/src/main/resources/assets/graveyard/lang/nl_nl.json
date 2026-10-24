@@ -203,6 +203,7 @@
   "entity.graveyard.horde.appeared": "Een grote horde ondoden is in je buurt verschenen.",
   "entity.graveyard.ghouling.kill": "Ik maken dat het stopt met bewegen!",
   "entity.graveyard.ghouling.call": "Ik ben ver van je... ik kom.",
+  "entity.graveyard.ghouling.stop_attack": "Ik stop.",
   "entity.graveyard.ghouling.no_landing": "Er is geen grond bij jou... ik kan niet komen.",
   "entity.graveyard.ghouling.lost": "Ik kan de weg naar jou niet vinden.",
   "entity.graveyard.ghouling.gave_up": "Ik kan je niet bereiken. Roep me met de staf.",

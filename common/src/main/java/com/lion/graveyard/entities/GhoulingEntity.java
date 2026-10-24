@@ -170,6 +170,10 @@ public class GhoulingEntity extends GraveyardMinionEntity implements GeoEntity, 
             this.heal(0.01F);
         }
 
+        if (this.isAggressive() && (this.getTarget() == null || !this.getTarget().isAlive())) {
+            this.setAggressive(false);
+        }
+
         if (this.tickCount % BINDING_INTERVAL == 0 && this.level() instanceof ServerLevel serverWorld) {
             GhoulingBindings.get(serverWorld).update(this);
         }
@@ -366,7 +370,7 @@ public class GhoulingEntity extends GraveyardMinionEntity implements GeoEntity, 
                 .when(() -> getSpawnTimer() > 0, SPAWN_ANIMATION)
                 .startAt(SPAWN_ANIMATION, ghouling -> ghouling.getSpawnTimer() > 0 && AnimationPreview.forcedAnimation(ghouling) == null ? Math.max(0, SPAWN_ANIMATION_DURATION - ghouling.getSpawnTimer()) : 0)
                 .when(() -> getAttackAnimTimer() > 0, ATTACK_ANIMATION)
-                .when(state -> isAggressive() && AnimationTable.isMoving(state), RUN_ANIMATION)
+                .when(state -> isAggressive() && !isInWater() && AnimationTable.isMoving(state), RUN_ANIMATION)
                 .when(AnimationTable::isMoving, WALK_ANIMATION)
                 .otherwise(IDLE_ANIMATION)
                 .build(this, "controller"));

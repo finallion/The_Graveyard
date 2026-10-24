@@ -548,8 +548,13 @@ public class BoneStaffItem extends Item {
 
             stack.removeTagKey(CALL_KEY);
 
+            LivingEntity target = ghouling.getTarget();
+            boolean wasFighting = target != null && target.isAlive() || ghouling.isAggressive();
+
             if (!fetch(ghouling, world, owner)) {
                 owner.displayClientMessage(Component.translatable("entity.graveyard.ghouling.no_landing"), true);
+            } else if (wasFighting) {
+                owner.displayClientMessage(Component.translatable("entity.graveyard.ghouling.stop_attack"), true);
             }
 
             return;
