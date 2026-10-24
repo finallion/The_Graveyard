@@ -40,6 +40,8 @@ class EntityChunkUpgradeTest {
         assertFalse(ModProject.read(ModProject.RESOURCES.resolve("graveyard-common.mixins.json")).contains("Moonrise"));
         assertTrue(MOONRISE.contains("@Pseudo"));
         assertTrue(MOONRISE.contains("ca.spottedleaf.moonrise.patches.chunk_system.ChunkSystemConverters"));
+        assertTrue(moonriseConfig.contains("\"plugin\": \"com.lion.graveyard.util.OptionalTargetMixinPlugin\""));
+        assertTrue(Sources.code(ModProject.JAVA.resolve("util/OptionalTargetMixinPlugin.java")).contains("getResource(targetClassName.replace('.', '/') + \".class\")"));
         assertTrue(MOONRISE.contains("method = \"convertEntityChunkCompoundTag\""));
         assertTrue(MOONRISE.contains("require = 0"));
         assertTrue(MOONRISE.contains("EntityChunkUpgrade.upgradeWithoutGraveyardEntities"));
