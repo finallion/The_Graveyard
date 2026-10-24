@@ -203,6 +203,7 @@
   "entity.graveyard.horde.appeared": "Una grande orda di non morti è apparsa vicino a te.",
   "entity.graveyard.ghouling.kill": "Io fare smettere di muovere!",
   "entity.graveyard.ghouling.call": "Sono lontano da te... arrivo.",
+  "entity.graveyard.ghouling.stop_attack": "Mi fermo.",
   "entity.graveyard.ghouling.no_landing": "Non c'è terreno vicino a te... non posso venire.",
   "entity.graveyard.ghouling.lost": "Non riesco a trovare la strada fino a te.",
   "entity.graveyard.ghouling.gave_up": "Non riesco a raggiungerti. Chiamami con il bastone.",

@@ -375,6 +375,7 @@
   "block.graveyard.sideways_full_skeleton": "侧卧的骷髅",
   "block.graveyard.sideways_full_wither_skeleton": "侧卧的凋灵骷髅",
   "entity.graveyard.ghouling.call": "我离你很远……我来了。",
+  "entity.graveyard.ghouling.stop_attack": "我停下了。",
   "entity.graveyard.ghouling.no_landing": "你身边没有地面……我无法过去。",
   "entity.graveyard.ghouling.lost": "我找不到通向你的路。",
   "entity.graveyard.ghouling.gave_up": "我无法到达你身边。请用法杖召唤我。",

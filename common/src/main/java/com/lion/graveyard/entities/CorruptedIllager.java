@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.tags.EntityTypeTags;
@@ -162,6 +163,13 @@ public abstract class CorruptedIllager extends HordeGraveyardEntity {
     class AttackGoal extends MeleeAttackGoal {
         public AttackGoal(CorruptedIllager illager) {
             super(illager, 1.0D, false);
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            LivingEntity target = this.mob.getTarget();
+
+            return super.canContinueToUse() || target != null && target.isAlive() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(target) && this.mob.isWithinMeleeAttackRange(target);
         }
 
         @Override

@@ -286,7 +286,7 @@ public class BoneStaffItem extends Item {
 
     @Override
     public ItemUseAnimation getUseAnimation(ItemStack stack) {
-        return ItemUseAnimation.SPEAR;
+        return ItemUseAnimation.TRIDENT;
     }
 
     @Override
@@ -549,8 +549,13 @@ public class BoneStaffItem extends Item {
 
             LegacyItemData.clearFetchCall(stack);
 
+            LivingEntity target = ghouling.getTarget();
+            boolean wasFighting = target != null && target.isAlive() || ghouling.isAggressive();
+
             if (!fetch(ghouling, world, owner)) {
                 owner.sendOverlayMessage(Component.translatable("entity.graveyard.ghouling.no_landing"));
+            } else if (wasFighting) {
+                owner.sendOverlayMessage(Component.translatable("entity.graveyard.ghouling.stop_attack"));
             }
 
             return;

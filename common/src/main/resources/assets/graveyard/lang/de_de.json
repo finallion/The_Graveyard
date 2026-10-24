@@ -203,6 +203,7 @@
   "entity.graveyard.horde.appeared": "Eine große Horde Untoter ist in deiner Nähe erschienen.",
   "entity.graveyard.ghouling.kill": "Ich machen, dass es aufhört sich zu bewegen!",
   "entity.graveyard.ghouling.call": "Ich bin weit von dir... ich komme.",
+  "entity.graveyard.ghouling.stop_attack": "Ich höre auf.",
   "entity.graveyard.ghouling.no_landing": "Bei dir ist kein Boden... ich kann nicht kommen.",
   "entity.graveyard.ghouling.lost": "Ich finde den Weg zu dir nicht.",
   "entity.graveyard.ghouling.gave_up": "Ich kann dich nicht erreichen. Ruf mich mit dem Stab.",

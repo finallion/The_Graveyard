@@ -136,7 +136,7 @@ class MobFixesTest {
 
     @Test
     void ghoulDamageLandsOnTheVisibleHitFrame() {
-        assertTrue(code("entities/ai/goals/GhoulMeleeAttackGoal.java").contains("DAMAGE_START_IN_ANIM = 7;"));
+        assertTrue(code("entities/ai/goals/GhoulMeleeAttackGoal.java").contains("DAMAGE_START_IN_ANIM = 10;"));
     }
 
     @Test
@@ -167,5 +167,50 @@ class MobFixesTest {
         }
 
         assertTrue(code("entities/ai/goals/LichMeleeGoal.java").contains("distanceToSqr(target) <= d + 1.0D && this.mob.doHurtTarget"));
+    }
+
+    @Test
+    void ghoulingDoesNotRunInWaterAndDropsStaleAggression() {
+        assertTrue(code("entities/GhoulingEntity.java").contains("isAggressive() && !isInWater() && AnimationTable.isMoving(state)"));
+        assertTrue(body("entities/GhoulingEntity.java", "customServerAiStep").contains("setAggressive(false)"));
+    }
+
+    @Test
+    void illagerAndWraithKeepTheirMeleeGoalWhileInReach() {
+        for (String file : new String[] {"entities/CorruptedIllager.java", "entities/WraithEntity.java"}) {
+            String body = body(file, "canContinueToUse");
+
+            assertTrue(body.contains("NO_CREATIVE_OR_SPECTATOR"), file);
+            assertTrue(body.contains("this.mob.getTarget()"), file);
+        }
+    }
+
+    @Test
+    void illagerIgnoresNewHitsWhileOneIsPending() {
+        String body = body("entities/AnimatedCorruptedIllager.java", "doHurtTarget");
+
+        assertTrue(body.contains("this.pendingTarget != null"));
+        assertTrue(body.indexOf("this.pendingTarget != null") < body.indexOf("ATTACK_KIND"));
+    }
+
+    @Test
+    void staffRecallTellsWhenItStopsAnAttack() {
+        String call = body("item/BoneStaffItem.java", "call");
+
+        assertTrue(call.contains("entity.graveyard.ghouling.stop_attack"));
+        assertTrue(call.indexOf("wasFighting =") < call.indexOf("fetch("));
+    }
+
+    @Test
+    void ossuaryPlaysItsOpenSoundOnTheClient() {
+        String code = code("blockentities/OssuaryBlockEntity.java");
+
+        assertTrue(code.contains("level.playLocalSound(worldPosition, TGSounds.OSSUARY_OPEN.get()"));
+        assertFalse(code.contains("NotifySounds"));
+    }
+
+    @Test
+    void boneStaffUsesTheTridentPose() {
+        assertTrue(code("item/BoneStaffItem.java").contains("return ItemUseAnimation.TRIDENT;"));
     }
 }
