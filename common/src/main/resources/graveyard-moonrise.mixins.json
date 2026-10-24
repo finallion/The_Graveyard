@@ -1,6 +1,7 @@
 {
   "required": false,
   "package": "com.lion.graveyard.mixin",
+  "plugin": "com.lion.graveyard.util.OptionalTargetMixinPlugin",
   "compatibilityLevel": "JAVA_25",
   "minVersion": "0.8",
   "mixins": [
