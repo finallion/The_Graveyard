@@ -175,7 +175,7 @@ public class OssuaryScreenHandler extends AbstractContainerMenu {
         this.outputSlot.setByPlayer(ItemStack.EMPTY);
         this.availableRecipes = stack.isEmpty() ? Lists.newArrayList() : findRecipes(serverLevel, stack);
         this.availableResults = this.availableRecipes.stream()
-                .map(recipe -> recipe.value().getOutput().copy())
+                .map(recipe -> recipe.value().getOutput())
                 .toList();
 
         if (this.player instanceof ServerPlayer serverPlayer) {
@@ -188,12 +188,14 @@ public class OssuaryScreenHandler extends AbstractContainerMenu {
         List<RecipeHolder<OssuaryRecipe>> found = Lists.newArrayList();
 
         for (RecipeHolder<?> holder : level.recipeAccess().getRecipes()) {
-            if (holder.value() instanceof OssuaryRecipe recipe && recipe.matches(recipeInput, level)) {
+            if (holder.value() instanceof OssuaryRecipe recipe
+                    && recipe.matches(recipeInput, level)
+                    && !recipe.getOutput().isEmpty()) {
                 found.add(new RecipeHolder<>(holder.id(), recipe));
             }
         }
 
-        found.sort(Comparator.comparing(holder -> holder.value().getOutput().getItem().getDescriptionId()));
+        found.sort(Comparator.comparing(holder -> holder.value().getOutputItem().getDescriptionId()));
         return found;
     }
 

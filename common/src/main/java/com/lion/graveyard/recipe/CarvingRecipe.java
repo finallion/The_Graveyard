@@ -17,6 +17,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.PlacementInfo;
@@ -31,7 +32,7 @@ public abstract class CarvingRecipe implements Recipe<SingleRecipeInput> {
     public static final Codec<Ingredient> INGREDIENT_CODEC = Codec.withAlternative(Ingredient.CODEC, new LegacyIngredientCodec());
 
     protected final Ingredient input;
-    protected final ItemStack output;
+    protected final ItemStackTemplate output;
     private final RecipeType<? extends Recipe<SingleRecipeInput>> type;
     private final RecipeSerializer<? extends Recipe<SingleRecipeInput>> serializer;
     protected final String group;
@@ -42,7 +43,7 @@ public abstract class CarvingRecipe implements Recipe<SingleRecipeInput> {
             RecipeSerializer<? extends Recipe<SingleRecipeInput>> serializer,
             String group,
             Ingredient input,
-            ItemStack output
+            ItemStackTemplate output
     ) {
         this.type = type;
         this.serializer = serializer;
@@ -80,13 +81,17 @@ public abstract class CarvingRecipe implements Recipe<SingleRecipeInput> {
         return RecipeBookCategories.CRAFTING_MISC;
     }
 
+    public Item getOutputItem() {
+        return this.output.item().value();
+    }
+
     public ItemStack getOutput() {
-        return this.output;
+        return this.output.create();
     }
 
     @Override
     public ItemStack assemble(SingleRecipeInput inventory) {
-        return this.output.copy();
+        return this.output.create();
     }
 
     @Override
@@ -163,15 +168,15 @@ public abstract class CarvingRecipe implements Recipe<SingleRecipeInput> {
         MapCodec<T> codec = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 Codec.STRING.optionalFieldOf("group", "").forGetter(recipe -> recipe.group),
                 INGREDIENT_CODEC.fieldOf("ingredient").forGetter(recipe -> recipe.input),
-                BuiltInRegistries.ITEM.byNameCodec().validate(CarvingRecipe::notAir).fieldOf("result").forGetter(recipe -> recipe.output.getItem()),
-                ExtraCodecs.POSITIVE_INT.fieldOf("count").forGetter(recipe -> recipe.output.getCount())
-        ).apply(instance, (group, ingredient, item, count) -> recipeFactory.create(group, ingredient, new ItemStack(item, count))));
+                BuiltInRegistries.ITEM.byNameCodec().validate(CarvingRecipe::notAir).fieldOf("result").forGetter(recipe -> recipe.output.item().value()),
+                ExtraCodecs.POSITIVE_INT.fieldOf("count").forGetter(recipe -> recipe.output.count())
+        ).apply(instance, (group, ingredient, item, count) -> recipeFactory.create(group, ingredient, new ItemStackTemplate(item, count))));
         StreamCodec<RegistryFriendlyByteBuf, T> streamCodec = StreamCodec.composite(
                 ByteBufCodecs.STRING_UTF8,
                 recipe -> recipe.group,
                 Ingredient.CONTENTS_STREAM_CODEC,
                 recipe -> recipe.input,
-                ItemStack.STREAM_CODEC,
+                ItemStackTemplate.STREAM_CODEC,
                 recipe -> recipe.output,
                 recipeFactory::create
         );
@@ -180,6 +185,6 @@ public abstract class CarvingRecipe implements Recipe<SingleRecipeInput> {
     }
 
     public interface RecipeFactory<T extends CarvingRecipe> {
-        T create(String group, Ingredient input, ItemStack output);
+        T create(String group, Ingredient input, ItemStackTemplate output);
     }
 }
