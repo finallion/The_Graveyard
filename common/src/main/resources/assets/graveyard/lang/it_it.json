@@ -168,6 +168,8 @@
   "block.graveyard.bamboo_coffin": "Bara di bambù",
   "item.graveyard.cherry_coffin": "Bara di ciliegio",
   "block.graveyard.cherry_coffin": "Bara di ciliegio",
+  "item.graveyard.pale_oak_coffin": "Bara di quercia pallida",
+  "block.graveyard.pale_oak_coffin": "Bara di quercia pallida",
 
   "item.graveyard.vial_of_blood": "Fiala di sangue",
   "item.graveyard.vial_of_blood.level": "Livello di sangue: %s/8",

@@ -168,6 +168,8 @@
   "block.graveyard.bamboo_coffin": "Bamboe doodskist",
   "item.graveyard.cherry_coffin": "Kersenhouten doodskist",
   "block.graveyard.cherry_coffin": "Kersenhouten doodskist",
+  "item.graveyard.pale_oak_coffin": "Bleke eikenhouten doodskist",
+  "block.graveyard.pale_oak_coffin": "Bleke eikenhouten doodskist",
 
   "item.graveyard.vial_of_blood": "Flesje bloed",
   "item.graveyard.vial_of_blood.level": "Bloedniveau: %s/8",

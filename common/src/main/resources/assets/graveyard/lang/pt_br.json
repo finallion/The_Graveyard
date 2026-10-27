@@ -158,6 +158,8 @@
   "block.graveyard.bamboo_coffin": "Caixão de bambu",
   "item.graveyard.cherry_coffin": "Caixão de cerejeira",
   "block.graveyard.cherry_coffin": "Caixão de cerejeira",
+  "item.graveyard.pale_oak_coffin": "Caixão de carvalho pálido",
+  "block.graveyard.pale_oak_coffin": "Caixão de carvalho pálido",
   "item.graveyard.vial_of_blood": "Frasco de sangue",
   "item.graveyard.vial_of_blood.level": "Nível de sangue: %s/8",
   "item.graveyard.vial_of_blood.level_full": "Nível de sangue: cheio",

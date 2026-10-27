@@ -146,6 +146,8 @@
   "block.graveyard.bamboo_coffin": "Bambusowa trumna",
   "item.graveyard.cherry_coffin": "Wiśniowa trumna",
   "block.graveyard.cherry_coffin": "Wiśniowa trumna",
+  "item.graveyard.pale_oak_coffin": "Bladodębowa trumna",
+  "block.graveyard.pale_oak_coffin": "Bladodębowa trumna",
 
   "item.graveyard.vial_of_blood": "Fiolka krwi",
   "item.graveyard.vial_of_blood.level": "Poziom krwi: %s/8",

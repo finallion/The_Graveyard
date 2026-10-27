@@ -39,6 +39,7 @@ public class SarcophagusBlockEntityRenderer<T extends BlockEntity & LidBlockEnti
 
     public static class State extends BlockEntityRenderState {
         public boolean headPart;
+        public boolean footCracks;
         public float openProgress;
         public Direction direction = Direction.NORTH;
         public final ItemStackRenderState base = new ItemStackRenderState();
@@ -72,8 +73,9 @@ public class SarcophagusBlockEntityRenderer<T extends BlockEntity & LidBlockEnti
         BlockEntityRenderer.super.extractRenderState(entity, state, partialTick, cameraPosition, crumblingOverlay);
         BlockState blockState = entity.getBlockState();
         state.headPart = entity.getLevel() != null && blockState.getValue(SarcophagusBlock.PART) == SarcophagusPart.HEAD;
+        state.footCracks = entity.getLevel() != null && !state.headPart && state.breakProgress != null;
 
-        if (!state.headPart) {
+        if (!state.headPart && !state.footCracks) {
             return;
         }
 
@@ -93,6 +95,14 @@ public class SarcophagusBlockEntityRenderer<T extends BlockEntity & LidBlockEnti
         if (state.headPart) {
             submitPart(state, poseStack, collector, state.lid, true);
             submitPart(state, poseStack, collector, state.base, false);
+        } else if (state.footCracks) {
+            // The head part submits the whole model. The foot part submits it again for the cracks.
+            Direction toHead = state.direction.getOpposite();
+            poseStack.pushPose();
+            poseStack.translate(toHead.getStepX(), 0.0F, toHead.getStepZ());
+            submitPart(state, poseStack, collector, state.lid, true);
+            submitPart(state, poseStack, collector, state.base, false);
+            poseStack.popPose();
         }
     }
 

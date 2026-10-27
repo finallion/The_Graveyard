@@ -152,6 +152,8 @@
   "block.graveyard.bamboo_coffin": "竹棺材",
   "item.graveyard.cherry_coffin": "樱花棺材",
   "block.graveyard.cherry_coffin": "樱花棺材",
+  "item.graveyard.pale_oak_coffin": "苍白橡木棺材",
+  "block.graveyard.pale_oak_coffin": "苍白橡木棺材",
 
   "item.graveyard.vial_of_blood": "血瓶",
   "item.graveyard.vial_of_blood.level": "血量：%s/8",

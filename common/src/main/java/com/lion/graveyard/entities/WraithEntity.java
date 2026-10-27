@@ -500,18 +500,18 @@ public class WraithEntity extends HostileGraveyardEntity implements GeoEntity {
                     }
 
                     if (random.nextInt(10) == 0) {
-                        if (blockState.is(Blocks.TORCH)) {
+                        if (blockState.is(Blocks.TORCH) || blockState.is(Blocks.COPPER_TORCH)) {
                             WraithEntity.this.level().setBlockAndUpdate(blockPos, Blocks.SOUL_TORCH.defaultBlockState());
                             torchAndLantern = true;
-                        } else if (blockState.is(Blocks.LANTERN)) {
+                        } else if ((blockState.is(Blocks.LANTERN) || (blockState.is(BlockTags.LANTERNS) && !blockState.is(Blocks.SOUL_LANTERN))) && blockState.hasProperty(BlockStateProperties.HANGING)) {
                             WraithEntity.this.level().setBlockAndUpdate(
                                     blockPos,
                                     Blocks.SOUL_LANTERN.defaultBlockState()
-                                            .setValue(BlockStateProperties.HANGING, blockState.getValue(BlockStateProperties.HANGING))
-                                            .setValue(BlockStateProperties.WATERLOGGED, blockState.getValue(BlockStateProperties.WATERLOGGED))
+                                            .setValue(BlockStateProperties.HANGING, blockState.getValueOrElse(BlockStateProperties.HANGING, false))
+                                            .setValue(BlockStateProperties.WATERLOGGED, blockState.getValueOrElse(BlockStateProperties.WATERLOGGED, false))
                             );
                             torchAndLantern = true;
-                        } else if (blockState.is(Blocks.WALL_TORCH)) {
+                        } else if (blockState.is(Blocks.WALL_TORCH) || blockState.is(Blocks.COPPER_WALL_TORCH)) {
                             WraithEntity.this.level().setBlockAndUpdate(
                                     blockPos,
                                     Blocks.SOUL_WALL_TORCH.defaultBlockState()

@@ -4,6 +4,7 @@ import com.lion.graveyard.Graveyard;
 import com.lion.graveyard.init.TGSounds;
 import com.lion.graveyard.trades.NamelessHangedTrades;
 import com.lion.villagertradingplus.tradeoffers.TradeFactory;
+import com.lion.villagertradingplus.tradeoffers.TradePricing;
 import com.lion.villagertradingplus.tradeoffers.gui.TradeControl;
 import net.minecraft.core.particles.ParticleTypes;
 
@@ -197,6 +198,7 @@ public class NamelessHangedEntity extends AbstractVillager implements GeoEntity,
         int offers = minOffers() + random.nextInt(maxOffers() - minOffers() + 1);
         this.offersDay = currentDay();
         int added = 0;
+        int firstNew = tradeOfferList.size();
 
         while (added < offers && !factorys.isEmpty()) {
             TradeFactory factory = factorys.remove(this.random.nextInt(factorys.size()));
@@ -207,6 +209,8 @@ public class NamelessHangedEntity extends AbstractVillager implements GeoEntity,
                 added++;
             }
         }
+
+        TradePricing.applyFrom(tradeOfferList, firstNew, this);
     }
 
     private static int minOffers() {
