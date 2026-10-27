@@ -32,7 +32,7 @@ public class DaggerItem extends SwordItem {
 
     @Override
     public float getDestroySpeed(ItemStack stack, BlockState state) {
-        if (state.is(Blocks.COBWEB) || state.is(Blocks.GLASS) || state.getBlock() instanceof IronBarsBlock || state.getBlock() instanceof StainedGlassBlock || state.getBlock() instanceof StainedGlassPaneBlock) {
+        if (state.is(Blocks.COBWEB) || state.is(Blocks.TINTED_GLASS) || state.is(Blocks.GLASS) || state.getBlock() instanceof IronBarsBlock || state.getBlock() instanceof StainedGlassBlock || state.getBlock() instanceof StainedGlassPaneBlock) {
             return 30.0F;
         } else {
             return state.is(BlockTags.SWORD_EFFICIENT) ? 1.5F : 1.0F;

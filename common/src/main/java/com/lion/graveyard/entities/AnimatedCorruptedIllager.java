@@ -365,6 +365,11 @@ public abstract class AnimatedCorruptedIllager extends CorruptedIllager implemen
     }
 
     @Override
+    protected boolean isAttackPending() {
+        return this.pendingTarget != null;
+    }
+
+    @Override
     protected boolean isImmobile() {
         return super.isImmobile() || this.getSpawnTimer() > 0;
     }

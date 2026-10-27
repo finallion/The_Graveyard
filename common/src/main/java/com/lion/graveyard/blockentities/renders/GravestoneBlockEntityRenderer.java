@@ -131,11 +131,6 @@ public class GravestoneBlockEntityRenderer implements BlockEntityRenderer<Graves
         matrixStack.popPose();
     }
 
-    @Override
-    public boolean shouldRenderOffScreen(GravestoneBlockEntity blockEntity) {
-        return true;
-    }
-
     private static boolean shouldRender(GravestoneBlockEntity sign, int signColor) {
         if (signColor == DyeColor.BLACK.getTextColor()) {
             return true;
