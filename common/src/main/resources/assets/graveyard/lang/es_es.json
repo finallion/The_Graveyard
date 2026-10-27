@@ -158,6 +158,8 @@
   "block.graveyard.bamboo_coffin": "Ataúd de bambú",
   "item.graveyard.cherry_coffin": "Ataúd de cerezo",
   "block.graveyard.cherry_coffin": "Ataúd de cerezo",
+  "item.graveyard.pale_oak_coffin": "Ataúd de roble pálido",
+  "block.graveyard.pale_oak_coffin": "Ataúd de roble pálido",
   "item.graveyard.vial_of_blood": "Vial de sangre",
   "item.graveyard.vial_of_blood.level": "Nivel de sangre: %s/8",
   "item.graveyard.vial_of_blood.level_full": "Nivel de sangre: lleno",

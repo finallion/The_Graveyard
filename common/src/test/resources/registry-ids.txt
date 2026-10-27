@@ -78,6 +78,7 @@ block:oak_coffin
 block:orange_terracotta_urn
 block:orange_urn
 block:ossuary
+block:pale_oak_coffin
 block:pedestal
 block:pink_terracotta_urn
 block:pink_urn
@@ -324,6 +325,9 @@ item:oak_coffin_lid
 item:orange_terracotta_urn
 item:orange_urn
 item:ossuary
+item:pale_oak_coffin
+item:pale_oak_coffin_base
+item:pale_oak_coffin_lid
 item:pedestal
 item:pink_terracotta_urn
 item:pink_urn

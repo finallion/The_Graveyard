@@ -23,11 +23,13 @@ public class GraveyardConfig {
             {"crowsEatCrops", "behaviour.crowsEatCrops"},
             {"smolderingBlocksInVillages", "behaviour.smolderingBlocksInVillages"},
             {"skeletonCreeperDestroysBlocks", "behaviour.skeletonCreeperDestroysBlocks"},
-            {"wraithGriefing", "behaviour.wraithGriefing"}};
+            {"wraithGriefing", "behaviour.wraithGriefing"},
+            {"darkIronOpensByHand", "behaviour.darkIronOpensByHand"}};
 
     private static final String[][] NUMBER_KEYS = {
             {"skeletonCreeperExplosionRadius", "behaviour.skeletonCreeperExplosionRadius"},
-            {"corvidTheftChance", "behaviour.magpieTheftChance"}};
+            {"corvidTheftChance", "behaviour.magpieTheftChance"},
+            {"soundVolume", "general.soundVolume"}};
 
     public final Map<String, StructureConfigEntry> structureConfigEntries = new HashMap<>();
     public final Map<String, MobConfigEntry> mobConfigEntries = new HashMap<>();

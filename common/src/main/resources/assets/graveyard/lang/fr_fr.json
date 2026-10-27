@@ -168,6 +168,8 @@
   "block.graveyard.bamboo_coffin": "Cercueil en bambou",
   "item.graveyard.cherry_coffin": "Cercueil en cerisier",
   "block.graveyard.cherry_coffin": "Cercueil en cerisier",
+  "item.graveyard.pale_oak_coffin": "Cercueil en chêne pâle",
+  "block.graveyard.pale_oak_coffin": "Cercueil en chêne pâle",
 
   "item.graveyard.vial_of_blood": "Fiole de sang",
   "item.graveyard.vial_of_blood.level": "Niveau de sang : %s/8",

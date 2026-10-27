@@ -175,11 +175,6 @@ public class GravestoneBlockEntityRenderer
         poseStack.popPose();
     }
 
-    @Override
-    public boolean shouldRenderOffScreen() {
-        return true;
-    }
-
     private static boolean shouldRender(GravestoneBlockEntity sign, int signColor) {
         if (signColor == DyeColor.BLACK.getTextColor()) {
             return true;

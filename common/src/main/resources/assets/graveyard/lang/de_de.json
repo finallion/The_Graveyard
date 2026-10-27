@@ -168,6 +168,8 @@
   "block.graveyard.bamboo_coffin": "Bambussarg",
   "item.graveyard.cherry_coffin": "Kirschsarg",
   "block.graveyard.cherry_coffin": "Kirschsarg",
+  "item.graveyard.pale_oak_coffin": "Blasseichensarg",
+  "block.graveyard.pale_oak_coffin": "Blasseichensarg",
 
   "item.graveyard.vial_of_blood": "Blutphiole",
   "item.graveyard.vial_of_blood.level": "Blutstand: %s/8",
