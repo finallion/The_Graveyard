@@ -10,6 +10,20 @@
     "graveyard:dark_iron_trapdoor",
     "graveyard:dark_iron_door",
     "graveyard:dark_iron_block",
-    "graveyard:ossuary"
+    "graveyard:ossuary",
+    "graveyard:gravestone",
+    "graveyard:cobblestone_gravestone",
+    "graveyard:mossy_cobblestone_gravestone",
+    "graveyard:deepslate_gravestone",
+    "graveyard:blackstone_gravestone",
+    "graveyard:cracked_blackstone_gravestone",
+    "graveyard:stone_bricks_gravestone",
+    "graveyard:mossy_stone_bricks_gravestone",
+    "graveyard:bricks_gravestone",
+    "graveyard:sandstone_gravestone",
+    "graveyard:red_sandstone_gravestone",
+    "graveyard:gilded_blackstone_gravestone",
+    "graveyard:quartz_bricks_gravestone",
+    "graveyard:sarcophagus"
   ]
 }

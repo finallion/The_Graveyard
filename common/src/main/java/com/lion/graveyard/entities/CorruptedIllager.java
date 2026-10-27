@@ -160,6 +160,10 @@ public abstract class CorruptedIllager extends HordeGraveyardEntity {
         return false;
     }
 
+    protected boolean isAttackPending() {
+        return false;
+    }
+
     class AttackGoal extends MeleeAttackGoal {
         public AttackGoal(CorruptedIllager illager) {
             super(illager, 1.0D, false);
@@ -174,6 +178,10 @@ public abstract class CorruptedIllager extends HordeGraveyardEntity {
 
         @Override
         protected boolean canPerformAttack(LivingEntity entity) {
+            if (CorruptedIllager.this.isAttackPending()) {
+                return false;
+            }
+
             if (this.mob.getVehicle() instanceof Ravager) {
                 float f = this.mob.getVehicle().getBbWidth() - 0.1F;
                 double reachSqr = f * 2.0F * f * 2.0F + entity.getBbWidth();

@@ -151,6 +151,8 @@
   "block.graveyard.bamboo_coffin": "Бамбуковый гроб",
   "item.graveyard.cherry_coffin": "Вишнёвый гроб",
   "block.graveyard.cherry_coffin": "Вишнёвый гроб",
+  "item.graveyard.pale_oak_coffin": "Гроб из бледного дуба",
+  "block.graveyard.pale_oak_coffin": "Гроб из бледного дуба",
 
   "item.graveyard.vial_of_blood": "Пузырек с кровью",
   "item.graveyard.vial_of_blood.level": "Уровень крови: %s/8",

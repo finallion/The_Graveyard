@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#Z#",
+    "###"
+  ],
+  "key": {
+    "#": "minecraft:pale_oak_planks",
+    "Z": "graveyard:dark_iron_ingot"
+  },
+  "result": {
+    "id": "graveyard:pale_oak_coffin"
+  }
+}

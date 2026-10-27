@@ -22,7 +22,8 @@
   ],
   "client": [
     "ClientPlayNetworkHandlerMixin",
-    "client.HandledScreenAccessor"
+    "client.HandledScreenAccessor",
+    "client.SoundEngineMixin"
   ],
   "injectors": {
     "defaultRequire": 1

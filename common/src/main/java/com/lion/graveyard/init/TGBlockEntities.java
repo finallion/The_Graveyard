@@ -103,6 +103,7 @@ public class TGBlockEntities {
                             TGBlocks.WARPED_COFFIN.get(),
                             TGBlocks.SPRUCE_COFFIN.get(),
                             TGBlocks.CHERRY_COFFIN.get(),
+                            TGBlocks.PALE_OAK_COFFIN.get(),
                             TGBlocks.BAMBOO_COFFIN.get(),
                             TGBlocks.MANGROVE_COFFIN.get()
                     )
