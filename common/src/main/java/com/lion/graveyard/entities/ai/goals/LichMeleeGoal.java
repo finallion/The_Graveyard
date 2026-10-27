@@ -10,7 +10,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.phys.Vec3;
 
 public class LichMeleeGoal extends AbstractGraveyardMeleeGoal<LichEntity> {
-    private final int DAMAGE_START_IN_ANIM = 18;
+    private static final int DAMAGE_START_IN_ANIM = 18;
+    private static final double HIT_REACH_SQUARED = 36.0D;
     private int scareSoundAge = 40;
     private final double chaseSpeed;
 
@@ -112,7 +113,7 @@ public class LichMeleeGoal extends AbstractGraveyardMeleeGoal<LichEntity> {
                     canFinishAttack = true;
                 }
 
-                if (canFinishAttack && animationTicker == DAMAGE_START_IN_ANIM && this.mob.distanceToSqr(target) <= d + 1.0D && this.mob.doHurtTarget(target)) {
+                if (canFinishAttack && animationTicker == DAMAGE_START_IN_ANIM && this.mob.distanceToSqr(target) <= HIT_REACH_SQUARED && this.mob.doHurtTarget(target)) {
                     Vec3 vec3d = mob.position().add(0.0D, 1.600000023841858D, 0.0D);
                     Vec3 vec3d2 = target.getEyePosition().subtract(vec3d);
                     Vec3 vec3d3 = vec3d2.normalize();

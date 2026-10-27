@@ -169,6 +169,10 @@ public abstract class CorruptedIllager extends HordeGraveyardEntity {
         return false;
     }
 
+    protected boolean isAttackPending() {
+        return false;
+    }
+
     class AttackGoal extends MeleeAttackGoal {
         public AttackGoal(CorruptedIllager illager) {
             super(illager, 1.0D, false);
@@ -179,6 +183,15 @@ public abstract class CorruptedIllager extends HordeGraveyardEntity {
             LivingEntity target = this.mob.getTarget();
 
             return super.canContinueToUse() || target != null && target.isAlive() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(target) && this.mob.distanceToSqr(target) <= this.getAttackReachSqr(target);
+        }
+
+        @Override
+        protected void checkAndPerformAttack(LivingEntity target, double distanceSqr) {
+            if (CorruptedIllager.this.isAttackPending()) {
+                return;
+            }
+
+            super.checkAndPerformAttack(target, distanceSqr);
         }
 
         @Override

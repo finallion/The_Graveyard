@@ -8,6 +8,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.QuartPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
@@ -118,11 +119,21 @@ public class TGJigsawStructure extends Structure {
             int y = entry.lowestY(210) + (highest > entry.lowestY(210) ? random.nextInt(highest - entry.lowestY(210) + 1) : 0);
             blockpos = new BlockPos(x, y, z);
         } else {
-            if (!TGJigsawStructure.canGenerate(context, terrainCheckSize, structureName, blockpos, maxHeightDifference)) {
+            Optional<GenerationStub> stub = this.startPieces(context, blockpos);
+
+            if (stub.isEmpty()
+                    || !isValidBiome(stub.get(), context)
+                    || !TGJigsawStructure.canGenerate(context, terrainCheckSize, structureName, blockpos, maxHeightDifference)) {
                 return Optional.empty();
             }
+
+            return stub;
         }
 
+        return this.startPieces(context, blockpos);
+    }
+
+    private Optional<GenerationStub> startPieces(GenerationContext context, BlockPos blockpos) {
         return JigsawPlacement.addPieces(
                 context,
                 this.startPool,
@@ -135,6 +146,16 @@ public class TGJigsawStructure extends Structure {
         );
     }
 
+    private static boolean isValidBiome(GenerationStub stub, GenerationContext context) {
+        BlockPos pos = stub.position();
+
+        return context.validBiome().test(context.chunkGenerator().getBiomeSource().getNoiseBiome(
+                QuartPos.fromBlock(pos.getX()),
+                QuartPos.fromBlock(pos.getY()),
+                QuartPos.fromBlock(pos.getZ()),
+                context.randomState().sampler()
+        ));
+    }
 
     private static boolean canGenerate(
             GenerationContext context,

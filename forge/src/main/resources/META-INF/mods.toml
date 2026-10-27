@@ -6,9 +6,9 @@ license = "GPL-3.0-only"
 modId = "graveyard"
 version = "${version}"
 displayName = "The Graveyard"
-authors = "Finallion"
+authors = "LithiumPlus"
 displayURL = "https://modrinth.com/mod/the-graveyard-forge"
-issueTrackerURL = "https://github.com/finallion/The-Graveyard-FABRIC/issues"
+issueTrackerURL = "https://github.com/finallion/The_Graveyard/issues"
 description = '''
 Adds new bosses, structures, mobs and blocks themed around the graveyard.
 

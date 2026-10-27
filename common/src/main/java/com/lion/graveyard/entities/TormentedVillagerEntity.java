@@ -2,6 +2,7 @@ package com.lion.graveyard.entities;
 
 import com.lion.graveyard.entities.animation.AnimationClock;
 import com.lion.graveyard.entities.animation.AnimationPreview;
+import com.lion.graveyard.entities.animation.AnimationTable;
 import com.lion.graveyard.init.TGAdvancements;
 import com.lion.graveyard.init.TGSounds;
 import org.jetbrains.annotations.Nullable;
@@ -331,12 +332,6 @@ public class TormentedVillagerEntity extends PathfinderMob implements GeoEntity 
         return AMBIENT_SOUND_DELAY;
     }
 
-    private boolean isWalking() {
-        double dx = this.getX() - this.xo;
-        double dz = this.getZ() - this.zo;
-        return dx * dx + dz * dz > 1.0E-5D;
-    }
-
     @Override
     protected float nextStep() {
         return this.moveDist + STEP_DISTANCE;
@@ -363,7 +358,7 @@ public class TormentedVillagerEntity extends PathfinderMob implements GeoEntity 
             state.getController().transitionLength(cut ? 0 : MOOD_TRANSITION_TICKS);
 
             if (mood == Mood.WANDERING) {
-                return state.setAndContinue(this.isWalking() ? Mood.WALK : mood.animation);
+                return state.setAndContinue(AnimationTable.isMoving(state) ? Mood.WALK : mood.animation);
             }
 
             return state.setAndContinue(mood.animation);

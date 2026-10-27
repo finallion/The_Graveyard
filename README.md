@@ -11,14 +11,22 @@ Adds new bosses, structures, mobs and blocks themed around the graveyard.
 
 | Minecraft | Loader | Required dependencies |
 | --- | --- | --- |
-| 1.20.1 | Fabric (Loader 0.14.21 or newer) | Fabric API 0.83.0 or newer, GeckoLib 4 (4.2.2 or newer), VillagerTradingPlus 1.x (1.1.0 or newer) |
-| 1.20.1 | Forge 47 (47.1 or newer) | GeckoLib 4 (4.2.2 or newer), VillagerTradingPlus 1.x (1.1.0 or newer) |
-| 1.21.1 | Fabric (Loader 0.16.0 or newer) | Fabric API 0.102.0 or newer, GeckoLib 4 (4.9.3 or newer), VillagerTradingPlus 1.x (1.1.0 or newer) |
-| 1.21.1 | NeoForge 21.1 | GeckoLib 4 (4.9.3 or newer), VillagerTradingPlus 1.x (1.1.0 or newer) |
-| 1.21.8 | Fabric (Loader 0.16.0 or newer) | Fabric API 0.129.0 or newer, GeckoLib 5 (5.2.0 or newer), VillagerTradingPlus 1.x (1.1.0 or newer) |
-| 1.21.8 | NeoForge 21.8 | GeckoLib 5 (5.2.0 or newer), VillagerTradingPlus 1.x (1.1.0 or newer) |
+| 1.20.1 | Fabric (Loader 0.14.21 or newer) | Fabric API 0.83.0 or newer, GeckoLib 4 (4.2.2 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
+| 1.20.1 | Forge 47 (47.1 or newer) | GeckoLib 4 (4.2.2 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
+| 1.21.1 | Fabric (Loader 0.16.0 or newer) | Fabric API 0.102.0 or newer, GeckoLib 4 (4.9.3 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
+| 1.21.1 | NeoForge 21.1 | GeckoLib 4 (4.9.3 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
+| 1.21.8 | Fabric (Loader 0.16.0 or newer) | Fabric API 0.129.0 or newer, GeckoLib 5 (5.2.0 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
+| 1.21.8 | NeoForge 21.8 | GeckoLib 5 (5.2.0 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
+| 1.21.11 | Fabric (Loader 0.19.5 or newer) | Fabric API 0.141.6 or newer, GeckoLib 5 (5.4.5 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
+| 1.21.11 | NeoForge 21.11 | GeckoLib 5 (5.4.5 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
+| 26.1.2 | Fabric (Loader 0.19.5 or newer) | Fabric API 0.155.3 or newer, GeckoLib 5 (5.5.2 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
+| 26.1.2 | NeoForge 26.1 | GeckoLib 5 (5.5.2 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
+| 26.2 | Fabric (Loader 0.19.5 or newer) | Fabric API 0.161.0 or newer, GeckoLib 5 (5.5.5 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
+| 26.2 | NeoForge 26.2 | GeckoLib 5 (5.5.5 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
+| 26.3 | Fabric (Loader 0.19.5 or newer) | Fabric API 0.162.0 or newer, GeckoLib 5 (5.5.7 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
+| 26.3 | NeoForge 26.3 | GeckoLib 5 (5.5.7 or newer), VillagersTradingPlus 1.x (1.1.0 or newer) |
 
-The current version is 4.0.0. 1.20.1 needs Java 17. 1.21.1 and 1.21.8 need Java 21.
+The current version is 4.0.1. 1.20.1 needs Java 17. 1.21.1, 1.21.8 and 1.21.11 need Java 21. 26.1, 26.2 and 26.3 need Java 25.
 
 ## What's in it
 

@@ -4,7 +4,11 @@ import com.lion.graveyard.blockentities.SarcophagusBlockEntity;
 import com.lion.graveyard.blockentities.enums.SarcophagusPart;
 import com.lion.graveyard.blocks.SarcophagusBlock;
 import com.lion.graveyard.init.TGBlockEntities;
+import com.lion.graveyard.mixin.client.LevelRendererAccessor;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.blaze3d.vertex.VertexMultiConsumer;
 import com.mojang.math.Axis;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,13 +18,18 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.client.resources.model.ModelBakery;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.BlockDestructionProgress;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.DoubleBlockCombiner;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.LidBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.SortedSet;
 
 @Environment(EnvType.CLIENT)
 public class SarcophagusBlockEntityRenderer<T extends BlockEntity & LidBlockEntity> implements BlockEntityRenderer<SarcophagusBlockEntity> {
@@ -54,9 +63,50 @@ public class SarcophagusBlockEntityRenderer<T extends BlockEntity & LidBlockEnti
         BakedModel lid = getModel(((SarcophagusBlock)blockState.getBlock()).getLid().get());
 
         if (entity.getLevel() != null && entity.getBlockState().getValue(SarcophagusBlock.PART) == SarcophagusPart.HEAD) {
-            render(entity, matrixStack, vertexConsumers, light, overlay, g, lid, true);
-            render(entity, matrixStack, vertexConsumers, light, overlay, g, base, false);
+            MultiBufferSource source = withFootCracks(entity, matrixStack, vertexConsumers);
+            render(entity, matrixStack, source, light, overlay, g, lid, true);
+            render(entity, matrixStack, source, light, overlay, g, base, false);
         }
+    }
+
+    /// The foot part renders nothing. The head draws the foot's break cracks like vanilla does for a breaking block entity.
+    private static MultiBufferSource withFootCracks(
+            SarcophagusBlockEntity entity,
+            PoseStack matrixStack,
+            MultiBufferSource source
+    ) {
+        BlockPos headPos = entity.getBlockPos();
+        BlockPos footPos = headPos.relative(entity.getBlockState().getValue(SarcophagusBlock.FACING).getOpposite());
+        int footStage = getBreakStage(footPos);
+
+        if (footStage < 0 || getBreakStage(headPos) >= 0) {
+            return source;
+        }
+
+        Minecraft minecraft = Minecraft.getInstance();
+        PoseStack.Pose pose = matrixStack.last();
+        VertexConsumer decal = new SheetedDecalTextureGenerator(
+                minecraft.renderBuffers().crumblingBufferSource().getBuffer(ModelBakery.DESTROY_TYPES.get(footStage)),
+                pose.pose(),
+                pose.normal(),
+                1.0F
+        );
+
+        return renderType -> renderType.affectsCrumbling()
+                ? VertexMultiConsumer.create(decal, source.getBuffer(renderType))
+                : source.getBuffer(renderType);
+    }
+
+    private static int getBreakStage(BlockPos pos) {
+        SortedSet<BlockDestructionProgress> progress = ((LevelRendererAccessor) Minecraft.getInstance().levelRenderer)
+                .graveyard$getDestructionProgress()
+                .get(pos.asLong());
+
+        if (progress == null || progress.isEmpty()) {
+            return -1;
+        }
+
+        return progress.last().getProgress();
     }
 
 

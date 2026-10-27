@@ -27,6 +27,41 @@ class WorldFixesTest {
     }
 
     @Test
+    void namelessHangedSavesWithoutRollingOffers() {
+        String save = body("entities/NamelessHangedEntity.java", "addAdditionalSaveData");
+        int empty = save.indexOf("this.offers = new MerchantOffers();");
+
+        assertTrue(empty >= 0 && empty < save.indexOf("super.addAdditionalSaveData("));
+        assertTrue(save.indexOf("this.offers = null;") > save.indexOf("super.addAdditionalSaveData("));
+    }
+
+    @Test
+    void surfaceStructuresTestTheBiomeBeforeTheTerrain() {
+        String find = body("world/structures/TGJigsawStructure.java", "findGenerationPoint");
+        int biome = find.indexOf("isValidBiome(");
+
+        assertTrue(biome >= 0 && biome < find.indexOf("canGenerate("));
+    }
+
+    @Test
+    void darkIronOpensByHandOnlyWithTheOption() {
+        for (String file : new String[] {"blocks/TGDoorBlock.java", "blocks/TGTrapDoorBlock.java"}) {
+            String code = code(ModProject.JAVA, file);
+
+            assertTrue(code.contains("flag(\"darkIronOpensByHand\", false)"));
+            assertTrue(code.contains("BlockSetType.IRON"));
+        }
+    }
+
+    @Test
+    void soundVolumeScalesOnlyGraveyardSounds() {
+        String mixin = code(ModProject.JAVA, "mixin/client/SoundEngineMixin.java");
+
+        assertTrue(mixin.contains("Graveyard.MOD_ID.equals("));
+        assertTrue(mixin.contains("number(\"soundVolume\", 1.0D)"));
+    }
+
+    @Test
     void hordeSpawnerGatesOnDifficultyAndGameRule() {
         for (Path root : new Path[] {ModProject.FABRIC_JAVA, ModProject.FORGE_JAVA}) {
             String code = code(root, "platform/" + (root == ModProject.FABRIC_JAVA ? "fabric" : "forge") + "/HordeSpawner.java");
@@ -99,5 +134,23 @@ class WorldFixesTest {
         assertTrue(parse.contains("TradeOfferManager.deserializeTrade("));
         assertTrue(parse.contains("catch (RuntimeException"));
         assertTrue(parse.contains("return null;"));
+    }
+
+    @Test
+    void sarcophagusFootDrawsItsBreakCracks() {
+        String code = code(ModProject.JAVA, "blockentities/renders/SarcophagusBlockEntityRenderer.java");
+
+        assertTrue(code.contains("graveyard$getDestructionProgress()"));
+        assertTrue(code.contains("new SheetedDecalTextureGenerator("));
+        assertTrue(code.contains("crumblingBufferSource()"));
+        assertTrue(code.contains("ModelBakery.DESTROY_TYPES"));
+        assertTrue(code.contains("affectsCrumbling()"));
+        assertTrue(code.contains("VertexMultiConsumer.create("));
+        assertFalse(code.contains("toHead"));
+    }
+
+    @Test
+    void gravestoneGetsBreakProgress() {
+        assertFalse(code(ModProject.JAVA, "blockentities/renders/GravestoneBlockEntityRenderer.java").contains("shouldRenderOffScreen"));
     }
 }

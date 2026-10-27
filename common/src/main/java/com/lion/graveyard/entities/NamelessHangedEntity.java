@@ -149,7 +149,21 @@ public class NamelessHangedEntity extends AbstractVillager implements GeoEntity,
 
     @Override
     public void addAdditionalSaveData(CompoundTag nbt) {
-        super.addAdditionalSaveData(nbt);
+        boolean noOffers = this.offers == null;
+
+        // Vanilla getOffers() rolls new trades on save. Keep the offers empty here.
+        if (noOffers) {
+            this.offers = new MerchantOffers();
+        }
+
+        try {
+            super.addAdditionalSaveData(nbt);
+        } finally {
+            if (noOffers) {
+                this.offers = null;
+            }
+        }
+
         nbt.putLong(OFFERS_DAY_KEY, this.offersDay);
     }
 
