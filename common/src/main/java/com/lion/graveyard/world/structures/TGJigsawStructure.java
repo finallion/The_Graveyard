@@ -123,11 +123,21 @@ public class TGJigsawStructure extends Structure {
             int y = entry.lowestY(210) + (highest > entry.lowestY(210) ? random.nextInt(highest - entry.lowestY(210) + 1) : 0);
             blockpos = new BlockPos(x, y, z);
         } else {
-            if (!TGJigsawStructure.canGenerate(context, terrainCheckSize, structureName, blockpos, maxHeightDifference)) {
+            Optional<GenerationStub> stub = this.startPieces(context, blockpos);
+
+            if (stub.isEmpty()
+                    || !context.isValidBiome(stub.get())
+                    || !TGJigsawStructure.canGenerate(context, terrainCheckSize, structureName, blockpos, maxHeightDifference)) {
                 return Optional.empty();
             }
+
+            return stub;
         }
 
+        return this.startPieces(context, blockpos);
+    }
+
+    private Optional<GenerationStub> startPieces(GenerationContext context, BlockPos blockpos) {
         return JigsawPlacement.addPieces(
                 context,
                 this.startPool,
@@ -142,7 +152,6 @@ public class TGJigsawStructure extends Structure {
                 LiquidSettings.APPLY_WATERLOGGING
         );
     }
-
 
     private static boolean canGenerate(
             GenerationContext context,

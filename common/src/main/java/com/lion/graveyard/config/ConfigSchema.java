@@ -45,7 +45,7 @@ public final class ConfigSchema {
             new MobDefaults("corrupted_pillager", true, 0, 0, 0, true),
             new MobDefaults("corrupted_vindicator", true, 0, 0, 0, true),
             new MobDefaults("crow", true, 10, 4, 9, false),
-            new MobDefaults("ghoul", true, 25, 2, 5, true),
+            new MobDefaults("ghoul", true, 10, 1, 4, true),
             new MobDefaults("magpie", true, 8, 2, 3, false),
             new MobDefaults(NAMELESS_HANGED, true, 0, 0, 0, false),
             new MobDefaults("nightmare", true, 10, 1, 1, false),
@@ -120,6 +120,7 @@ public final class ConfigSchema {
         general.bool("structuresOnly", false, "Set true to stop every Graveyard mob from appearing on its own. Spawn eggs and commands still work.");
         general.bool("bossMusic", true, "Play the boss music during the Corrupted Champion fight. Client setting.");
         general.bool("ashParticles", true, "Show ash particles above smoldering blocks. Client setting.");
+        general.real("soundVolume", 1.0D, 0.0D, 1.0D, "Volume factor for all Graveyard sounds, the boss music included. Range 0 to 1. Client setting.");
     }
 
     private void buildStructures() {
@@ -264,6 +265,7 @@ public final class ConfigSchema {
         behaviour.bool("crowsEatCrops", true, "Let crows eat crops.");
         behaviour.bool("ghoulingCollectsItems", true, "Let a ghouling with a coffin pick up items.");
         behaviour.bool("wraithGriefing", true, "Let wraiths put out torches and lights.");
+        behaviour.bool("darkIronOpensByHand", false, "Let players open dark iron doors and trapdoors by hand. Use the same value on the server and on each client.");
         behaviour.bool("smolderingBlocksInVillages", true, "Generate smoldering blocks in overrun villages.");
         behaviour.bool("skeletonCreeperDestroysBlocks", false, "Let the skeleton creeper explosion break blocks.");
         behaviour.real("skeletonCreeperExplosionRadius", 3.5D, 0.0D, 16.0D, "Explosion radius of the skeleton creeper. Range 0 to 16.");

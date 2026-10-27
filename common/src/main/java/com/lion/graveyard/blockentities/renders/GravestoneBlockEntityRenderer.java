@@ -163,11 +163,6 @@ public class GravestoneBlockEntityRenderer
         poseStack.popPose();
     }
 
-    @Override
-    public boolean shouldRenderOffScreen() {
-        return true;
-    }
-
     private static boolean shouldRender(GravestoneBlockEntity sign, int signColor) {
         if (signColor == DyeColor.BLACK.getTextColor()) {
             return true;
@@ -241,7 +236,8 @@ public class GravestoneBlockEntityRenderer
                 QuadModel model = new QuadModel(group, renderType);
 
                 this.delegate.submitModel(model, group, poseStack, renderType, light, overlay, -1, null, outlineColor);
-                this.delegate.submitCrumblingOverlay(
+                // Order 1 draws the cracks after the model, as the vanilla chest does.
+                this.delegate.order(1).submitCrumblingOverlay(
                         model,
                         group,
                         poseStack,

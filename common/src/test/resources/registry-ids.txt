@@ -78,9 +78,11 @@ block:oak_coffin
 block:orange_terracotta_urn
 block:orange_urn
 block:ossuary
+block:pale_oak_coffin
 block:pedestal
 block:pink_terracotta_urn
 block:pink_urn
+block:poplar_coffin
 block:purple_terracotta_urn
 block:purple_urn
 block:quartz_bricks_gravestone
@@ -324,9 +326,15 @@ item:oak_coffin_lid
 item:orange_terracotta_urn
 item:orange_urn
 item:ossuary
+item:pale_oak_coffin
+item:pale_oak_coffin_base
+item:pale_oak_coffin_lid
 item:pedestal
 item:pink_terracotta_urn
 item:pink_urn
+item:poplar_coffin
+item:poplar_coffin_base
+item:poplar_coffin_lid
 item:purple_bone_staff
 item:purple_terracotta_urn
 item:purple_urn
@@ -338,6 +346,7 @@ item:red_sandstone_gravestone
 item:red_terracotta_urn
 item:red_urn
 item:revenant_spawn_egg
+item:ruins_map
 item:sandstone_gravestone
 item:sarcophagus
 item:sarcophagus_base

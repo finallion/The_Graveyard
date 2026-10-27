@@ -3,6 +3,8 @@
   "values": [
     {"id": "minecraft:forest", "required": false},
     {"id": "minecraft:flower_forest", "required": false},
-    {"id": "minecraft:windswept_forest", "required": false}
+    {"id": "minecraft:windswept_forest", "required": false},
+    {"id": "minecraft:pale_garden", "required": false},
+    {"id": "minecraft:dappled_forest", "required": false}
   ]
 }

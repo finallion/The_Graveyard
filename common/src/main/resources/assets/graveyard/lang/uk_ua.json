@@ -126,6 +126,7 @@
   "item.graveyard.corruption": "Порча",
 
   "filled_map.graveyard.ruins": "Карта руїн",
+  "item.graveyard.ruins_map": "Карта руїн",
   "item.graveyard.sarcophagus": "Саркофаг",
   "block.graveyard.sarcophagus": "Саркофаг",
   "item.graveyard.oak_coffin": "Дубова труна",
@@ -150,6 +151,10 @@
   "block.graveyard.bamboo_coffin": "Бамбукова труна",
   "item.graveyard.cherry_coffin": "Вишнева труна",
   "block.graveyard.cherry_coffin": "Вишнева труна",
+  "item.graveyard.pale_oak_coffin": "Блідо-дубова труна",
+  "block.graveyard.pale_oak_coffin": "Блідо-дубова труна",
+  "item.graveyard.poplar_coffin": "Тополева труна",
+  "block.graveyard.poplar_coffin": "Тополева труна",
 
   "item.graveyard.incarnated_evil_music_disc": "\"Incarnated Evil\" by Rotch Gwylt",
   "item.graveyard.incarnated_evil_music_disc.desc": "\"Incarnated Evil\" by Rotch Gwylt",

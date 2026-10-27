@@ -144,6 +144,7 @@
   "item.graveyard.dark_iron_ingot": "Dunkeleisenbarren",
   "item.graveyard.corruption": "Verderbnis",
   "filled_map.graveyard.ruins": "Ruinenkarte",
+  "item.graveyard.ruins_map": "Ruinenkarte",
   "item.graveyard.sarcophagus": "Sarkophag",
   "block.graveyard.sarcophagus": "Sarkophag",
   "item.graveyard.oak_coffin": "Eichensarg",
@@ -168,6 +169,10 @@
   "block.graveyard.bamboo_coffin": "Bambussarg",
   "item.graveyard.cherry_coffin": "Kirschsarg",
   "block.graveyard.cherry_coffin": "Kirschsarg",
+  "item.graveyard.pale_oak_coffin": "Blasseichensarg",
+  "block.graveyard.pale_oak_coffin": "Blasseichensarg",
+  "item.graveyard.poplar_coffin": "Pappelsarg",
+  "block.graveyard.poplar_coffin": "Pappelsarg",
 
   "item.graveyard.vial_of_blood": "Blutphiole",
   "item.graveyard.vial_of_blood.level": "Blutstand: %s/8",

@@ -186,6 +186,62 @@
             "add": false
           },
           "name": "minecraft:wither_rose"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 1,
+              "max": 3
+            },
+            "add": false
+          },
+          "name": "minecraft:torchflower"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 1,
+              "max": 3
+            },
+            "add": false
+          },
+          "name": "minecraft:open_eyeblossom"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 1,
+              "max": 3
+            },
+            "add": false
+          },
+          "name": "minecraft:closed_eyeblossom"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 1,
+              "max": 3
+            },
+            "add": false
+          },
+          "name": "minecraft:golden_dandelion"
         }
       ]
     }

@@ -144,6 +144,7 @@
   "item.graveyard.dark_iron_ingot": "Donkere ijzerstaaf",
   "item.graveyard.corruption": "Verderf",
   "filled_map.graveyard.ruins": "Ruïnekaart",
+  "item.graveyard.ruins_map": "Ruïnekaart",
   "item.graveyard.sarcophagus": "Sarcofaag",
   "block.graveyard.sarcophagus": "Sarcofaag",
   "item.graveyard.oak_coffin": "Eikenhouten doodskist",
@@ -168,6 +169,10 @@
   "block.graveyard.bamboo_coffin": "Bamboe doodskist",
   "item.graveyard.cherry_coffin": "Kersenhouten doodskist",
   "block.graveyard.cherry_coffin": "Kersenhouten doodskist",
+  "item.graveyard.pale_oak_coffin": "Bleke eikenhouten doodskist",
+  "block.graveyard.pale_oak_coffin": "Bleke eikenhouten doodskist",
+  "item.graveyard.poplar_coffin": "Populierenhouten doodskist",
+  "block.graveyard.poplar_coffin": "Populierenhouten doodskist",
 
   "item.graveyard.vial_of_blood": "Flesje bloed",
   "item.graveyard.vial_of_blood.level": "Bloedniveau: %s/8",

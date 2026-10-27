@@ -23,6 +23,19 @@
     "graveyard:stripped_charred_wood",
     "graveyard:scorched_wood",
     "graveyard:stripped_scorched_log",
-    "graveyard:stripped_scorched_wood"
+    "graveyard:stripped_scorched_wood",
+    "graveyard:oak_coffin",
+    "graveyard:spruce_coffin",
+    "graveyard:birch_coffin",
+    "graveyard:dark_oak_coffin",
+    "graveyard:jungle_coffin",
+    "graveyard:acacia_coffin",
+    "graveyard:warped_coffin",
+    "graveyard:crimson_coffin",
+    "graveyard:mangrove_coffin",
+    "graveyard:bamboo_coffin",
+    "graveyard:cherry_coffin",
+    "graveyard:pale_oak_coffin",
+    "graveyard:poplar_coffin"
   ]
 }

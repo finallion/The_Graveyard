@@ -1,5 +1,6 @@
 # Every key of graveyard.json5. A line listed here must never disappear.
 behaviour.crowsEatCrops
+behaviour.darkIronOpensByHand
 behaviour.fogParticles.enabled
 behaviour.fogParticles.rarity
 behaviour.ghoulingCollectsItems
@@ -53,6 +54,7 @@ corruptedChampion.summoning.spawnInvulnerableTicks
 corruptedChampion.summoning.summonItems
 general.ashParticles
 general.bossMusic
+general.soundVolume
 general.structuresOnly
 hordes.chancePerCheck
 hordes.enabled

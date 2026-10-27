@@ -6,12 +6,12 @@
   "name": "The Graveyard",
   "description": "Adds new bosses, structures, mobs and blocks themed around the graveyard.",
   "authors": [
-    "Finallion"
+    "LithiumPlus"
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/the-graveyard-fabric",
-    "sources": "https://github.com/finallion/The-Graveyard-FABRIC",
-    "issues": "https://github.com/finallion/The-Graveyard-FABRIC/issues"
+    "sources": "https://github.com/finallion/The_Graveyard",
+    "issues": "https://github.com/finallion/The_Graveyard/issues"
   },
 
   "license": "GPL-3.0-only",

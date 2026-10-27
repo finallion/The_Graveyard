@@ -27,6 +27,44 @@ class WorldFixesTest {
     }
 
     @Test
+    void gravestoneGetsBreakProgress() {
+        assertFalse(code(ModProject.JAVA, "blockentities/renders/GravestoneBlockEntityRenderer.java").contains("shouldRenderOffScreen"));
+    }
+
+    @Test
+    void breakCracksDrawAfterTheModel() {
+        String code = code(ModProject.JAVA, "blockentities/renders/GravestoneBlockEntityRenderer.java");
+
+        assertTrue(code.contains("this.delegate.order(1).submitCrumblingOverlay("));
+    }
+
+    @Test
+    void surfaceStructuresTestTheBiomeBeforeTheTerrain() {
+        String find = body("world/structures/TGJigsawStructure.java", "findGenerationPoint");
+        int biome = find.indexOf("isValidBiome(");
+
+        assertTrue(biome >= 0 && biome < find.indexOf("canGenerate("));
+    }
+
+    @Test
+    void darkIronOpensByHandOnlyWithTheOption() {
+        for (String file : new String[] {"blocks/TGDoorBlock.java", "blocks/TGTrapDoorBlock.java"}) {
+            String code = code(ModProject.JAVA, file);
+
+            assertTrue(code.contains("flag(\"darkIronOpensByHand\", false)"));
+            assertTrue(code.contains("BlockSetType.IRON"));
+        }
+    }
+
+    @Test
+    void soundVolumeScalesOnlyGraveyardSounds() {
+        String mixin = code(ModProject.JAVA, "mixin/client/SoundEngineMixin.java");
+
+        assertTrue(mixin.contains("Graveyard.MOD_ID.equals("));
+        assertTrue(mixin.contains("number(\"soundVolume\", 1.0D)"));
+    }
+
+    @Test
     void hordeSpawnerGatesOnDifficultyAndGameRule() {
         for (Path root : new Path[] {ModProject.FABRIC_JAVA, ModProject.NEOFORGE_JAVA}) {
             String code = code(root, "platform/" + (root == ModProject.FABRIC_JAVA ? "fabric" : "neoforge") + "/HordeSpawner.java");
@@ -99,5 +137,12 @@ class WorldFixesTest {
         assertTrue(parse.contains("TradeOfferManager.deserializeTrade("));
         assertTrue(parse.contains("catch (RuntimeException"));
         assertTrue(parse.contains("return null;"));
+    }
+
+    @Test
+    void sarcophagusFootDrawsItsBreakCracks() {
+        String code = code(ModProject.JAVA, "blockentities/renders/SarcophagusBlockEntityRenderer.java");
+
+        assertTrue(code.contains("state.footCracks = entity.getLevel() != null && !state.headPart && state.breakProgress != null"));
     }
 }

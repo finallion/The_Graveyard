@@ -225,6 +225,8 @@ public class TGBlocks {
     public static final Supplier<Block> MANGROVE_COFFIN = RegistryHelper.registerBlock("mangrove_coffin", props -> new SarcophagusBlock(props, true, TGItems.MANGROVE_COFFIN_LID, TGItems.MANGROVE_COFFIN_BASE), BlockBehaviour.Properties.of().ignitedByLava().noOcclusion().strength(1.0F));
     public static final Supplier<Block> BAMBOO_COFFIN = RegistryHelper.registerBlock("bamboo_coffin", props -> new SarcophagusBlock(props, true, TGItems.BAMBOO_COFFIN_LID, TGItems.BAMBOO_COFFIN_BASE), BlockBehaviour.Properties.of().ignitedByLava().noOcclusion().strength(1.0F));
     public static final Supplier<Block> CHERRY_COFFIN = RegistryHelper.registerBlock("cherry_coffin", props -> new SarcophagusBlock(props, true, TGItems.CHERRY_COFFIN_LID, TGItems.CHERRY_COFFIN_BASE), BlockBehaviour.Properties.of().ignitedByLava().noOcclusion().strength(1.0F));
+    public static final Supplier<Block> PALE_OAK_COFFIN = RegistryHelper.registerBlock("pale_oak_coffin", props -> new SarcophagusBlock(props, true, TGItems.PALE_OAK_COFFIN_LID, TGItems.PALE_OAK_COFFIN_BASE), BlockBehaviour.Properties.of().ignitedByLava().noOcclusion().strength(1.0F));
+    public static final Supplier<Block> POPLAR_COFFIN = RegistryHelper.registerBlock("poplar_coffin", props -> new SarcophagusBlock(props, true, TGItems.POPLAR_COFFIN_LID, TGItems.POPLAR_COFFIN_BASE), BlockBehaviour.Properties.of().ignitedByLava().noOcclusion().strength(1.0F));
 
     public static final Supplier<Block> VASE_BLOCK = RegistryHelper.registerBlock("vase_block", VaseBlock::new, vaseProperties());
 
@@ -273,6 +275,8 @@ public class TGBlocks {
         coffins.add(WARPED_COFFIN.get());
         coffins.add(MANGROVE_COFFIN.get());
         coffins.add(CHERRY_COFFIN.get());
+        coffins.add(PALE_OAK_COFFIN.get());
+        coffins.add(POPLAR_COFFIN.get());
         coffins.add(BAMBOO_COFFIN.get());
     }
 

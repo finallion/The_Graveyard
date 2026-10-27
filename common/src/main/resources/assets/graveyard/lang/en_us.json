@@ -144,6 +144,7 @@
   "item.graveyard.dark_iron_ingot": "Dark Iron Ingot",
   "item.graveyard.corruption": "Corruption",
   "filled_map.graveyard.ruins": "Ruins Map",
+  "item.graveyard.ruins_map": "Ruins Map",
   "item.graveyard.sarcophagus": "Sarcophagus",
   "block.graveyard.sarcophagus": "Sarcophagus",
   "item.graveyard.oak_coffin": "Oak Coffin",
@@ -168,6 +169,10 @@
   "block.graveyard.bamboo_coffin": "Bamboo Coffin",
   "item.graveyard.cherry_coffin": "Cherry Coffin",
   "block.graveyard.cherry_coffin": "Cherry Coffin",
+  "item.graveyard.pale_oak_coffin": "Pale Oak Coffin",
+  "block.graveyard.pale_oak_coffin": "Pale Oak Coffin",
+  "item.graveyard.poplar_coffin": "Poplar Coffin",
+  "block.graveyard.poplar_coffin": "Poplar Coffin",
 
   "item.graveyard.vial_of_blood": "Vial of Blood",
   "item.graveyard.vial_of_blood.level": "Blood level: %s/8",

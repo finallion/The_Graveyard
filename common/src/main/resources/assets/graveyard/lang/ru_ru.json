@@ -127,6 +127,7 @@
   "item.graveyard.corruption": "Порча",
 
   "filled_map.graveyard.ruins": "Карта руин",
+  "item.graveyard.ruins_map": "Карта руин",
   "item.graveyard.sarcophagus": "Саркофаг",
   "block.graveyard.sarcophagus": "Саркофаг",
   "item.graveyard.oak_coffin": "Дубовый гроб",
@@ -151,6 +152,10 @@
   "block.graveyard.bamboo_coffin": "Бамбуковый гроб",
   "item.graveyard.cherry_coffin": "Вишнёвый гроб",
   "block.graveyard.cherry_coffin": "Вишнёвый гроб",
+  "item.graveyard.pale_oak_coffin": "Гроб из бледного дуба",
+  "block.graveyard.pale_oak_coffin": "Гроб из бледного дуба",
+  "item.graveyard.poplar_coffin": "Тополевый гроб",
+  "block.graveyard.poplar_coffin": "Тополевый гроб",
 
   "item.graveyard.vial_of_blood": "Пузырек с кровью",
   "item.graveyard.vial_of_blood.level": "Уровень крови: %s/8",

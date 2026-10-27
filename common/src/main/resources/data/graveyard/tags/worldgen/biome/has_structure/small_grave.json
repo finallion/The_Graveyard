@@ -8,6 +8,14 @@
     {
       "id": "#c:is_plains",
       "required": false
+    },
+    {
+      "id": "minecraft:pale_garden",
+      "required": false
+    },
+    {
+      "id": "minecraft:dappled_forest",
+      "required": false
     }
   ]
 }

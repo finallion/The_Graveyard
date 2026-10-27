@@ -7,12 +7,15 @@ import com.lion.graveyard.item.DaggerItem;
 import com.lion.graveyard.item.TooltipBlockItem;
 import com.lion.graveyard.item.VialOfBlood;
 import com.lion.graveyard.platform.RegistryHelper;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.JukeboxSong;
+import net.minecraft.world.item.MapItem;
+import net.minecraft.world.item.component.MapDecorations;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
@@ -44,6 +47,10 @@ public class TGItems {
     public static final Supplier<Item> BAMBOO_COFFIN_BASE = RegistryHelper.registerItem("bamboo_coffin_base", Item::new, new Item.Properties());
     public static final Supplier<Item> CHERRY_COFFIN_LID = RegistryHelper.registerItem("cherry_coffin_lid", Item::new, new Item.Properties());
     public static final Supplier<Item> CHERRY_COFFIN_BASE = RegistryHelper.registerItem("cherry_coffin_base", Item::new, new Item.Properties());
+    public static final Supplier<Item> PALE_OAK_COFFIN_LID = RegistryHelper.registerItem("pale_oak_coffin_lid", Item::new, new Item.Properties());
+    public static final Supplier<Item> PALE_OAK_COFFIN_BASE = RegistryHelper.registerItem("pale_oak_coffin_base", Item::new, new Item.Properties());
+    public static final Supplier<Item> POPLAR_COFFIN_LID = RegistryHelper.registerItem("poplar_coffin_lid", Item::new, new Item.Properties());
+    public static final Supplier<Item> POPLAR_COFFIN_BASE = RegistryHelper.registerItem("poplar_coffin_base", Item::new, new Item.Properties());
 
     public static final Supplier<Item> OSSUARY = RegistryHelper.registerItem("ossuary", props -> new TooltipBlockItem(TGBlocks.OSSUARY.get(), props), new Item.Properties().useBlockDescriptionPrefix());
     public static final Supplier<Item> INCARNATED_EVIL_MUSIC_DISC = RegistryHelper.registerMusicDiscItem("incarnated_evil_music_disc", new Item.Properties().stacksTo(1).jukeboxPlayable(INCARNATED_EVIL_SONG));
@@ -69,6 +76,7 @@ public class TGItems {
     public static final Supplier<Item> DARK_IRON_INGOT = RegistryHelper.registerItem("dark_iron_ingot", Item::new, new Item.Properties());
     public static final Supplier<Item> CORRUPTION = RegistryHelper.registerItem("corruption", Item::new, new Item.Properties());
     public static final Supplier<Item> DIARY_PAGE = RegistryHelper.registerItem("diary_page", props -> new DiaryPageItem(TGBlocks.LORE_BOOK.get(), props), new Item.Properties().stacksTo(16).overrideDescription("block.graveyard.lore_book"));
+    public static final Supplier<Item> RUINS_MAP = RegistryHelper.registerItem("ruins_map", MapItem::new, new Item.Properties().component(DataComponents.MAP_DECORATIONS, MapDecorations.EMPTY));
 
     public static final Supplier<Item> TG_ROOTED_DIRT = RegistryHelper.registerItem("tg_rooted_dirt", props -> new BlockItem(TGBlocks.TG_ROOTED_DIRT.get(), props), new Item.Properties().useBlockDescriptionPrefix());
     public static final Supplier<Item> TG_TUFF = RegistryHelper.registerItem("tg_tuff", props -> new BlockItem(TGBlocks.TG_TUFF.get(), props), new Item.Properties().useBlockDescriptionPrefix());
@@ -214,6 +222,8 @@ public class TGItems {
     public static final Supplier<Item> MANGROVE_COFFIN = RegistryHelper.registerItem("mangrove_coffin", props -> new BlockItem(TGBlocks.MANGROVE_COFFIN.get(), props), new Item.Properties().useBlockDescriptionPrefix());
     public static final Supplier<Item> BAMBOO_COFFIN = RegistryHelper.registerItem("bamboo_coffin", props -> new BlockItem(TGBlocks.BAMBOO_COFFIN.get(), props), new Item.Properties().useBlockDescriptionPrefix());
     public static final Supplier<Item> CHERRY_COFFIN = RegistryHelper.registerItem("cherry_coffin", props -> new BlockItem(TGBlocks.CHERRY_COFFIN.get(), props), new Item.Properties().useBlockDescriptionPrefix());
+    public static final Supplier<Item> PALE_OAK_COFFIN = RegistryHelper.registerItem("pale_oak_coffin", props -> new BlockItem(TGBlocks.PALE_OAK_COFFIN.get(), props), new Item.Properties().useBlockDescriptionPrefix());
+    public static final Supplier<Item> POPLAR_COFFIN = RegistryHelper.registerItem("poplar_coffin", props -> new BlockItem(TGBlocks.POPLAR_COFFIN.get(), props), new Item.Properties().useBlockDescriptionPrefix());
 
     public static final Supplier<Item> VIAL_OF_BLOOD = RegistryHelper.registerItem("vial_of_blood", VialOfBlood::new, new Item.Properties().stacksTo(1));
 
@@ -380,6 +390,8 @@ public class TGItems {
         RegistryHelper.addToItemGroup(TGItemGroups.ITEM_GROUP, MANGROVE_COFFIN.get());
         RegistryHelper.addToItemGroup(TGItemGroups.ITEM_GROUP, BAMBOO_COFFIN.get());
         RegistryHelper.addToItemGroup(TGItemGroups.ITEM_GROUP, CHERRY_COFFIN.get());
+        RegistryHelper.addToItemGroup(TGItemGroups.ITEM_GROUP, PALE_OAK_COFFIN.get());
+        RegistryHelper.addToItemGroup(TGItemGroups.ITEM_GROUP, POPLAR_COFFIN.get());
 
         RegistryHelper.addToItemGroup(TGItemGroups.ITEM_GROUP, SKELETON_CREEPER_SPAWN_EGG.get());
         RegistryHelper.addToItemGroup(TGItemGroups.ITEM_GROUP, RAVEN_SPAWN_EGG.get());

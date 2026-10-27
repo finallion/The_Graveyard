@@ -144,6 +144,7 @@
   "item.graveyard.dark_iron_ingot": "Lingot de fer sombre",
   "item.graveyard.corruption": "Corruption",
   "filled_map.graveyard.ruins": "Carte des ruines",
+  "item.graveyard.ruins_map": "Carte des ruines",
   "item.graveyard.sarcophagus": "Sarcophage",
   "block.graveyard.sarcophagus": "Sarcophage",
   "item.graveyard.oak_coffin": "Cercueil en chêne",
@@ -168,6 +169,10 @@
   "block.graveyard.bamboo_coffin": "Cercueil en bambou",
   "item.graveyard.cherry_coffin": "Cercueil en cerisier",
   "block.graveyard.cherry_coffin": "Cercueil en cerisier",
+  "item.graveyard.pale_oak_coffin": "Cercueil en chêne pâle",
+  "block.graveyard.pale_oak_coffin": "Cercueil en chêne pâle",
+  "item.graveyard.poplar_coffin": "Cercueil en peuplier",
+  "block.graveyard.poplar_coffin": "Cercueil en peuplier",
 
   "item.graveyard.vial_of_blood": "Fiole de sang",
   "item.graveyard.vial_of_blood.level": "Niveau de sang : %s/8",

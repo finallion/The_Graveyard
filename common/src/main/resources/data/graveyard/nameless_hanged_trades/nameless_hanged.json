@@ -902,8 +902,28 @@
       },
       {
         "type": "villagertradingplus:sell_map",
-        "structure_id": "graveyard:on_ruins_explorer_maps",
-        "name": "filled_map.graveyard.ruins",
+        "gives": {
+          "id": "graveyard:ruins_map"
+        },
+        "given_item_modifier": [
+          {
+            "type": "minecraft:exploration_map",
+            "destination": "#graveyard:on_ruins_explorer_maps",
+            "decoration": "minecraft:ocean_ruin_warm",
+            "search_radius": 100
+          },
+          {
+            "type": "minecraft:filtered",
+            "item_filter": {
+              "predicates": {
+                "minecraft:map_id": {}
+              }
+            },
+            "on_fail": {
+              "type": "minecraft:discard"
+            }
+          }
+        ],
         "priceIn": {
           "item": "graveyard:corruption",
           "count": 16

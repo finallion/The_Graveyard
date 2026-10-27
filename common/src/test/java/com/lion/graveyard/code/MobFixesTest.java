@@ -5,6 +5,7 @@ import com.lion.graveyard.support.ModProject;
 import com.lion.graveyard.support.Sources;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -166,7 +167,8 @@ class MobFixesTest {
             assertTrue(code.indexOf("distanceToSqr(target) <= d + 1.0D") < code.indexOf("doHurtTarget"), goal);
         }
 
-        assertTrue(code("entities/ai/goals/LichMeleeGoal.java").contains("distanceToSqr(target) <= d + 1.0D && this.mob.doHurtTarget"));
+        assertTrue(code("entities/ai/goals/LichMeleeGoal.java").contains("distanceToSqr(target) <= HIT_REACH_SQUARED && this.mob.doHurtTarget"));
+        assertTrue(code("entities/ai/goals/LichMeleeGoal.java").contains("HIT_REACH_SQUARED = 36.0D"));
     }
 
     @Test
@@ -212,5 +214,22 @@ class MobFixesTest {
     @Test
     void boneStaffUsesTheTridentPose() {
         assertTrue(code("item/BoneStaffItem.java").contains("return ItemUseAnimation.TRIDENT;"));
+    }
+
+    @Test
+    void tormentedVillagerWalksOnTheSmoothedLimbSpeed() {
+        String code = code("entities/TormentedVillagerEntity.java");
+
+        assertTrue(code.contains("AnimationTable.isMoving(state) ? Mood.WALK"));
+        assertFalse(code.contains("this.getX() - this.xo"));
+    }
+
+    @Test
+    void namelessHangedPricesItsNewOffersOnce() {
+        String update = body("entities/NamelessHangedEntity.java", "updateTrades");
+
+        assertTrue(update.contains("int firstNew = tradeOfferList.size();"));
+        assertEquals(update.indexOf("TradePricing.applyFrom("), update.lastIndexOf("TradePricing.applyFrom("));
+        assertTrue(update.indexOf("TradePricing.applyFrom(tradeOfferList, firstNew, this)") > update.indexOf("while ("));
     }
 }
