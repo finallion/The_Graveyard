@@ -151,6 +151,8 @@
   "block.graveyard.bamboo_coffin": "Бамбуковый гроб",
   "item.graveyard.cherry_coffin": "Вишнёвый гроб",
   "block.graveyard.cherry_coffin": "Вишнёвый гроб",
+  "item.graveyard.pale_oak_coffin": "Гроб из бледного дуба",
+  "block.graveyard.pale_oak_coffin": "Гроб из бледного дуба",
 
   "item.graveyard.vial_of_blood": "Пузырек с кровью",
   "item.graveyard.vial_of_blood.level": "Уровень крови: %s/8",
@@ -373,6 +375,7 @@
   "block.graveyard.sideways_full_skeleton": "Скелет, лежащий на боку",
   "block.graveyard.sideways_full_wither_skeleton": "Визер-скелет, лежащий на боку",
   "entity.graveyard.ghouling.call": "Я далеко от тебя... Я иду.",
+  "entity.graveyard.ghouling.stop_attack": "Я останавливаюсь.",
   "entity.graveyard.ghouling.no_landing": "Рядом с тобой нет земли... я не могу прийти.",
   "entity.graveyard.ghouling.lost": "Я не могу найти дорогу к тебе.",
   "entity.graveyard.ghouling.gave_up": "Я не могу добраться до тебя. Позови меня посохом.",

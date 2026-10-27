@@ -22,7 +22,9 @@
   ],
   "client": [
     "ClientPlayNetworkHandlerMixin",
-    "client.HandledScreenAccessor"
+    "client.HandledScreenAccessor",
+    "client.LevelRendererAccessor",
+    "client.SoundEngineMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -150,6 +150,8 @@
   "block.graveyard.bamboo_coffin": "Бамбукова труна",
   "item.graveyard.cherry_coffin": "Вишнева труна",
   "block.graveyard.cherry_coffin": "Вишнева труна",
+  "item.graveyard.pale_oak_coffin": "Блідо-дубова труна",
+  "block.graveyard.pale_oak_coffin": "Блідо-дубова труна",
 
   "item.graveyard.incarnated_evil_music_disc": "\"Incarnated Evil\" by Rotch Gwylt",
   "item.graveyard.incarnated_evil_music_disc.desc": "\"Incarnated Evil\" by Rotch Gwylt",
@@ -376,6 +378,7 @@
   "block.graveyard.sideways_full_skeleton": "Скелет, що лежить на боці",
   "block.graveyard.sideways_full_wither_skeleton": "Візер-скелет, що лежить на боці",
   "entity.graveyard.ghouling.call": "Я далеко від тебе... Я йду.",
+  "entity.graveyard.ghouling.stop_attack": "Я зупиняюся.",
   "entity.graveyard.ghouling.no_landing": "Поруч із тобою немає землі... я не можу прийти.",
   "entity.graveyard.ghouling.lost": "Я не можу знайти шлях до тебе.",
   "entity.graveyard.ghouling.gave_up": "Я не можу дістатися до тебе. Поклич мене посохом.",

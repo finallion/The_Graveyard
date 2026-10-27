@@ -12,8 +12,10 @@ import com.lion.graveyard.config.LegacyMigration;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,6 +24,18 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ConfigMigrationTest {
+    private static final Map<String, Object> LEGACY_DEFAULTS = Map.of(
+            "mobs.ghoul.spawn.weight", 25,
+            "mobs.ghoul.spawn.minGroup", 2,
+            "mobs.ghoul.spawn.maxGroup", 5
+    );
+
+    private static Map<String, Object> legacyDefaults() {
+        Map<String, Object> values = new HashMap<>(ConfigValues.defaults().asMap());
+        values.putAll(LEGACY_DEFAULTS);
+        return values;
+    }
+
     @Test
     void sampleHoldsAll255Keys() {
         assertEquals(255, LegacyKeys.entries().size());
@@ -36,7 +50,7 @@ class ConfigMigrationTest {
         ConfigReader.Result result = LegacyMigration.migrate(LegacyCorpus.sampleText());
         assertFalse(result.failed());
         assertFalse(result.hasProblems(), result.reset() + " " + result.dropped());
-        assertEquals(ConfigValues.defaults(), result.values());
+        assertEquals(legacyDefaults(), result.values().asMap());
     }
 
     @Test
@@ -50,7 +64,7 @@ class ConfigMigrationTest {
             }
         }
 
-        assertEquals(List.of("mobs.reaper.enabled"), same);
+        assertEquals(List.of("general.soundVolume", "mobs.reaper.enabled", "behaviour.darkIronOpensByHand"), same);
     }
 
     @Test
@@ -69,7 +83,7 @@ class ConfigMigrationTest {
         ConfigReader.Result result = LegacyMigration.migrate(old.toString());
         assertFalse(result.failed());
         assertFalse(result.hasProblems(), result.reset() + " " + result.dropped());
-        assertEquals(ConfigValues.defaults(), result.values());
+        assertEquals(legacyDefaults(), result.values().asMap());
     }
 
     @Test

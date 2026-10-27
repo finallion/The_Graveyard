@@ -28,6 +28,7 @@ public class ConfigCompatibilityTest {
     private static final Pattern PUBLIC_FIELD = Pattern.compile("public\\s+(?:final\\s+)?[\\w<>, ]+\\s+(\\w+)\\s*(?:=|;)");
     private static final Pattern MANAGED_MOBS = Pattern.compile("MANAGED_MOBS\\s*=\\s*List\\.of\\(([^)]*)\\)");
     private static final Set<String> REMOVED_FIELDS = Set.of("field:GraveyardConfig:mobSpawnEnabled", "field:GraveyardConfig:particleConfigEntries");
+    private static final Set<String> ADDED_AFTER_LEGACY = Set.of("general.soundVolume", "behaviour.darkIronOpensByHand");
 
     private static List<String> legacyPaths() {
         return new ArrayList<>(ModProject.snapshotLines("config-legacy-paths.txt"));
@@ -77,6 +78,7 @@ public class ConfigCompatibilityTest {
             }
         }
 
+        reached.addAll(ADDED_AFTER_LEGACY);
         assertEquals(new TreeSet<>(ConfigSchema.INSTANCE.leafPaths()), new TreeSet<>(reached));
     }
 
@@ -101,9 +103,9 @@ public class ConfigCompatibilityTest {
     }
 
     @Test
-    void schemaHas240Keys() {
-        assertEquals(240, ConfigSchema.INSTANCE.leafPaths().size());
-        assertEquals(240, ModProject.snapshotLines("config-schema.txt").size());
+    void schemaHas242Keys() {
+        assertEquals(242, ConfigSchema.INSTANCE.leafPaths().size());
+        assertEquals(242, ModProject.snapshotLines("config-schema.txt").size());
     }
 
     @TestFactory

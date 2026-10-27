@@ -168,6 +168,8 @@
   "block.graveyard.bamboo_coffin": "Bara di bambù",
   "item.graveyard.cherry_coffin": "Bara di ciliegio",
   "block.graveyard.cherry_coffin": "Bara di ciliegio",
+  "item.graveyard.pale_oak_coffin": "Bara di quercia pallida",
+  "block.graveyard.pale_oak_coffin": "Bara di quercia pallida",
 
   "item.graveyard.vial_of_blood": "Fiala di sangue",
   "item.graveyard.vial_of_blood.level": "Livello di sangue: %s/8",
@@ -203,6 +205,7 @@
   "entity.graveyard.horde.appeared": "Una grande orda di non morti è apparsa vicino a te.",
   "entity.graveyard.ghouling.kill": "Io fare smettere di muovere!",
   "entity.graveyard.ghouling.call": "Sono lontano da te... arrivo.",
+  "entity.graveyard.ghouling.stop_attack": "Mi fermo.",
   "entity.graveyard.ghouling.no_landing": "Non c'è terreno vicino a te... non posso venire.",
   "entity.graveyard.ghouling.lost": "Non riesco a trovare la strada fino a te.",
   "entity.graveyard.ghouling.gave_up": "Non riesco a raggiungerti. Chiamami con il bastone.",

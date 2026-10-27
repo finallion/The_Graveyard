@@ -136,7 +136,7 @@ class MobFixesTest {
 
     @Test
     void ghoulDamageLandsOnTheVisibleHitFrame() {
-        assertTrue(code("entities/ai/goals/GhoulMeleeAttackGoal.java").contains("DAMAGE_START_IN_ANIM = 7;"));
+        assertTrue(code("entities/ai/goals/GhoulMeleeAttackGoal.java").contains("DAMAGE_START_IN_ANIM = 10;"));
     }
 
     @Test
@@ -166,6 +166,47 @@ class MobFixesTest {
             assertTrue(code.indexOf("distanceToSqr(target) <= d + 1.0D") < code.indexOf("doHurtTarget"), goal);
         }
 
-        assertTrue(code("entities/ai/goals/LichMeleeGoal.java").contains("distanceToSqr(target) <= d + 1.0D && this.mob.doHurtTarget"));
+        assertTrue(code("entities/ai/goals/LichMeleeGoal.java").contains("distanceToSqr(target) <= HIT_REACH_SQUARED && this.mob.doHurtTarget"));
+        assertTrue(code("entities/ai/goals/LichMeleeGoal.java").contains("HIT_REACH_SQUARED = 36.0D"));
+    }
+
+    @Test
+    void ghoulingDoesNotRunInWaterAndDropsStaleAggression() {
+        assertTrue(code("entities/GhoulingEntity.java").contains("isAggressive() && !isInWater() && AnimationTable.isMoving(state)"));
+        assertTrue(body("entities/GhoulingEntity.java", "customServerAiStep").contains("setAggressive(false)"));
+    }
+
+    @Test
+    void illagerAndWraithKeepTheirMeleeGoalWhileInReach() {
+        for (String file : new String[] {"entities/CorruptedIllager.java", "entities/WraithEntity.java"}) {
+            String body = body(file, "canContinueToUse");
+
+            assertTrue(body.contains("NO_CREATIVE_OR_SPECTATOR"), file);
+            assertTrue(body.contains("this.mob.getTarget()"), file);
+        }
+    }
+
+    @Test
+    void illagerIgnoresNewHitsWhileOneIsPending() {
+        String body = body("entities/AnimatedCorruptedIllager.java", "doHurtTarget");
+
+        assertTrue(body.contains("this.pendingTarget != null"));
+        assertTrue(body.indexOf("this.pendingTarget != null") < body.indexOf("ATTACK_KIND"));
+    }
+
+    @Test
+    void staffRecallTellsWhenItStopsAnAttack() {
+        String call = body("item/BoneStaffItem.java", "call");
+
+        assertTrue(call.contains("entity.graveyard.ghouling.stop_attack"));
+        assertTrue(call.indexOf("wasFighting =") < call.indexOf("fetch("));
+    }
+
+    @Test
+    void tormentedVillagerWalksOnTheSmoothedLimbSpeed() {
+        String code = code("entities/TormentedVillagerEntity.java");
+
+        assertTrue(code.contains("AnimationTable.isMoving(state) ? Mood.WALK"));
+        assertFalse(code.contains("this.getX() - this.xo"));
     }
 }

@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.tags.EntityTypeTags;
@@ -159,13 +160,28 @@ public abstract class CorruptedIllager extends HordeGraveyardEntity {
         return false;
     }
 
+    protected boolean isAttackPending() {
+        return false;
+    }
+
     class AttackGoal extends MeleeAttackGoal {
         public AttackGoal(CorruptedIllager illager) {
             super(illager, 1.0D, false);
         }
 
         @Override
+        public boolean canContinueToUse() {
+            LivingEntity target = this.mob.getTarget();
+
+            return super.canContinueToUse() || target != null && target.isAlive() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(target) && this.mob.isWithinMeleeAttackRange(target);
+        }
+
+        @Override
         protected boolean canPerformAttack(LivingEntity entity) {
+            if (CorruptedIllager.this.isAttackPending()) {
+                return false;
+            }
+
             if (this.mob.getVehicle() instanceof Ravager) {
                 float f = this.mob.getVehicle().getBbWidth() - 0.1F;
                 double reachSqr = f * 2.0F * f * 2.0F + entity.getBbWidth();

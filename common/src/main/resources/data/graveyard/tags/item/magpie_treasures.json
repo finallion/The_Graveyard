@@ -18,6 +18,8 @@
     "minecraft:prismarine_crystals",
     "minecraft:echo_shard",
     "minecraft:glow_ink_sac",
-    "graveyard:dark_iron_ingot"
+    "graveyard:dark_iron_ingot",
+    "minecraft:resin_clump",
+    "minecraft:resin_brick"
   ]
 }

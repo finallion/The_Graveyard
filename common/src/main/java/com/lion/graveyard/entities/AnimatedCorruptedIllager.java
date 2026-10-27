@@ -358,6 +358,10 @@ public abstract class AnimatedCorruptedIllager extends CorruptedIllager implemen
 
     @Override
     public boolean doHurtTarget(ServerLevel serverLevel, Entity target) {
+        if (this.pendingTarget != null) {
+            return false;
+        }
+
         if (!this.level().isClientSide()) {
             byte next = this.entityData.get(ATTACK_KIND) == ATTACK_STRIKE ? ATTACK_BITE : ATTACK_STRIKE;
             this.entityData.set(ATTACK_KIND, next);
@@ -366,6 +370,11 @@ public abstract class AnimatedCorruptedIllager extends CorruptedIllager implemen
 
         this.pendingTarget = target instanceof LivingEntity living ? living : null;
         return true;
+    }
+
+    @Override
+    protected boolean isAttackPending() {
+        return this.pendingTarget != null;
     }
 
     @Override

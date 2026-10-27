@@ -21,8 +21,10 @@ import net.minecraft.util.VisibleForDebug;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EntitySpawnReason;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.SpawnGroupData;
@@ -438,7 +440,9 @@ public class WraithEntity extends HostileGraveyardEntity implements GeoEntity {
 
         @Override
         public boolean canContinueToUse() {
-            return super.canContinueToUse();
+            LivingEntity target = this.mob.getTarget();
+
+            return super.canContinueToUse() || target != null && target.isAlive() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(target) && this.mob.isWithinMeleeAttackRange(target);
         }
     }
 

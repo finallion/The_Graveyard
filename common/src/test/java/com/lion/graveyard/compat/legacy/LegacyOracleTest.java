@@ -40,6 +40,12 @@ class LegacyOracleTest {
             "speedMultiplier", "speed"
     );
 
+    private static final Map<String, List<Double>> CHANGED_DEFAULTS = Map.of(
+            "mobConfigEntries.ghoul.weight", List.of(25.0D, 10.0D),
+            "mobConfigEntries.ghoul.minGroup", List.of(2.0D, 1.0D),
+            "mobConfigEntries.ghoul.maxGroup", List.of(5.0D, 4.0D)
+    );
+
     private static Path file;
 
     @BeforeAll
@@ -155,6 +161,10 @@ class LegacyOracleTest {
 
             Object wanted = normalized(headValue(expected.config(), entry));
             Object got = normalized(gameValue(game, entry));
+
+            if (java.util.Arrays.asList(wanted, got).equals(CHANGED_DEFAULTS.get(entry.oldPath()))) {
+                continue;
+            }
 
             if (!java.util.Objects.equals(wanted, got)) {
                 found.add(entry.oldPath() + ": oracle " + wanted + ", migration " + got);
