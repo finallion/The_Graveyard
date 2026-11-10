@@ -38,6 +38,10 @@ public final class SmolderingWood {
     private SmolderingWood() {}
 
     public static int light(BlockState state) {
+        if (!state.hasProperty(SMOLDERING)) {
+            return 0;
+        }
+
         return state.getValue(SMOLDERING) ? LIGHT_LEVEL : 0;
     }
 
